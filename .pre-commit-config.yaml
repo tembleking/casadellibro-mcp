@@ -46,3 +46,11 @@ repos:
         types: [go]
         pass_filenames: false
         stages: [pre-push]
+
+      - id: just-nix-build
+        name: just nix-build
+        entry: just nix-build
+        language: system
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push]

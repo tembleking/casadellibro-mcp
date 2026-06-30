@@ -50,8 +50,12 @@ serve: build
 vuln:
     govulncheck ./...
 
-# Full local gate: format, fix, generate, build, vet, lint, test, vuln
-check: tidy fmt fix generate build vet lint test vuln
+# Verify the package builds under nix
+nix-build:
+    nix build .#app --no-link --print-build-logs
+
+# Full local gate: format, fix, generate, build, vet, lint, test, vuln, nix
+check: tidy fmt fix generate build vet lint test vuln nix-build
 
 # Alias for CI pipelines (no mutation: no fmt/fix/tidy)
-ci: build vet lint test vuln
+ci: build vet lint test vuln nix-build
