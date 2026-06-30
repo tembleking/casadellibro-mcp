@@ -3,6 +3,11 @@
 MCP server exposing the [casadellibro](https://www.casadellibro.com) catalog and
 per-store stock as Model Context Protocol tools.
 
+> **Disclaimer**: This is an independent hobby project and is **not affiliated
+> with, endorsed by, or connected to Casa del Libro** (or its operators) in any
+> way. It merely consumes publicly available endpoints. All trademarks belong to
+> their respective owners.
+
 ## Tools
 
 | Tool | Description | Backing endpoint |
