@@ -79,11 +79,12 @@ MCP client config (local stdio):
 }
 ```
 
-## Deploy (Render, free tier)
+## Deploy
 
 The image is built by nix (`docker.nix`, exposed as the `dockerImage` flake
-package) and published to GHCR by CI; Render runs that prebuilt image. The
-binary binds to `$PORT` (injected by the host) when `--addr` is not passed.
+package) and published to GHCR by CI. It runs on any container host: the binary
+binds to `$PORT` (injected by the host) when `--addr` is not passed, and serves
+the streamable HTTP transport at `/mcp`.
 
 Build the image locally (on Linux, or a Linux remote builder):
 
@@ -97,21 +98,17 @@ Pipeline:
    `package.nix`, and **only builds when the `version` actually changes**. It
    `nix build .#dockerImage` and pushes `ghcr.io/tembleking/casadellibro-mcp`
    tagged with that version and `latest`.
-2. Make the GHCR package **public** (or add registry creds in Render).
-3. On [Render](https://render.com): **New → Blueprint** against this repo;
-   `render.yaml` provisions a free image-backed web service.
-4. The MCP endpoint is `https://<service>.onrender.com/mcp`.
+2. Make the GHCR package **public** (or give your host registry credentials).
+3. Run the image on your host of choice, exposing port `$PORT` over HTTPS.
+4. The MCP endpoint is `https://<your-host>/mcp`.
 
-To auto-redeploy on each new image, create a Render **Deploy Hook** and store
-its URL as the repo secret `RENDER_DEPLOY_HOOK_URL`; CI calls it after pushing.
-
-Note: the Render free tier sleeps after inactivity, so the first request after
-idle has a cold start of ~30–60s.
+To auto-redeploy on each new image, set a deploy-hook URL as the repo secret
+`DEPLOY_HOOK_URL`; CI calls it after pushing the image.
 
 ### Releasing a new version
 
 Bump `version` in `package.nix`, commit to `master`. CI builds and pushes the
-new image tag; the deploy hook (if set) redeploys Render.
+new image tag; the deploy hook (if set) redeploys.
 
 ### Use it from ChatGPT
 
@@ -119,6 +116,6 @@ Custom MCP connectors require a **paid ChatGPT plan** (Plus/Pro/Business/Enterpr
 and **Developer mode** enabled.
 
 1. ChatGPT → **Settings → Connectors → Advanced → Developer mode**.
-2. **Add custom connector** → URL `https://<service>.onrender.com/mcp`,
+2. **Add custom connector** → URL `https://<your-host>/mcp`,
    authentication **None**.
 3. `search_books` and `get_store_stock` then appear as tools in the composer.

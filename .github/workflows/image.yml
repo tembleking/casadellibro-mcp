@@ -75,14 +75,14 @@ jobs:
             "docker://$img:$VERSION" "docker://$img:latest" \
             --src-creds "$CREDS" --dest-creds "$CREDS"
 
-      # Optional: set RENDER_DEPLOY_HOOK_URL in repo secrets to auto-redeploy.
-      - name: Trigger Render deploy
+      # Optional: set DEPLOY_HOOK_URL in repo secrets to auto-redeploy.
+      - name: Trigger deploy hook
         if: steps.ver.outputs.changed == 'true'
         env:
-          HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          HOOK: ${{ secrets.DEPLOY_HOOK_URL }}
         run: |
           if [ -n "${HOOK:-}" ]; then
             curl -fsSL "$HOOK"
           else
-            echo "no RENDER_DEPLOY_HOOK_URL secret - skipping redeploy"
+            echo "no DEPLOY_HOOK_URL secret - skipping redeploy"
           fi
