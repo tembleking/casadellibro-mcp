@@ -22,9 +22,11 @@ query, then pass the exact `filter` strings it returns (e.g. `availability:Con s
 they combine with AND. `search_books` returns a `product_id` that feeds straight into
 `get_store_stock`.
 
-A book's `availability` in `search_books` is catalog-wide: "Con stock" means at least
-one store/warehouse has it, **not** that any particular physical store does. Use
-`get_store_stock` for per-store availability.
+Every `search_books` field describes the online catalog listing, not a physical
+store. In particular `availability` is catalog-wide ("Con stock" means at least one
+store/warehouse has it, **not** that any particular store does) and `price` is the
+online price (a physical store may not match it). Use `get_store_stock` for per-store
+stock and pickup.
 
 `search_books` and `get_store_stock` accept an optional `fields` array to project
 the response down to the fields you need (book fields and bookstore fields
