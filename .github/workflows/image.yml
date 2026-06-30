@@ -6,6 +6,9 @@ on:
   push:
     branches: [master]
     paths: ["package.nix"]
+  # Manual trigger builds the current version regardless of change detection
+  # (useful for the first publish).
+  workflow_dispatch:
 
 concurrency:
   group: image-${{ github.ref }}
