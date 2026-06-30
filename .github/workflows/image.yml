@@ -60,23 +60,28 @@ jobs:
         if: steps.ver.outputs.changed == 'true'
         run: nix build .#dockerImage
 
-      - name: Push to GHCR
+      - name: Log in to GHCR
+        if: steps.ver.outputs.changed == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Load, tag and push to GHCR
         if: steps.ver.outputs.changed == 'true'
         env:
           VERSION: ${{ steps.ver.outputs.version }}
-          CREDS: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           img=ghcr.io/${{ github.repository_owner }}/casadellibro-mcp
-          arc=$(readlink -f result)
-          # The runner ships a v1 registries.conf that the nixpkgs skopeo
-          # rejects; point it at an empty (valid v2) config instead.
-          reg="$RUNNER_TEMP/registries.conf"
-          : > "$reg"
-          skopeo() { nix run nixpkgs#skopeo -- --registries-conf "$reg" --insecure-policy "$@"; }
-          skopeo copy docker-archive:"$arc" "docker://$img:$VERSION" --dest-creds "$CREDS"
-          skopeo copy "docker://$img:$VERSION" "docker://$img:latest" \
-            --src-creds "$CREDS" --dest-creds "$CREDS"
+          # nix builds a docker-archive; load it (preserves entrypoint/env/cmd,
+          # unlike `docker import`) and push under the GHCR tags.
+          docker load -i result
+          docker tag "casadellibro-mcp:$VERSION" "$img:$VERSION"
+          docker tag "casadellibro-mcp:$VERSION" "$img:latest"
+          docker push "$img:$VERSION"
+          docker push "$img:latest"
 
       # Optional: set DEPLOY_HOOK_URL in repo secrets to auto-redeploy.
       - name: Trigger deploy hook
