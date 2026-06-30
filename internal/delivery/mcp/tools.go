@@ -47,7 +47,7 @@ func registerFiltersTool(s *server.MCPServer, uc *usecase.ListSearchFilters) {
 
 func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 	tool := mcp.NewTool("search_books",
-		mcp.WithDescription("Search the casadellibro catalog by free text. Returns matching books with price, availability, ISBN and a product_id usable with get_store_stock. To narrow results, first call search_books_available_filters and pass the returned filter strings here."),
+		mcp.WithDescription("Search the casadellibro catalog by free text. Returns matching books with price, availability, ISBN and a product_id usable with get_store_stock. NOTE: a book's availability (e.g. \"Con stock\") is catalog-wide, meaning at least one store/warehouse has it; it does NOT mean any given physical store has stock. Use get_store_stock with the product_id for per-store availability. To narrow results, first call search_books_available_filters and pass the returned filter strings here."),
 		mcp.WithString("query", mcp.Required(), mcp.Description("Free-text search, e.g. an author, title or ISBN.")),
 		mcp.WithArray("filters",
 			mcp.Description("Facet filter strings to narrow the search, exactly as returned by search_books_available_filters (e.g. \"availability:Con stock\", \"facetLang:Castellano\", \"priceOffer:8.0-14.0\"). Multiple filters combine with AND."),
