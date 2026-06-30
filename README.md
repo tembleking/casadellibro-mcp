@@ -28,10 +28,12 @@ store/warehouse has it, **not** that any particular store does) and `price` is t
 online price (a physical store may not match it). Use `get_store_stock` for per-store
 stock and pickup.
 
-`search_books` and `get_store_stock` accept an optional `fields` array to project
-the response down to the fields you need (book fields and bookstore fields
-respectively); omit it to get everything. Use it to keep responses small and save
-tokens. Unknown field names are rejected with the list of valid fields.
+`search_books` and `get_store_stock` require a `fields` array that projects the
+response down to the fields you ask for (book fields and bookstore fields
+respectively). It is mandatory on purpose: it forces the caller to request only
+what it needs, keeping responses small. Unknown or empty field lists are rejected
+with the list of valid fields. Responses are emitted as compact (non-indented) JSON
+to avoid spending tokens on whitespace.
 
 ## Architecture (clean architecture)
 

@@ -54,6 +54,7 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 			mcp.WithStringItems(),
 		),
 		mcp.WithArray("fields",
+			mcp.Required(),
 			mcp.Description(fieldsDescription("book", bookFields)),
 			mcp.WithStringItems(),
 		),
@@ -70,7 +71,7 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 		fields := req.GetStringSlice("fields", nil)
-		if err := validateFields(fields, bookFields); err != nil {
+		if err := requireFields(fields, bookFields); err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 		q := domain.SearchQuery{
@@ -105,6 +106,7 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 		mcp.WithString("product_id", mcp.Required(), mcp.Description("Product id (the product_id returned by search_books, e.g. 16801604).")),
 		mcp.WithNumber("country_cache", mcp.Description("casadellibro paiscache value. Default 63 (Spain).")),
 		mcp.WithArray("fields",
+			mcp.Required(),
 			mcp.Description(fieldsDescription("bookstore", bookstoreFields)),
 			mcp.WithStringItems(),
 		),
@@ -116,7 +118,7 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 		fields := req.GetStringSlice("fields", nil)
-		if err := validateFields(fields, bookstoreFields); err != nil {
+		if err := requireFields(fields, bookstoreFields); err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 		provinces, err := uc.Execute(ctx, productID, req.GetInt("country_cache", 0))
@@ -135,9 +137,10 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 	})
 }
 
-// jsonResult marshals a value to indented JSON as a tool text result.
+// jsonResult marshals a value to compact JSON as a tool text result. Compact
+// (not indented) keeps the token cost down for the LLM consuming it.
 func jsonResult(v any) (*mcp.CallToolResult, error) {
-	b, err := json.MarshalIndent(v, "", "  ")
+	b, err := json.Marshal(v)
 	if err != nil {
 		return mcp.NewToolResultError(err.Error()), nil
 	}

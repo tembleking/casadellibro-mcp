@@ -91,7 +91,10 @@ var _ = Describe("MCP tools", func() {
 					Books: []domain.Book{{Name: "HP", ProductID: "17422393"}},
 				}, nil)
 
-			text, isErr := callText("search_books", map[string]any{"query": "Harry Potter"})
+			text, isErr := callText("search_books", map[string]any{
+				"query":  "Harry Potter",
+				"fields": []any{"name", "product_id"},
+			})
 			Expect(isErr).To(BeFalse())
 
 			var got domain.SearchResult
@@ -111,8 +114,14 @@ var _ = Describe("MCP tools", func() {
 			_, isErr := callText("search_books", map[string]any{
 				"query":   "Harry Potter",
 				"filters": []any{"availability:Con stock", "facetLang:Castellano"},
+				"fields":  []any{"name"},
 			})
 			Expect(isErr).To(BeFalse())
+		})
+
+		It("returns a tool error when fields is missing", func() {
+			_, isErr := callText("search_books", map[string]any{"query": "Harry Potter"})
+			Expect(isErr).To(BeTrue())
 		})
 
 		It("returns only the requested fields on each book", func() {
@@ -194,13 +203,21 @@ var _ = Describe("MCP tools", func() {
 				StockByStore(gomock.Any(), "16801604", 63).
 				Return([]domain.Province{{Name: "Alicante"}}, nil)
 
-			text, isErr := callText("get_store_stock", map[string]any{"product_id": "16801604"})
+			text, isErr := callText("get_store_stock", map[string]any{
+				"product_id": "16801604",
+				"fields":     []any{"city"},
+			})
 			Expect(isErr).To(BeFalse())
 
 			var got []domain.Province
 			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
 			Expect(got).To(HaveLen(1))
 			Expect(got[0].Name).To(Equal("Alicante"))
+		})
+
+		It("returns a tool error when fields is missing", func() {
+			_, isErr := callText("get_store_stock", map[string]any{"product_id": "16801604"})
+			Expect(isErr).To(BeTrue())
 		})
 
 		It("returns only the requested fields on each bookstore", func() {

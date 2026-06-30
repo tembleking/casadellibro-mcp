@@ -27,9 +27,12 @@ func jsonFieldNames(v any) []string {
 	return names
 }
 
-// validateFields ensures every requested field is a valid json field of the
-// allowed set, returning a helpful error otherwise.
-func validateFields(requested, allowed []string) error {
+// requireFields ensures at least one field was requested and that every
+// requested field is a valid json field of the allowed set.
+func requireFields(requested, allowed []string) error {
+	if len(requested) == 0 {
+		return fmt.Errorf("fields is required: list the fields to return (keep it minimal to save tokens). Valid fields: %s", strings.Join(allowed, ", "))
+	}
 	set := make(map[string]bool, len(allowed))
 	for _, a := range allowed {
 		set[a] = true
@@ -81,7 +84,7 @@ func projectItems[T any](items []T, fields []string) ([]map[string]json.RawMessa
 // fieldsDescription builds a tool-parameter description listing the valid fields.
 func fieldsDescription(itemLabel string, allowed []string) string {
 	return fmt.Sprintf(
-		"Optional list of %s fields to return; omit to return all (uses more tokens). Valid fields: %s.",
+		"REQUIRED. The %s fields to return; pick only what you need to keep the response small. Valid fields: %s.",
 		itemLabel, strings.Join(allowed, ", "),
 	)
 }
