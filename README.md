@@ -22,6 +22,11 @@ query, then pass the exact `filter` strings it returns (e.g. `availability:Con s
 they combine with AND. `search_books` returns a `product_id` that feeds straight into
 `get_store_stock`.
 
+`search_books` and `get_store_stock` accept an optional `fields` array to project
+the response down to the fields you need (book fields and bookstore fields
+respectively); omit it to get everything. Use it to keep responses small and save
+tokens. Unknown field names are rejected with the list of valid fields.
+
 ## Architecture (clean architecture)
 
 Dependencies point inward; `domain` knows nothing about HTTP or MCP.

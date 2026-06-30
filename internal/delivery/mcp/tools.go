@@ -11,6 +11,13 @@ import (
 	"app/internal/usecase"
 )
 
+// Valid field names a caller may request, derived from the domain entities so
+// they cannot drift from what is actually returned.
+var (
+	bookFields      = jsonFieldNames(domain.Book{})
+	bookstoreFields = jsonFieldNames(domain.Bookstore{})
+)
+
 func registerFiltersTool(s *server.MCPServer, uc *usecase.ListSearchFilters) {
 	tool := mcp.NewTool("search_books_available_filters",
 		mcp.WithDescription("Discover the filters available for a catalog search BEFORE calling search_books. Returns the facets for the query (e.g. language, binding, availability, price ranges, publisher), each with its selectable values and, for every value, a ready-to-use 'filter' string. Pass those exact strings in the search_books 'filters' argument to narrow the search."),
@@ -46,6 +53,10 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 			mcp.Description("Facet filter strings to narrow the search, exactly as returned by search_books_available_filters (e.g. \"availability:Con stock\", \"facetLang:Castellano\", \"priceOffer:8.0-14.0\"). Multiple filters combine with AND."),
 			mcp.WithStringItems(),
 		),
+		mcp.WithArray("fields",
+			mcp.Description(fieldsDescription("book", bookFields)),
+			mcp.WithStringItems(),
+		),
 		mcp.WithNumber("start", mcp.Description("Zero-based offset of the first result (pagination). Default 0.")),
 		mcp.WithNumber("rows", mcp.Description("Number of results to return (1-100). Default 16.")),
 		mcp.WithString("store", mcp.Description("Store/market code. Default ES.")),
@@ -56,6 +67,10 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 	s.AddTool(tool, func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		query, err := req.RequireString("query")
 		if err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
+		}
+		fields := req.GetStringSlice("fields", nil)
+		if err := validateFields(fields, bookFields); err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 		q := domain.SearchQuery{
@@ -71,7 +86,16 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return jsonResult(result)
+		books, err := projectItems(result.Books, fields)
+		if err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
+		}
+		return jsonResult(map[string]any{
+			"books": books,
+			"total": result.Total,
+			"start": result.Start,
+			"rows":  result.Rows,
+		})
 	})
 }
 
@@ -80,6 +104,10 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 		mcp.WithDescription("List per-bookstore stock and pickup availability for a product across casadellibro physical stores, grouped by province."),
 		mcp.WithString("product_id", mcp.Required(), mcp.Description("Product id (the product_id returned by search_books, e.g. 16801604).")),
 		mcp.WithNumber("country_cache", mcp.Description("casadellibro paiscache value. Default 63 (Spain).")),
+		mcp.WithArray("fields",
+			mcp.Description(fieldsDescription("bookstore", bookstoreFields)),
+			mcp.WithStringItems(),
+		),
 	)
 
 	s.AddTool(tool, func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -87,11 +115,23 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
+		fields := req.GetStringSlice("fields", nil)
+		if err := validateFields(fields, bookstoreFields); err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
+		}
 		provinces, err := uc.Execute(ctx, productID, req.GetInt("country_cache", 0))
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return jsonResult(provinces)
+		out := make([]map[string]any, 0, len(provinces))
+		for _, p := range provinces {
+			stores, err := projectItems(p.Bookstores, fields)
+			if err != nil {
+				return mcp.NewToolResultError(err.Error()), nil
+			}
+			out = append(out, map[string]any{"name": p.Name, "bookstores": stores})
+		}
+		return jsonResult(out)
 	})
 }
 

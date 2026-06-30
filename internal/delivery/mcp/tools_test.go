@@ -115,6 +115,39 @@ var _ = Describe("MCP tools", func() {
 			Expect(isErr).To(BeFalse())
 		})
 
+		It("returns only the requested fields on each book", func() {
+			catalog.EXPECT().
+				Search(gomock.Any(), gomock.Any()).
+				Return(domain.SearchResult{
+					Total: 1,
+					Books: []domain.Book{{Name: "HP", ProductID: "123", ISBN: "978", Editorial: "X"}},
+				}, nil)
+
+			text, isErr := callText("search_books", map[string]any{
+				"query":  "Harry Potter",
+				"fields": []any{"name", "product_id"},
+			})
+			Expect(isErr).To(BeFalse())
+
+			var got struct {
+				Total int              `json:"total"`
+				Books []map[string]any `json:"books"`
+			}
+			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
+			Expect(got.Total).To(Equal(1))
+			Expect(got.Books[0]).To(HaveKey("name"))
+			Expect(got.Books[0]).To(HaveKey("product_id"))
+			Expect(got.Books[0]).To(HaveLen(2))
+		})
+
+		It("returns a tool error for an unknown field without hitting the repository", func() {
+			_, isErr := callText("search_books", map[string]any{
+				"query":  "Harry Potter",
+				"fields": []any{"nope"},
+			})
+			Expect(isErr).To(BeTrue())
+		})
+
 		It("returns a tool error for an empty query without hitting the repository", func() {
 			_, isErr := callText("search_books", map[string]any{"query": "  "})
 			Expect(isErr).To(BeTrue())
@@ -168,6 +201,39 @@ var _ = Describe("MCP tools", func() {
 			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
 			Expect(got).To(HaveLen(1))
 			Expect(got[0].Name).To(Equal("Alicante"))
+		})
+
+		It("returns only the requested fields on each bookstore", func() {
+			stock.EXPECT().
+				StockByStore(gomock.Any(), "16801604", 63).
+				Return([]domain.Province{{
+					Name:       "Alicante",
+					Bookstores: []domain.Bookstore{{City: "Alicante", Stock: 3, Phone: "900", Email: "x@y"}},
+				}}, nil)
+
+			text, isErr := callText("get_store_stock", map[string]any{
+				"product_id": "16801604",
+				"fields":     []any{"city", "stock"},
+			})
+			Expect(isErr).To(BeFalse())
+
+			var got []struct {
+				Name       string           `json:"name"`
+				Bookstores []map[string]any `json:"bookstores"`
+			}
+			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
+			Expect(got[0].Name).To(Equal("Alicante"))
+			Expect(got[0].Bookstores[0]).To(HaveKey("city"))
+			Expect(got[0].Bookstores[0]).To(HaveKey("stock"))
+			Expect(got[0].Bookstores[0]).To(HaveLen(2))
+		})
+
+		It("returns a tool error for an unknown field", func() {
+			_, isErr := callText("get_store_stock", map[string]any{
+				"product_id": "16801604",
+				"fields":     []any{"nope"},
+			})
+			Expect(isErr).To(BeTrue())
 		})
 
 		It("returns a tool error when product_id is missing", func() {
