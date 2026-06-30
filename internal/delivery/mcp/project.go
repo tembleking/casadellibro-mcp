@@ -68,19 +68,6 @@ func projectItem(v any, fields []string) (map[string]json.RawMessage, error) {
 	return out, nil
 }
 
-// projectItems applies projectItem to each element of a slice.
-func projectItems[T any](items []T, fields []string) ([]map[string]json.RawMessage, error) {
-	out := make([]map[string]json.RawMessage, 0, len(items))
-	for i := range items {
-		m, err := projectItem(items[i], fields)
-		if err != nil {
-			return nil, err
-		}
-		out = append(out, m)
-	}
-	return out, nil
-}
-
 // fieldsDescription builds a tool-parameter description listing the valid fields.
 func fieldsDescription(itemLabel string, allowed []string) string {
 	return fmt.Sprintf(

@@ -32,8 +32,13 @@ stock and pickup.
 response down to the fields you ask for (book fields and bookstore fields
 respectively). It is mandatory on purpose: it forces the caller to request only
 what it needs, keeping responses small. Unknown or empty field lists are rejected
-with the list of valid fields. Responses are emitted as compact (non-indented) JSON
-to avoid spending tokens on whitespace.
+with the list of valid fields.
+
+Results are returned as tab-separated text, not JSON: the field names appear once
+in a header row instead of being repeated on every item, which is far cheaper in
+tokens. `search_books` prepends a `total=… start=… rows=…` summary line; `get_store_stock`
+adds a leading `province` column; `search_books_available_filters` groups values under
+`# <facet> [<type>]` headers, one `<filter string>\t(<count>)` per line.
 
 ## Architecture (clean architecture)
 

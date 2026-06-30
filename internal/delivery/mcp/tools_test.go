@@ -2,7 +2,7 @@ package mcp_test
 
 import (
 	"context"
-	"encoding/json"
+	"strings"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
@@ -97,10 +97,10 @@ var _ = Describe("MCP tools", func() {
 			})
 			Expect(isErr).To(BeFalse())
 
-			var got domain.SearchResult
-			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
-			Expect(got.Total).To(Equal(1758))
-			Expect(got.Books[0].ProductID).To(Equal("17422393"))
+			lines := strings.Split(text, "\n")
+			Expect(lines[0]).To(Equal("total=1758 start=0 rows=0"))
+			Expect(lines[1]).To(Equal("name\tproduct_id"))
+			Expect(lines[2]).To(Equal("HP\t17422393"))
 		})
 
 		It("forwards facet filters to the repository", func() {
@@ -138,15 +138,12 @@ var _ = Describe("MCP tools", func() {
 			})
 			Expect(isErr).To(BeFalse())
 
-			var got struct {
-				Total int              `json:"total"`
-				Books []map[string]any `json:"books"`
-			}
-			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
-			Expect(got.Total).To(Equal(1))
-			Expect(got.Books[0]).To(HaveKey("name"))
-			Expect(got.Books[0]).To(HaveKey("product_id"))
-			Expect(got.Books[0]).To(HaveLen(2))
+			lines := strings.Split(text, "\n")
+			Expect(lines[1]).To(Equal("name\tproduct_id"))
+			Expect(lines[2]).To(Equal("HP\t123"))
+			// unrequested fields (isbn, editorial) are absent.
+			Expect(text).ToNot(ContainSubstring("978"))
+			Expect(text).ToNot(ContainSubstring("X"))
 		})
 
 		It("returns a tool error for an unknown field without hitting the repository", func() {
@@ -169,7 +166,7 @@ var _ = Describe("MCP tools", func() {
 	})
 
 	Context("search_books_available_filters", func() {
-		It("forwards args with use-case defaults and returns the facets as JSON", func() {
+		It("forwards args with use-case defaults and groups facets as text", func() {
 			catalog.EXPECT().
 				Facets(gomock.Any(), domain.FacetQuery{
 					Query: "Harry Potter", Store: "ES", Lang: "es", Currency: "EUR",
@@ -185,10 +182,9 @@ var _ = Describe("MCP tools", func() {
 			text, isErr := callText("search_books_available_filters", map[string]any{"query": "Harry Potter"})
 			Expect(isErr).To(BeFalse())
 
-			var got []domain.Facet
-			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
-			Expect(got).To(HaveLen(1))
-			Expect(got[0].Values[0].Filter).To(Equal("facetLang:Castellano"))
+			lines := strings.Split(text, "\n")
+			Expect(lines[0]).To(Equal("# Idioma [value]"))
+			Expect(lines[1]).To(Equal("facetLang:Castellano\t(738)"))
 		})
 
 		It("returns a tool error when query is missing", func() {
@@ -201,7 +197,10 @@ var _ = Describe("MCP tools", func() {
 		It("forwards the product id and default country cache", func() {
 			stock.EXPECT().
 				StockByStore(gomock.Any(), "16801604", 63).
-				Return([]domain.Province{{Name: "Alicante"}}, nil)
+				Return([]domain.Province{{
+					Name:       "Alicante",
+					Bookstores: []domain.Bookstore{{City: "Elche"}},
+				}}, nil)
 
 			text, isErr := callText("get_store_stock", map[string]any{
 				"product_id": "16801604",
@@ -209,10 +208,9 @@ var _ = Describe("MCP tools", func() {
 			})
 			Expect(isErr).To(BeFalse())
 
-			var got []domain.Province
-			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
-			Expect(got).To(HaveLen(1))
-			Expect(got[0].Name).To(Equal("Alicante"))
+			lines := strings.Split(text, "\n")
+			Expect(lines[0]).To(Equal("province\tcity"))
+			Expect(lines[1]).To(Equal("Alicante\tElche"))
 		})
 
 		It("returns a tool error when fields is missing", func() {
@@ -234,15 +232,12 @@ var _ = Describe("MCP tools", func() {
 			})
 			Expect(isErr).To(BeFalse())
 
-			var got []struct {
-				Name       string           `json:"name"`
-				Bookstores []map[string]any `json:"bookstores"`
-			}
-			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
-			Expect(got[0].Name).To(Equal("Alicante"))
-			Expect(got[0].Bookstores[0]).To(HaveKey("city"))
-			Expect(got[0].Bookstores[0]).To(HaveKey("stock"))
-			Expect(got[0].Bookstores[0]).To(HaveLen(2))
+			lines := strings.Split(text, "\n")
+			Expect(lines[0]).To(Equal("province\tcity\tstock"))
+			Expect(lines[1]).To(Equal("Alicante\tAlicante\t3"))
+			// unrequested fields (phone, email) are absent.
+			Expect(text).ToNot(ContainSubstring("900"))
+			Expect(text).ToNot(ContainSubstring("x@y"))
 		})
 
 		It("returns a tool error for an unknown field", func() {

@@ -2,7 +2,6 @@ package mcp
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -41,7 +40,7 @@ func registerFiltersTool(s *server.MCPServer, uc *usecase.ListSearchFilters) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return jsonResult(facets)
+		return mcp.NewToolResultText(renderFacets(facets)), nil
 	})
 }
 
@@ -87,16 +86,11 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		books, err := projectItems(result.Books, fields)
+		text, err := renderSearch(result, fields)
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return jsonResult(map[string]any{
-			"books": books,
-			"total": result.Total,
-			"start": result.Start,
-			"rows":  result.Rows,
-		})
+		return mcp.NewToolResultText(text), nil
 	})
 }
 
@@ -125,24 +119,10 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		out := make([]map[string]any, 0, len(provinces))
-		for _, p := range provinces {
-			stores, err := projectItems(p.Bookstores, fields)
-			if err != nil {
-				return mcp.NewToolResultError(err.Error()), nil
-			}
-			out = append(out, map[string]any{"name": p.Name, "bookstores": stores})
+		text, err := renderStock(provinces, fields)
+		if err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return jsonResult(out)
+		return mcp.NewToolResultText(text), nil
 	})
-}
-
-// jsonResult marshals a value to compact JSON as a tool text result. Compact
-// (not indented) keeps the token cost down for the LLM consuming it.
-func jsonResult(v any) (*mcp.CallToolResult, error) {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return mcp.NewToolResultError(err.Error()), nil
-	}
-	return mcp.NewToolResultText(string(b)), nil
 }
