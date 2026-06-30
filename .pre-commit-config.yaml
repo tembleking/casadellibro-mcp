@@ -1,0 +1,48 @@
+# Run with prek (https://github.com/j178/prek). `nix develop` installs the
+# pre-commit and pre-push git shims automatically.
+#
+# Every hook delegates to a `just` recipe so the checks stay defined in one
+# place (the justfile) and behave the same locally, in hooks and in CI.
+default_install_hook_types: [pre-commit, pre-push]
+
+repos:
+  - repo: local
+    hooks:
+      # ---- fast checks: run on every commit ----
+      - id: just-fmt
+        name: just fmt
+        entry: just fmt
+        language: system
+        types: [go]
+        pass_filenames: false
+
+      - id: just-vet
+        name: just vet
+        entry: just vet
+        language: system
+        types: [go]
+        pass_filenames: false
+
+      - id: just-lint
+        name: just lint
+        entry: just lint
+        language: system
+        types: [go]
+        pass_filenames: false
+
+      # ---- slower checks: run on push only ----
+      - id: just-test
+        name: just test
+        entry: just test
+        language: system
+        types: [go]
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: just-vuln
+        name: just vuln
+        entry: just vuln
+        language: system
+        types: [go]
+        pass_filenames: false
+        stages: [pre-push]

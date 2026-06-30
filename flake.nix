@@ -37,7 +37,12 @@
                 gopls
                 govulncheck
                 just
+                prek
               ];
+
+              shellHook = ''
+                prek install >/dev/null
+              '';
             };
 
           formatter = pkgs.nixfmt-tree;
