@@ -3,7 +3,7 @@ buildGoModule {
   pname = "app";
   version = "0.1.0";
   src = ./.;
-  vendorHash = "sha256-KkzsEsq9EtRY7Rk/bE2BHfFIBtvx7yNVe3XTEBjjD4w=";
+  vendorHash = "sha256-yu/1zJyb0sFuk6dofBXTcf6/5StVWLdLGGQ4xV5klkM=";
 
   subPackages = [ "cmd/app" ];
 

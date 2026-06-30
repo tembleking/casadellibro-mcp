@@ -53,6 +53,8 @@ jobs:
 
       - uses: DeterminateSystems/magic-nix-cache-action@main
         if: steps.ver.outputs.changed == 'true'
+        with:
+          use-flakehub: false
 
       - name: Build image with nix
         if: steps.ver.outputs.changed == 'true'
