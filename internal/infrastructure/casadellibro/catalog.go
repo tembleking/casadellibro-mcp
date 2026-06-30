@@ -61,6 +61,9 @@ func (a *CatalogAdapter) Search(ctx context.Context, q domain.SearchQuery) (doma
 	params.Set("lang", q.Lang)
 	params.Set("currency", q.Currency)
 	params.Set("store", q.Store)
+	for _, f := range q.Filters {
+		params.Add("filter", f)
+	}
 
 	body, err := a.client.getJSON(ctx, a.client.searchBaseURL, params)
 	if err != nil {

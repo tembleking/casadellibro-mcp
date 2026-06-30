@@ -41,6 +41,21 @@ func (m *MockCatalogRepository) EXPECT() *MockCatalogRepositoryMockRecorder {
 	return m.recorder
 }
 
+// Facets mocks base method.
+func (m *MockCatalogRepository) Facets(ctx context.Context, q domain.FacetQuery) ([]domain.Facet, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Facets", ctx, q)
+	ret0, _ := ret[0].([]domain.Facet)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Facets indicates an expected call of Facets.
+func (mr *MockCatalogRepositoryMockRecorder) Facets(ctx, q any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Facets", reflect.TypeOf((*MockCatalogRepository)(nil).Facets), ctx, q)
+}
+
 // Search mocks base method.
 func (m *MockCatalogRepository) Search(ctx context.Context, q domain.SearchQuery) (domain.SearchResult, error) {
 	m.ctrl.T.Helper()

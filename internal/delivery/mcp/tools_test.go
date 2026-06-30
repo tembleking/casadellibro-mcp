@@ -46,8 +46,9 @@ var _ = Describe("MCP tools", func() {
 		stock = mocks.NewMockStockRepository(ctrl)
 
 		srv := deliverymcp.NewServer("test", "0.0.0", deliverymcp.Handlers{
-			Search: usecase.NewSearchBooks(catalog),
-			Stock:  usecase.NewGetStoreStock(stock),
+			Search:  usecase.NewSearchBooks(catalog),
+			Filters: usecase.NewListSearchFilters(catalog),
+			Stock:   usecase.NewGetStoreStock(stock),
 		})
 
 		var err error
@@ -69,14 +70,14 @@ var _ = Describe("MCP tools", func() {
 		ctrl.Finish()
 	})
 
-	It("advertises both tools", func() {
+	It("advertises all tools", func() {
 		res, err := client.ListTools(ctx, mcpproto.ListToolsRequest{})
 		Expect(err).ToNot(HaveOccurred())
 		names := []string{}
 		for _, t := range res.Tools {
 			names = append(names, t.Name)
 		}
-		Expect(names).To(ConsistOf("search_books", "get_store_stock"))
+		Expect(names).To(ConsistOf("search_books", "search_books_available_filters", "get_store_stock"))
 	})
 
 	Context("search_books", func() {
@@ -99,6 +100,21 @@ var _ = Describe("MCP tools", func() {
 			Expect(got.Books[0].ProductID).To(Equal("17422393"))
 		})
 
+		It("forwards facet filters to the repository", func() {
+			catalog.EXPECT().
+				Search(gomock.Any(), gomock.AssignableToTypeOf(domain.SearchQuery{})).
+				DoAndReturn(func(_ context.Context, q domain.SearchQuery) (domain.SearchResult, error) {
+					Expect(q.Filters).To(ConsistOf("availability:Con stock", "facetLang:Castellano"))
+					return domain.SearchResult{}, nil
+				})
+
+			_, isErr := callText("search_books", map[string]any{
+				"query":   "Harry Potter",
+				"filters": []any{"availability:Con stock", "facetLang:Castellano"},
+			})
+			Expect(isErr).To(BeFalse())
+		})
+
 		It("returns a tool error for an empty query without hitting the repository", func() {
 			_, isErr := callText("search_books", map[string]any{"query": "  "})
 			Expect(isErr).To(BeTrue())
@@ -106,6 +122,35 @@ var _ = Describe("MCP tools", func() {
 
 		It("returns a tool error when query is missing", func() {
 			_, isErr := callText("search_books", map[string]any{})
+			Expect(isErr).To(BeTrue())
+		})
+	})
+
+	Context("search_books_available_filters", func() {
+		It("forwards args with use-case defaults and returns the facets as JSON", func() {
+			catalog.EXPECT().
+				Facets(gomock.Any(), domain.FacetQuery{
+					Query: "Harry Potter", Store: "ES", Lang: "es", Currency: "EUR",
+				}).
+				Return([]domain.Facet{{
+					Label: "Idioma",
+					Type:  "value",
+					Values: []domain.FacetValue{
+						{Value: "Castellano", Count: 738, Filter: "facetLang:Castellano"},
+					},
+				}}, nil)
+
+			text, isErr := callText("search_books_available_filters", map[string]any{"query": "Harry Potter"})
+			Expect(isErr).To(BeFalse())
+
+			var got []domain.Facet
+			Expect(json.Unmarshal([]byte(text), &got)).To(Succeed())
+			Expect(got).To(HaveLen(1))
+			Expect(got[0].Values[0].Filter).To(Equal("facetLang:Castellano"))
+		})
+
+		It("returns a tool error when query is missing", func() {
+			_, isErr := callText("search_books_available_filters", map[string]any{})
 			Expect(isErr).To(BeTrue())
 		})
 	})

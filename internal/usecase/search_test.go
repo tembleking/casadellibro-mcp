@@ -72,3 +72,38 @@ var _ = Describe("SearchBooks", func() {
 		Expect(err).To(MatchError(boom))
 	})
 })
+
+var _ = Describe("ListSearchFilters", func() {
+	var (
+		ctrl *gomock.Controller
+		repo *mocks.MockCatalogRepository
+		uc   *usecase.ListSearchFilters
+		ctx  context.Context
+	)
+
+	BeforeEach(func() {
+		ctrl = gomock.NewController(GinkgoT())
+		repo = mocks.NewMockCatalogRepository(ctrl)
+		uc = usecase.NewListSearchFilters(repo)
+		ctx = context.Background()
+	})
+
+	AfterEach(func() { ctrl.Finish() })
+
+	It("rejects an empty query without hitting the repository", func() {
+		_, err := uc.Execute(ctx, domain.FacetQuery{Query: "   "})
+		Expect(err).To(MatchError(usecase.ErrEmptyQuery))
+	})
+
+	It("applies defaults for store, lang and currency", func() {
+		repo.EXPECT().
+			Facets(ctx, domain.FacetQuery{
+				Query: "Harry Potter", Store: "ES", Lang: "es", Currency: "EUR",
+			}).
+			Return([]domain.Facet{{Label: "Idioma"}}, nil)
+
+		facets, err := uc.Execute(ctx, domain.FacetQuery{Query: "  Harry Potter  "})
+		Expect(err).ToNot(HaveOccurred())
+		Expect(facets).To(HaveLen(1))
+	})
+})

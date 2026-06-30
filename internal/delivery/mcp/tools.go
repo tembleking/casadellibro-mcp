@@ -11,10 +11,41 @@ import (
 	"app/internal/usecase"
 )
 
+func registerFiltersTool(s *server.MCPServer, uc *usecase.ListSearchFilters) {
+	tool := mcp.NewTool("search_books_available_filters",
+		mcp.WithDescription("Discover the filters available for a catalog search BEFORE calling search_books. Returns the facets for the query (e.g. language, binding, availability, price ranges, publisher), each with its selectable values and, for every value, a ready-to-use 'filter' string. Pass those exact strings in the search_books 'filters' argument to narrow the search."),
+		mcp.WithString("query", mcp.Required(), mcp.Description("The same free-text search you intend to pass to search_books.")),
+		mcp.WithString("store", mcp.Description("Store/market code. Default ES.")),
+		mcp.WithString("lang", mcp.Description("Language code. Default es.")),
+		mcp.WithString("currency", mcp.Description("Currency code. Default EUR.")),
+	)
+
+	s.AddTool(tool, func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		query, err := req.RequireString("query")
+		if err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
+		}
+		facets, err := uc.Execute(ctx, domain.FacetQuery{
+			Query:    query,
+			Store:    req.GetString("store", ""),
+			Lang:     req.GetString("lang", ""),
+			Currency: req.GetString("currency", ""),
+		})
+		if err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
+		}
+		return jsonResult(facets)
+	})
+}
+
 func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 	tool := mcp.NewTool("search_books",
-		mcp.WithDescription("Search the casadellibro catalog by free text. Returns matching books with price, availability, ISBN and a product_id usable with get_store_stock."),
+		mcp.WithDescription("Search the casadellibro catalog by free text. Returns matching books with price, availability, ISBN and a product_id usable with get_store_stock. To narrow results, first call search_books_available_filters and pass the returned filter strings here."),
 		mcp.WithString("query", mcp.Required(), mcp.Description("Free-text search, e.g. an author, title or ISBN.")),
+		mcp.WithArray("filters",
+			mcp.Description("Facet filter strings to narrow the search, exactly as returned by search_books_available_filters (e.g. \"availability:Con stock\", \"facetLang:Castellano\", \"priceOffer:8.0-14.0\"). Multiple filters combine with AND."),
+			mcp.WithStringItems(),
+		),
 		mcp.WithNumber("start", mcp.Description("Zero-based offset of the first result (pagination). Default 0.")),
 		mcp.WithNumber("rows", mcp.Description("Number of results to return (1-100). Default 16.")),
 		mcp.WithString("store", mcp.Description("Store/market code. Default ES.")),
@@ -29,6 +60,7 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 		}
 		q := domain.SearchQuery{
 			Query:    query,
+			Filters:  req.GetStringSlice("filters", nil),
 			Start:    req.GetInt("start", 0),
 			Rows:     req.GetInt("rows", 0),
 			Store:    req.GetString("store", ""),

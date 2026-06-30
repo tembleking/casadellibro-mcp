@@ -58,3 +58,32 @@ func (uc *SearchBooks) Execute(ctx context.Context, q domain.SearchQuery) (domai
 
 	return uc.repo.Search(ctx, q)
 }
+
+// ListSearchFilters is the use case that reports the filters available for a query.
+type ListSearchFilters struct {
+	repo domain.CatalogRepository
+}
+
+// NewListSearchFilters wires the use case with its repository.
+func NewListSearchFilters(repo domain.CatalogRepository) *ListSearchFilters {
+	return &ListSearchFilters{repo: repo}
+}
+
+// Execute validates the query, applies defaults and delegates to the repository.
+func (uc *ListSearchFilters) Execute(ctx context.Context, q domain.FacetQuery) ([]domain.Facet, error) {
+	q.Query = strings.TrimSpace(q.Query)
+	if q.Query == "" {
+		return nil, ErrEmptyQuery
+	}
+	if q.Store == "" {
+		q.Store = defaultStore
+	}
+	if q.Lang == "" {
+		q.Lang = defaultLang
+	}
+	if q.Currency == "" {
+		q.Currency = defaultCurrency
+	}
+
+	return uc.repo.Facets(ctx, q)
+}

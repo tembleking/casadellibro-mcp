@@ -14,6 +14,7 @@ import (
 // Default API endpoints.
 const (
 	defaultSearchBaseURL = "https://api.empathy.co/search/v1/query/cdl/search"
+	defaultFacetsBaseURL = "https://api.empathy.co/search/v1/query/cdl/facets"
 	defaultStockBaseURL  = "https://www.casadellibro.com/cdlweb/api/libreria/stockTiendas"
 	referer              = "https://www.casadellibro.com"
 )
@@ -22,6 +23,7 @@ const (
 type Client struct {
 	http          *http.Client
 	searchBaseURL string
+	facetsBaseURL string
 	stockBaseURL  string
 }
 
@@ -38,6 +40,11 @@ func WithSearchBaseURL(u string) Option {
 	return func(c *Client) { c.searchBaseURL = u }
 }
 
+// WithFacetsBaseURL overrides the facets endpoint (useful in tests).
+func WithFacetsBaseURL(u string) Option {
+	return func(c *Client) { c.facetsBaseURL = u }
+}
+
 // WithStockBaseURL overrides the stock endpoint (useful in tests).
 func WithStockBaseURL(u string) Option {
 	return func(c *Client) { c.stockBaseURL = u }
@@ -48,6 +55,7 @@ func NewClient(opts ...Option) *Client {
 	c := &Client{
 		http:          &http.Client{Timeout: 15 * time.Second},
 		searchBaseURL: defaultSearchBaseURL,
+		facetsBaseURL: defaultFacetsBaseURL,
 		stockBaseURL:  defaultStockBaseURL,
 	}
 	for _, o := range opts {

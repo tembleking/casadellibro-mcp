@@ -10,11 +10,16 @@ type SearchQuery struct {
 	Store    string
 	Lang     string
 	Currency string
+	// Filters are raw facet filter strings (e.g. "availability:Con stock"),
+	// as returned by Facets. Multiple filters combine with AND.
+	Filters []string
 }
 
-// CatalogRepository searches the casadellibro catalog.
+// CatalogRepository searches the casadellibro catalog and reports the facets
+// (available filters) for a query.
 type CatalogRepository interface {
 	Search(ctx context.Context, q SearchQuery) (SearchResult, error)
+	Facets(ctx context.Context, q FacetQuery) ([]Facet, error)
 }
 
 // StockRepository reports per-store stock for a product.

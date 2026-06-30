@@ -48,9 +48,11 @@ func newServeCmd() *cobra.Command {
 		Long:  "Run the MCP server over the stdio (default), sse or http transport.",
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			client := casadellibro.NewClient()
+			catalog := casadellibro.NewCatalogAdapter(client)
 			handlers := mcp.Handlers{
-				Search: usecase.NewSearchBooks(casadellibro.NewCatalogAdapter(client)),
-				Stock:  usecase.NewGetStoreStock(casadellibro.NewStockAdapter(client)),
+				Search:  usecase.NewSearchBooks(catalog),
+				Filters: usecase.NewListSearchFilters(catalog),
+				Stock:   usecase.NewGetStoreStock(casadellibro.NewStockAdapter(client)),
 			}
 			srv := mcp.NewServer(appName, version, handlers)
 

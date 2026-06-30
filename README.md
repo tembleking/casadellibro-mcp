@@ -12,10 +12,15 @@ per-store stock as Model Context Protocol tools.
 
 | Tool | Description | Backing endpoint |
 |------|-------------|------------------|
-| `search_books` | Free-text catalog search (price, availability, ISBN, `product_id`). | `api.empathy.co/search/v1/query/cdl/search` |
+| `search_books_available_filters` | Discover the filters available for a query (language, binding, availability, price ranges, publisher…), each value with a ready-to-use filter string. | `api.empathy.co/search/v1/query/cdl/facets` |
+| `search_books` | Free-text catalog search (price, availability, ISBN, `product_id`), narrowable with the filter strings above. | `api.empathy.co/search/v1/query/cdl/search` |
 | `get_store_stock` | Per-bookstore stock + pickup availability grouped by province. | `casadellibro.com/cdlweb/api/libreria/stockTiendas` |
 
-`search_books` returns a `product_id` that feeds straight into `get_store_stock`.
+Typical flow: call `search_books_available_filters` to see what filters apply to a
+query, then pass the exact `filter` strings it returns (e.g. `availability:Con stock`,
+`facetLang:Castellano`, `priceOffer:8.0-14.0`) in the `search_books` `filters` argument —
+they combine with AND. `search_books` returns a `product_id` that feeds straight into
+`get_store_stock`.
 
 ## Architecture (clean architecture)
 

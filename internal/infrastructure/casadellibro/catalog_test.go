@@ -66,6 +66,24 @@ var _ = Describe("CatalogAdapter", func() {
 		Expect(b.ImageURL).To(Equal("https://img/9788448045142.jpg"))
 	})
 
+	It("forwards facet filters as repeated query params", func() {
+		var gotQuery string
+		srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			gotQuery = r.URL.RawQuery
+			_, _ = w.Write([]byte(searchBody))
+		}))
+		defer srv.Close()
+
+		adapter := casadellibro.NewCatalogAdapter(casadellibro.NewClient(casadellibro.WithSearchBaseURL(srv.URL)))
+		_, err := adapter.Search(context.Background(), domain.SearchQuery{
+			Query:   "Harry Potter",
+			Filters: []string{"availability:Con stock", "facetLang:Castellano"},
+		})
+		Expect(err).ToNot(HaveOccurred())
+		Expect(gotQuery).To(ContainSubstring("filter=availability%3ACon+stock"))
+		Expect(gotQuery).To(ContainSubstring("filter=facetLang%3ACastellano"))
+	})
+
 	It("returns an error on non-2xx responses", func() {
 		srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 			http.Error(w, "nope", http.StatusInternalServerError)
