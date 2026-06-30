@@ -26,6 +26,7 @@
           packages = with pkgs; {
             inherit app;
             default = app;
+            dockerImage = callPackage ./docker.nix { inherit app; };
           };
           devShells.default =
             with pkgs;

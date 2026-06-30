@@ -1,7 +1,11 @@
 services:
   - type: web
     name: casadellibro-mcp
-    runtime: docker
+    runtime: image
     plan: free
-    dockerfilePath: ./Dockerfile
-    autoDeploy: true
+    image:
+      # Built and pushed by .github/workflows/image.yml. Make the GHCR package
+      # public, or add registry credentials in the Render dashboard.
+      url: ghcr.io/tembleking/casadellibro-mcp:latest
+    # Redeploys are triggered from CI via a Render deploy hook on new images.
+    autoDeploy: false

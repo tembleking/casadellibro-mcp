@@ -76,17 +76,37 @@ MCP client config (local stdio):
 
 ## Deploy (Render, free tier)
 
-The `http` transport plus a `Dockerfile` and `render.yaml` make this deployable
-as a public HTTPS endpoint. The binary binds to `$PORT` (injected by the host)
-when `--addr` is not passed.
+The image is built by nix (`docker.nix`, exposed as the `dockerImage` flake
+package) and published to GHCR by CI; Render runs that prebuilt image. The
+binary binds to `$PORT` (injected by the host) when `--addr` is not passed.
 
-1. Push this repo to GitHub.
-2. On [Render](https://render.com): **New → Blueprint**, point it at the repo.
-   `render.yaml` provisions a free Docker web service. Every push auto-deploys.
-3. The MCP endpoint is `https://<service>.onrender.com/mcp`.
+Build the image locally (on Linux, or a Linux remote builder):
+
+```sh
+nix build .#dockerImage      # -> ./result (a docker-loadable tarball)
+```
+
+Pipeline:
+
+1. `.github/workflows/image.yml` triggers on pushes to `master` that touch
+   `package.nix`, and **only builds when the `version` actually changes**. It
+   `nix build .#dockerImage` and pushes `ghcr.io/tembleking/casadellibro-mcp`
+   tagged with that version and `latest`.
+2. Make the GHCR package **public** (or add registry creds in Render).
+3. On [Render](https://render.com): **New → Blueprint** against this repo;
+   `render.yaml` provisions a free image-backed web service.
+4. The MCP endpoint is `https://<service>.onrender.com/mcp`.
+
+To auto-redeploy on each new image, create a Render **Deploy Hook** and store
+its URL as the repo secret `RENDER_DEPLOY_HOOK_URL`; CI calls it after pushing.
 
 Note: the Render free tier sleeps after inactivity, so the first request after
 idle has a cold start of ~30–60s.
+
+### Releasing a new version
+
+Bump `version` in `package.nix`, commit to `master`. CI builds and pushes the
+new image tag; the deploy hook (if set) redeploys Render.
 
 ### Use it from ChatGPT
 

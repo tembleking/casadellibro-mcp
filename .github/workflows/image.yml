@@ -1,0 +1,80 @@
+name: image
+
+# Build the OCI image with nix and push it to GHCR, but only when the
+# version in package.nix actually changes on master.
+on:
+  push:
+    branches: [master]
+    paths: ["package.nix"]
+
+concurrency:
+  group: image-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect version change
+        id: ver
+        run: |
+          set -euo pipefail
+          extract() { grep -E 'version[[:space:]]*=' | head -1 | sed -E 's/.*"([^"]+)".*/\1/'; }
+          cur=$(extract < package.nix)
+          echo "version=$cur" >> "$GITHUB_OUTPUT"
+
+          before='${{ github.event.before }}'
+          prev=""
+          if [ -n "$before" ] && git cat-file -e "$before:package.nix" 2>/dev/null; then
+            prev=$(git show "$before:package.nix" | extract)
+          fi
+
+          if [ "$cur" = "$prev" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "version unchanged ($cur) - skipping build"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "version ${prev:-<none>} -> $cur - building"
+          fi
+
+      - uses: DeterminateSystems/nix-installer-action@main
+        if: steps.ver.outputs.changed == 'true'
+
+      - name: Build image with nix
+        if: steps.ver.outputs.changed == 'true'
+        run: nix build .#dockerImage
+
+      - name: Push to GHCR
+        if: steps.ver.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+          CREDS: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          img=ghcr.io/${{ github.repository_owner }}/casadellibro-mcp
+          arc=$(readlink -f result)
+          nix run nixpkgs#skopeo -- --insecure-policy copy \
+            docker-archive:"$arc" "docker://$img:$VERSION" --dest-creds "$CREDS"
+          nix run nixpkgs#skopeo -- --insecure-policy copy \
+            "docker://$img:$VERSION" "docker://$img:latest" \
+            --src-creds "$CREDS" --dest-creds "$CREDS"
+
+      # Optional: set RENDER_DEPLOY_HOOK_URL in repo secrets to auto-redeploy.
+      - name: Trigger Render deploy
+        if: steps.ver.outputs.changed == 'true'
+        env:
+          HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "${HOOK:-}" ]; then
+            curl -fsSL "$HOOK"
+          else
+            echo "no RENDER_DEPLOY_HOOK_URL secret - skipping redeploy"
+          fi
