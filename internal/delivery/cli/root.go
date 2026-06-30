@@ -3,6 +3,7 @@ package cli
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/spf13/cobra"
 
@@ -52,6 +53,13 @@ func newServeCmd() *cobra.Command {
 				Stock:  usecase.NewGetStoreStock(casadellibro.NewStockAdapter(client)),
 			}
 			srv := mcp.NewServer(appName, version, handlers)
+
+			// Honor $PORT (set by most PaaS, e.g. Render) when --addr was not given.
+			if !cmd.Flags().Changed("addr") {
+				if port := os.Getenv("PORT"); port != "" {
+					addr = ":" + port
+				}
+			}
 
 			switch transport {
 			case transportStdio:

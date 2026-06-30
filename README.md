@@ -61,7 +61,7 @@ casadellibro-mcp serve -t sse  -a :8080       # SSE        -> /sse, /message
 casadellibro-mcp serve -t http -a :8080       # streamable -> /mcp
 ```
 
-MCP client config:
+MCP client config (local stdio):
 
 ```json
 {
@@ -73,3 +73,27 @@ MCP client config:
   }
 }
 ```
+
+## Deploy (Render, free tier)
+
+The `http` transport plus a `Dockerfile` and `render.yaml` make this deployable
+as a public HTTPS endpoint. The binary binds to `$PORT` (injected by the host)
+when `--addr` is not passed.
+
+1. Push this repo to GitHub.
+2. On [Render](https://render.com): **New → Blueprint**, point it at the repo.
+   `render.yaml` provisions a free Docker web service. Every push auto-deploys.
+3. The MCP endpoint is `https://<service>.onrender.com/mcp`.
+
+Note: the Render free tier sleeps after inactivity, so the first request after
+idle has a cold start of ~30–60s.
+
+### Use it from ChatGPT
+
+Custom MCP connectors require a **paid ChatGPT plan** (Plus/Pro/Business/Enterprise)
+and **Developer mode** enabled.
+
+1. ChatGPT → **Settings → Connectors → Advanced → Developer mode**.
+2. **Add custom connector** → URL `https://<service>.onrender.com/mcp`,
+   authentication **None**.
+3. `search_books` and `get_store_stock` then appear as tools in the composer.
