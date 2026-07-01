@@ -62,7 +62,8 @@ var _ = Describe("CatalogAdapter", func() {
 		b := res.Books[0]
 		Expect(b.ProductID).To(Equal("17422393"))
 		Expect(b.Name).To(Equal("Harry Potter: Cuaderno para colorear"))
-		Expect(b.Price.Current).To(Equal(17.05))
+		Expect(b.Price).To(Equal(17.05))
+		Expect(b.PricePrevious).To(Equal(17.95))
 		Expect(b.ImageURL).To(Equal("https://img/9788448045142.jpg"))
 	})
 

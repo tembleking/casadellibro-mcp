@@ -82,20 +82,21 @@ func (a *CatalogAdapter) Search(ctx context.Context, q domain.SearchQuery) (doma
 			img = it.Images[0]
 		}
 		books = append(books, domain.Book{
-			ID:           it.ID,
-			ProductID:    it.InternalID,
-			Name:         it.Name,
-			Authors:      it.Authors,
-			ISBN:         it.ISBN,
-			EAN:          it.EAN,
-			Editorial:    it.Editorial,
-			ProductType:  it.ProductType,
-			Year:         it.Year,
-			Price:        domain.Price{Current: it.Price.Current, Previous: it.Price.Previous},
-			Availability: it.Availability,
-			URL:          it.URL,
-			ImageURL:     img,
-			Description:  it.Description,
+			ID:            it.ID,
+			ProductID:     it.InternalID,
+			Name:          it.Name,
+			Authors:       it.Authors,
+			ISBN:          it.ISBN,
+			EAN:           it.EAN,
+			Editorial:     it.Editorial,
+			ProductType:   it.ProductType,
+			Year:          it.Year,
+			Price:         it.Price.Current,
+			PricePrevious: it.Price.Previous,
+			Availability:  it.Availability,
+			URL:           it.URL,
+			ImageURL:      img,
+			Description:   it.Description,
 		})
 	}
 

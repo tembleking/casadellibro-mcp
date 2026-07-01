@@ -119,6 +119,23 @@ var _ = Describe("MCP tools", func() {
 			Expect(isErr).To(BeFalse())
 		})
 
+		It("renders scalar cells (price, joined authors) as plain text, never JSON", func() {
+			catalog.EXPECT().
+				Search(gomock.Any(), gomock.Any()).
+				Return(domain.SearchResult{
+					Books: []domain.Book{{Price: 12.3, Authors: []string{"J.K. Rowling", "VV.AA."}}},
+				}, nil)
+
+			text, isErr := callText("search_books", map[string]any{
+				"query":  "Harry Potter",
+				"fields": []any{"price", "authors"},
+			})
+			Expect(isErr).To(BeFalse())
+			Expect(text).ToNot(ContainSubstring("{"))
+			lines := strings.Split(text, "\n")
+			Expect(lines[2]).To(Equal("12.3\tJ.K. Rowling; VV.AA."))
+		})
+
 		It("returns a tool error when fields is missing", func() {
 			_, isErr := callText("search_books", map[string]any{"query": "Harry Potter"})
 			Expect(isErr).To(BeTrue())
