@@ -14,10 +14,10 @@ var ErrNoStoreID = errors.New("store_id must be a positive store id")
 
 // Scan/concurrency tuning for FindBooksInStore.
 const (
-	findScanPageSize   = 100
-	defaultFindMaxScan = 120
-	maxFindMaxScan     = 400
-	findConcurrency    = 8
+	findScanPageSize = 100
+	defaultFindLimit = 120
+	maxFindLimit     = 400
+	findConcurrency  = 8
 )
 
 // BookInStore is a catalog book annotated with its stock at the requested store.
@@ -27,12 +27,16 @@ type BookInStore struct {
 	StoreAvailability string `json:"store_availability"`
 }
 
-// FindInStoreResult is the outcome of a store-scoped search.
+// FindInStoreResult is one page of a store-scoped search. Scanning is paginated
+// over catalog candidates: resume the next page by passing NextStart as Start
+// while HasMore is true.
 type FindInStoreResult struct {
 	Books     []BookInStore
+	Start     int
 	Scanned   int
+	NextStart int
 	Total     int
-	Truncated bool
+	HasMore   bool
 }
 
 // FindInStoreQuery are the parameters of a store-scoped search.
@@ -41,8 +45,10 @@ type FindInStoreQuery struct {
 	Filters      []string
 	StoreID      int
 	CountryCache int
-	// MaxScan caps how many catalog candidates are checked against the store.
-	MaxScan int
+	// Start is the catalog offset to begin scanning from (0-based).
+	Start int
+	// Limit is how many catalog candidates to scan in this call (the page size).
+	Limit int
 }
 
 // FindBooksInStore searches the catalog and returns only the books actually in
@@ -58,8 +64,8 @@ func NewFindBooksInStore(search *SearchBooks, stock *GetStoreStock) *FindBooksIn
 	return &FindBooksInStore{search: search, stock: stock}
 }
 
-// Execute paginates the catalog (up to MaxScan candidates) and, concurrently,
-// keeps the books with stock > 0 at StoreID.
+// Execute scans one page of catalog candidates (Limit entries from Start) and,
+// concurrently, keeps the books with stock > 0 at StoreID.
 func (uc *FindBooksInStore) Execute(ctx context.Context, q FindInStoreQuery) (FindInStoreResult, error) {
 	q.Query = strings.TrimSpace(q.Query)
 	if q.Query == "" {
@@ -68,57 +74,72 @@ func (uc *FindBooksInStore) Execute(ctx context.Context, q FindInStoreQuery) (Fi
 	if q.StoreID <= 0 {
 		return FindInStoreResult{}, ErrNoStoreID
 	}
+	if q.Start < 0 {
+		q.Start = 0
+	}
 	switch {
-	case q.MaxScan <= 0:
-		q.MaxScan = defaultFindMaxScan
-	case q.MaxScan > maxFindMaxScan:
-		q.MaxScan = maxFindMaxScan
+	case q.Limit <= 0:
+		q.Limit = defaultFindLimit
+	case q.Limit > maxFindLimit:
+		q.Limit = maxFindLimit
 	}
 
-	candidates, total, err := uc.gatherCandidates(ctx, q)
+	candidates, consumed, total, err := uc.gatherCandidates(ctx, q)
 	if err != nil {
 		return FindInStoreResult{}, err
 	}
 
 	found := uc.checkStock(ctx, candidates, q)
 
+	nextStart := q.Start + consumed
 	return FindInStoreResult{
 		Books:     found,
-		Scanned:   len(candidates),
+		Start:     q.Start,
+		Scanned:   consumed,
+		NextStart: nextStart,
 		Total:     total,
-		Truncated: total > len(candidates),
+		HasMore:   consumed > 0 && nextStart < total,
 	}, nil
 }
 
-// gatherCandidates paginates the search until MaxScan candidates or the last page.
-func (uc *FindBooksInStore) gatherCandidates(ctx context.Context, q FindInStoreQuery) ([]domain.Book, int, error) {
-	var candidates []domain.Book
-	total := 0
-	for start := 0; len(candidates) < q.MaxScan; start += findScanPageSize {
+// gatherCandidates scans Limit catalog positions from Start, de-duplicating by
+// product_id (empathy occasionally repeats an item across page boundaries). It
+// returns the unique candidates, how many catalog positions were consumed and
+// the total match count.
+func (uc *FindBooksInStore) gatherCandidates(ctx context.Context, q FindInStoreQuery) (candidates []domain.Book, consumed, total int, err error) {
+	seen := make(map[string]bool)
+	offset := q.Start
+	for consumed < q.Limit {
+		rows := findScanPageSize
+		if remaining := q.Limit - consumed; remaining < rows {
+			rows = remaining
+		}
 		res, err := uc.search.Execute(ctx, domain.SearchQuery{
 			Query:   q.Query,
 			Filters: q.Filters,
-			Start:   start,
-			Rows:    findScanPageSize,
+			Start:   offset,
+			Rows:    rows,
 		})
 		if err != nil {
-			return nil, 0, err
+			return nil, 0, 0, err
 		}
 		total = res.Total
 		if len(res.Books) == 0 {
 			break
 		}
 		for _, b := range res.Books {
-			candidates = append(candidates, b)
-			if len(candidates) >= q.MaxScan {
-				break
+			consumed++
+			if !seen[b.ProductID] {
+				seen[b.ProductID] = true
+				candidates = append(candidates, b)
 			}
 		}
-		if start+findScanPageSize >= res.Total {
+		offset += len(res.Books)
+		if offset >= total {
 			break
 		}
 	}
-	return candidates, total, nil
+	return candidates, consumed, total, nil
 }
 
 // checkStock fans out per-store stock lookups over a bounded worker pool and

@@ -1,0 +1,16 @@
+[    1255ms] [INFO] %c🛠️ Build Info
+%c📅 Fecha: %s
+🌿 Rama: %s
+🏷️ Tag: %s font-weight: bold; color: #4CAF50; color:rgb(139, 197, 244); 30/6/2026, 8:17:18 pre-hotfix-v.5.2 v.5.2.30 @ https://www.casadellibro.com/assets/1782800238671/index-BGDYsAEV.js:7
+[    1383ms] [LOG] exclude_tp options [truman, abtasty, connectif, cookiepro, einstein, gtm, indigitall, salesforce, chatactiva, all] @ https://www.casadellibro.com/assets/1782800238671/index-BGDYsAEV.js:7
+[    1729ms] [LOG] imPageView {event: imPageView, context: Object, user: Object, gtm.uniqueEventId: 29} @ https://www.casadellibro.com/assets/1782800238671/index-DwmC5MxQ.js:0
+[    1865ms] [ERROR] Access to fetch at 'https://datarmony-planeta-cs-ip-resolver-804314494113.europe-west1.run.app/?user_agent=Mozilla%2F5.0%20(Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F149.0.0.0%20Safari%2F537.36&referrer=' from origin 'https://www.casadellibro.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://www.casadellibro.com/:0
+[    1865ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://datarmony-planeta-cs-ip-resolver-804314494113.europe-west1.run.app/?user_agent=Mozilla%2F5.0%20(Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F149.0.0.0%20Safari%2F537.36&referrer=:0
+[    1865ms] [LOG] error IpResolver: TypeError: Failed to fetch @ :2
+[    5889ms] [LOG] [IND]Indigitall:  undefined: undefined @ https://www.casadellibro.com/scripts/indigitall/sdk-2021-02.min.js:0
+[    5898ms] TypeError: s.config.onError is not a function
+    at https://www.casadellibro.com/scripts/indigitall/sdk-2021-02.min.js:1:322837
+[   14656ms] [LOG] imPageView {event: imPageView, context: Object, user: Object, gtm.uniqueEventId: 98} @ https://www.casadellibro.com/assets/1782800238671/index-DwmC5MxQ.js:0
+[   14895ms] [LOG] view_item {event: view_item, context: Object, user: Object, ecommerce: Object, gtm.uniqueEventId: 116} @ https://www.casadellibro.com/assets/1782800238671/index-DwmC5MxQ.js:0
+[   39215ms] [LOG] imPageView {event: imPageView, context: Object, user: Object, gtm.uniqueEventId: 128} @ https://www.casadellibro.com/assets/1782800238671/index-DwmC5MxQ.js:0
+[   39468ms] [LOG] view_item {event: view_item, context: Object, user: Object, ecommerce: Object, gtm.uniqueEventId: 146} @ https://www.casadellibro.com/assets/1782800238671/index-DwmC5MxQ.js:0

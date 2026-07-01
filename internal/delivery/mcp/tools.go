@@ -93,11 +93,14 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
+		nextStart := result.Start + len(result.Books)
 		structured := map[string]any{
-			"total": result.Total,
-			"start": result.Start,
-			"rows":  result.Rows,
-			"books": books,
+			"total":      result.Total,
+			"start":      result.Start,
+			"rows":       result.Rows,
+			"next_start": nextStart,
+			"has_more":   len(result.Books) > 0 && nextStart < result.Total,
+			"books":      books,
 		}
 		text, err := renderSearch(result, fields)
 		if err != nil {
@@ -192,14 +195,15 @@ func registerStoresTool(s *server.MCPServer, uc *usecase.ListStores) {
 
 func registerFindInStoreTool(s *server.MCPServer, uc *usecase.FindBooksInStore) {
 	tool := mcp.NewTool("find_books_in_store",
-		mcp.WithDescription("Find books matching a query/filters that are actually in stock at ONE physical store. Does the search + per-store stock join server-side, so you don't fan out get_store_stock yourself. Get the store_id from list_stores. To browse a whole publisher/collection, set query to that facet value (e.g. \"Unión Editorial\") and add its filter. Scans up to max_scan catalog candidates; if truncated is true, there were more matches than scanned."),
+		mcp.WithDescription("Find books matching a query/filters that are actually in stock at ONE physical store. Does the search + per-store stock join server-side, so you don't fan out get_store_stock yourself. Get the store_id from list_stores. To browse a whole publisher/collection, set query to that facet value (e.g. \"Unión Editorial\") and add its filter. Paginates over catalog candidates: it scans `limit` candidates from `start`; if has_more is true, call again with start set to the returned next_start to continue."),
 		mcp.WithString("query", mcp.Required(), mcp.Description("Free-text search. To browse a publisher/collection, use its exact name here plus the matching filter.")),
 		mcp.WithArray("filters",
 			mcp.Description("Facet filter strings from search_books_available_filters (e.g. \"editorial:Unión Editorial\", \"facetLang:Castellano\"). Combined with AND."),
 			mcp.WithStringItems(),
 		),
 		mcp.WithNumber("store_id", mcp.Required(), mcp.Description("The store to check, by store_id (from list_stores).")),
-		mcp.WithNumber("max_scan", mcp.Description("Max catalog candidates to check against the store. Default 120, max 400.")),
+		mcp.WithNumber("start", mcp.Description("Catalog offset to start scanning from (0-based). Pass the previous call's next_start to get the next page. Default 0.")),
+		mcp.WithNumber("limit", mcp.Description("How many catalog candidates to scan in this call (the page size). Default 120, max 400.")),
 		mcp.WithNumber("country_cache", mcp.Description("casadellibro paiscache value. Default 63 (Spain).")),
 		mcp.WithArray("fields",
 			mcp.Required(),
@@ -222,7 +226,8 @@ func registerFindInStoreTool(s *server.MCPServer, uc *usecase.FindBooksInStore) 
 			Query:        query,
 			Filters:      req.GetStringSlice("filters", nil),
 			StoreID:      req.GetInt("store_id", 0),
-			MaxScan:      req.GetInt("max_scan", 0),
+			Start:        req.GetInt("start", 0),
+			Limit:        req.GetInt("limit", 0),
 			CountryCache: req.GetInt("country_cache", 0),
 		})
 		if err != nil {
@@ -237,11 +242,13 @@ func registerFindInStoreTool(s *server.MCPServer, uc *usecase.FindBooksInStore) 
 			return mcp.NewToolResultError(err.Error()), nil
 		}
 		structured := map[string]any{
-			"books":     books,
-			"found":     len(res.Books),
-			"scanned":   res.Scanned,
-			"total":     res.Total,
-			"truncated": res.Truncated,
+			"books":      books,
+			"found":      len(res.Books),
+			"start":      res.Start,
+			"scanned":    res.Scanned,
+			"next_start": res.NextStart,
+			"total":      res.Total,
+			"has_more":   res.HasMore,
 		}
 		return mcp.NewToolResultStructured(structured, text), nil
 	})

@@ -18,7 +18,10 @@ import (
 // whose columns are the requested fields, one row per book.
 func renderSearch(res domain.SearchResult, fields []string) (string, error) {
 	var b strings.Builder
-	fmt.Fprintf(&b, "total=%d start=%d rows=%d\n", res.Total, res.Start, res.Rows)
+	nextStart := res.Start + len(res.Books)
+	hasMore := len(res.Books) > 0 && nextStart < res.Total
+	fmt.Fprintf(&b, "total=%d start=%d rows=%d next_start=%d has_more=%t\n",
+		res.Total, res.Start, res.Rows, nextStart, hasMore)
 	b.WriteString(strings.Join(fields, "\t"))
 	for i := range res.Books {
 		m, err := projectItem(res.Books[i], fields)
@@ -71,7 +74,8 @@ func renderStores(stores []domain.Store, fields []string) (string, error) {
 // table of the requested book fields plus store_stock and store_availability.
 func renderFindInStore(res usecase.FindInStoreResult, fields []string) (string, error) {
 	var b strings.Builder
-	fmt.Fprintf(&b, "found=%d scanned=%d total=%d truncated=%t\n", len(res.Books), res.Scanned, res.Total, res.Truncated)
+	fmt.Fprintf(&b, "found=%d start=%d scanned=%d next_start=%d total=%d has_more=%t\n",
+		len(res.Books), res.Start, res.Scanned, res.NextStart, res.Total, res.HasMore)
 	b.WriteString(strings.Join(fields, "\t"))
 	b.WriteString("\tstore_stock\tstore_availability")
 	for i := range res.Books {

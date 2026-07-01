@@ -1,0 +1,1491 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e7]:
+          - link "5% dto. en libros, eBooks y audiolibros" [ref=e8] [cursor=pointer]:
+            - /url: /ventajas-comprar-online
+          - link "Envío GRATIS a partir de 19 €" [ref=e9] [cursor=pointer]:
+            - /url: /gastos-envio-gratis
+          - link "Descarga nuestra app gratis" [ref=e10] [cursor=pointer]:
+            - /url: /app-gratis
+        - generic [ref=e13]:
+          - link "Blog" [ref=e14] [cursor=pointer]:
+            - /url: https://www.casadellibro.com/blog/index.php
+          - link "Estado de tu pedido" [ref=e15] [cursor=pointer]:
+            - /url: /atc/estadoPedido
+          - link "Ayuda" [ref=e16] [cursor=pointer]:
+            - /url: /atc/asistente
+          - link "Venta a empresas e instituciones" [ref=e17] [cursor=pointer]:
+            - /url: /empresas/empresas
+      - generic [ref=e18]:
+        - link "Casa del Libro" [ref=e19] [cursor=pointer]:
+          - /url: /
+          - img "Casa del Libro" [ref=e21]
+        - generic "buscador" [ref=e23]:
+          - textbox "buscador" [ref=e24]:
+            - /placeholder: Busca por autor, título, género, ISBN
+          - img [ref=e26]
+        - link "Hazte socio" [ref=e28] [cursor=pointer]:
+          - /url: /programadesocios
+          - img [ref=e29]
+          - text: Hazte socio
+        - link "Librerías" [ref=e31] [cursor=pointer]:
+          - /url: /nosotros/nuestras-tiendas-nuestrastiendas/0
+          - img [ref=e32]
+          - text: Librerías
+        - button "login" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+          - generic [ref=e37]: Mi cuenta
+        - button "cesta" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+        - navigation [ref=e42]:
+          - link "Imprescindibles" [ref=e44] [cursor=pointer]:
+            - /url: /libros-imprescindibles
+            - img [ref=e45]
+            - text: Imprescindibles
+          - generic [ref=e47]: "|"
+          - link "Ficción" [ref=e49] [cursor=pointer]:
+            - /url: /libros/literatura/121000000
+          - generic [ref=e50]: "|"
+          - link "No Ficción" [ref=e52] [cursor=pointer]:
+            - /url: /libros-no-ficcion
+          - generic [ref=e53]: "|"
+          - link "Cómic y Manga" [ref=e55] [cursor=pointer]:
+            - /url: /libros/comics/411000000
+          - generic [ref=e56]: "|"
+          - link "Juvenil" [ref=e58] [cursor=pointer]:
+            - /url: /libros/juvenil/473000000
+          - generic [ref=e59]: "|"
+          - link "Infantil" [ref=e61] [cursor=pointer]:
+            - /url: /libros/infantil/117000000
+          - generic [ref=e62]: "|"
+          - link "Books in English" [ref=e64] [cursor=pointer]:
+            - /url: /libros-en-ingles
+          - generic [ref=e65]: "|"
+          - link "Llibres en català" [ref=e67] [cursor=pointer]:
+            - /url: /llibres-en-catala
+          - generic [ref=e68]: "|"
+          - link "Libros de texto" [ref=e70] [cursor=pointer]:
+            - /url: /librosdetexto
+          - generic [ref=e71]: "|"
+          - link "eBooks/Audiolibros" [ref=e73] [cursor=pointer]:
+            - /url: /ebooks
+          - generic [ref=e74]: "|"
+          - link "Papelería" [ref=e76] [cursor=pointer]:
+            - /url: /papeleria
+          - generic [ref=e77]: "|"
+          - link "Ofertas" [ref=e79] [cursor=pointer]:
+            - /url: /libros-descuentos-especiales
+    - main [ref=e80]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - link "Niños con libros de texto estudiando" [ref=e86] [cursor=pointer]:
+            - /url: /librosdetexto
+            - img "Niños con libros de texto estudiando" [ref=e88]
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: Libros de texto 2026-2027
+            - paragraph [ref=e92]: Reserva ya tus libros para el próximo curso
+            - link "Ver más" [ref=e93] [cursor=pointer]:
+              - /url: /librosdetexto
+        - generic [ref=e94]:
+          - link "libros imprescindibles" [ref=e96] [cursor=pointer]:
+            - /url: /libros-imprescindibles
+            - img "libros imprescindibles" [ref=e98]
+          - generic [ref=e100]:
+            - paragraph [ref=e101]: Libros imprescindibles
+            - paragraph [ref=e102]: Los mejores libros con 5% de descuento y envío gratis para Socios
+            - link "Ver libros" [ref=e103] [cursor=pointer]:
+              - /url: /libros-imprescindibles
+        - generic [ref=e104]:
+          - button "anterior" [disabled] [ref=e105]:
+            - img [ref=e106]
+          - button "página 1" [ref=e108] [cursor=pointer]:
+            - img [ref=e109]
+          - button "página 2" [ref=e111] [cursor=pointer]:
+            - img [ref=e112]
+          - button "siguiente" [ref=e114] [cursor=pointer]:
+            - img [ref=e115]
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: Los libros más vendidos
+          - link "Ver todos listado" [ref=e121] [cursor=pointer]:
+            - /url: /libros-mas-vendidos
+            - text: Ver todos
+            - img "listado" [ref=e122]
+        - separator [ref=e124]
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - link "sin título empíreo (no libro 4) edición limitada con cantos tintados-rebecca yarros-9788408326861" [ref=e127] [cursor=pointer]:
+              - /url: /libro-sin-titulo-empireo-no-libro-4-edicion-limitada-con-cantos-tinta-dos/9788408326861/18278698
+              - img "sin título empíreo (no libro 4) edición limitada con cantos tintados-rebecca yarros-9788408326861" [ref=e128]
+            - generic [ref=e129]: Tapa dura
+            - link "Sin título Empíreo (NO LIBRO 4) Edición limitada con cantos tintados" [ref=e130] [cursor=pointer]:
+              - /url: /libro-sin-titulo-empireo-no-libro-4-edicion-limitada-con-cantos-tinta-dos/9788408326861/18278698
+            - paragraph [ref=e131]: Rebecca Yarros
+            - button "Añadir a la cesta" [ref=e136] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e137]
+          - generic [ref=e139]:
+            - 'link "murdoku: 80 acertijos de lógica y asesinatos-manuel garand-9791387869380" [ref=e140] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-1/9791387869380/17135403
+              - 'img "murdoku: 80 acertijos de lógica y asesinatos-manuel garand-9791387869380" [ref=e141]'
+            - generic [ref=e142]: Tapa blanda
+            - 'link "Murdoku: 80 acertijos de lógica y asesinatos" [ref=e143] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-1/9791387869380/17135403
+            - paragraph [ref=e144]: Manuel Garand
+            - generic [ref=e151]: (42)
+            - button "Añadir a la cesta" [ref=e155] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e156]
+          - generic [ref=e158]:
+            - 'link "murdoku: viaje al pasado-manuel garand-9791388279119" [ref=e159] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-2-viaje-al-pasado/9791388279119/18224989
+              - 'img "murdoku: viaje al pasado-manuel garand-9791388279119" [ref=e160]'
+            - generic [ref=e161]: Tapa blanda
+            - 'link "Murdoku: Viaje al pasado" [ref=e162] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-2-viaje-al-pasado/9791388279119/18224989
+            - paragraph [ref=e163]: Manuel Garand
+            - button "Añadir a la cesta" [ref=e168] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e169]
+          - generic [ref=e171]:
+            - 'link "prohibido enamorarse (off campus 1 / #kiss me 1)-elle kennedy-9788410425224" [ref=e172] [cursor=pointer]':
+              - /url: /libro-prohibido-enamorarse-off-campus-1--kiss-me-1/9788410425224/17031870
+              - 'img "prohibido enamorarse (off campus 1 / #kiss me 1)-elle kennedy-9788410425224" [ref=e173]'
+            - generic [ref=e174]: Tapa blanda
+            - 'link "Prohibido enamorarse (Off Campus 1 / #Kiss Me 1)" [ref=e175] [cursor=pointer]':
+              - /url: /libro-prohibido-enamorarse-off-campus-1--kiss-me-1/9788410425224/17031870
+            - paragraph [ref=e176]: Elle Kennedy
+            - generic [ref=e183]: (24)
+            - button "Añadir a la cesta" [ref=e187] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e188]
+          - generic [ref=e190]:
+            - 'link "objetivo: tú y yo (off campus 2 / #kiss me 2)-elle kennedy-9788410425231" [ref=e191] [cursor=pointer]':
+              - /url: /libro-objetivo-tu-y-yo-off-campus-2--kiss-me-2/9788410425231/17031871
+              - 'img "objetivo: tú y yo (off campus 2 / #kiss me 2)-elle kennedy-9788410425231" [ref=e192]'
+            - generic [ref=e193]: Tapa blanda
+            - 'link "Objetivo: tú y yo (Off Campus 2 / #Kiss Me 2)" [ref=e194] [cursor=pointer]':
+              - /url: /libro-objetivo-tu-y-yo-off-campus-2--kiss-me-2/9788410425231/17031871
+            - paragraph [ref=e195]: Elle Kennedy
+            - generic [ref=e202]: (11)
+            - button "Añadir a la cesta" [ref=e206] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e207]
+          - generic [ref=e209]:
+            - link "zodiac academy 1. el despertar. edición especial-caroline peckham-susanne valenti-9788408324294" [ref=e210] [cursor=pointer]:
+              - /url: /libro-zodiac-academy-1-el-despertar-edicion-especial/9788408324294/18275243
+              - img "zodiac academy 1. el despertar. edición especial-caroline peckham-susanne valenti-9788408324294" [ref=e211]
+            - generic [ref=e212]: Tapa dura
+            - link "Zodiac Academy 1. El despertar. Edición especial" [ref=e213] [cursor=pointer]:
+              - /url: /libro-zodiac-academy-1-el-despertar-edicion-especial/9788408324294/18275243
+            - paragraph [ref=e214]: Caroline Peckham y Susanne Valenti
+            - button "Añadir a la cesta" [ref=e219] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e220]
+          - generic [ref=e222]:
+            - 'link "rojo sangre (serie mindf*ck #5)-s.t. abby-9791387810580" [ref=e223] [cursor=pointer]':
+              - /url: /libro-rojo-sangre-serie-mindfck-5/9791387810580/17840748
+              - 'img "rojo sangre (serie mindf*ck #5)-s.t. abby-9791387810580" [ref=e224]'
+            - generic [ref=e225]: Bolsillo
+            - 'link "Rojo sangre (Serie Mindf*ck #5)" [ref=e226] [cursor=pointer]':
+              - /url: /libro-rojo-sangre-serie-mindfck-5/9791387810580/17840748
+            - paragraph [ref=e227]: S.T. Abby
+            - button "Añadir a la cesta" [ref=e232] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e233]
+          - generic [ref=e235]:
+            - link "el baile de las criadas-marta platel-9788408322764" [ref=e236] [cursor=pointer]:
+              - /url: /libro-el-baile-de-las-criadas-premio-fernando-lara-2026/9788408322764/18212715
+              - img "el baile de las criadas-marta platel-9788408322764" [ref=e237]
+            - generic [ref=e238]: Tapa dura
+            - link "El baile de las criadas" [ref=e239] [cursor=pointer]:
+              - /url: /libro-el-baile-de-las-criadas-premio-fernando-lara-2026/9788408322764/18212715
+            - paragraph [ref=e240]: Marta Platel
+            - button "Añadir a la cesta" [ref=e245] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e246]
+          - generic [ref=e248]:
+            - link "comerás flores-lucia solla sobral-9788410178595" [ref=e249] [cursor=pointer]:
+              - /url: /libro-comeras-flores/9788410178595/17139851
+              - img "comerás flores-lucia solla sobral-9788410178595"
+            - generic [ref=e250]: Tapa blanda
+            - link "Comerás flores" [ref=e251] [cursor=pointer]:
+              - /url: /libro-comeras-flores/9788410178595/17139851
+            - paragraph [ref=e252]: Lucía Solla Sobral
+            - generic [ref=e259]: (258)
+            - button "Añadir a la cesta" [ref=e263] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e264]
+          - generic [ref=e266]:
+            - 'link "inmune a ti (off campus 3 / #kissme 3)-elle kennedy-9788418509728" [ref=e267] [cursor=pointer]':
+              - /url: /libro-inmune-a-ti-off-campus-3--kissme-3/9788418509728/16054797
+              - 'img "inmune a ti (off campus 3 / #kissme 3)-elle kennedy-9788418509728"'
+            - generic [ref=e268]: Tapa blanda
+            - 'link "Inmune a ti (Off Campus 3 / #KissMe 3)" [ref=e269] [cursor=pointer]':
+              - /url: /libro-inmune-a-ti-off-campus-3--kissme-3/9788418509728/16054797
+            - paragraph [ref=e270]: Elle Kennedy
+            - generic [ref=e277]: (5)
+            - button "Añadir a la cesta" [ref=e281] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e282]
+          - generic [ref=e284]:
+            - link "Ver libros más vendidos" [ref=e285] [cursor=pointer]:
+              - /url: /libros-mas-vendidos
+            - link "Ver productos" [ref=e286] [cursor=pointer]:
+              - /url: /libros-mas-vendidos
+          - generic [ref=e287]:
+            - button "anterior" [disabled] [ref=e288]:
+              - img [ref=e289]
+            - button "siguiente" [disabled] [ref=e291]:
+              - img [ref=e292]
+      - generic [ref=e296]:
+        - generic [ref=e297]:
+          - generic [ref=e298]:
+            - paragraph [ref=e299]: "Booklovers: club de amantes de los libros"
+            - link "Saber más" [ref=e300] [cursor=pointer]:
+              - /url: /escaparate-grupo-planeta
+          - link "booklovers" [ref=e301] [cursor=pointer]:
+            - /url: /escaparate-grupo-planeta
+            - img "booklovers" [ref=e302]
+        - generic [ref=e303]:
+          - generic [ref=e304]:
+            - paragraph [ref=e305]: Compra online, recoge en librería
+            - link "Saber más" [ref=e306] [cursor=pointer]:
+              - /url: /recogida-en-tienda
+          - link "Paquete en mano" [ref=e307] [cursor=pointer]:
+            - /url: /recogida-en-tienda
+            - img "Paquete en mano" [ref=e308]
+        - generic [ref=e310]:
+          - paragraph [ref=e311]: Hazte Socio en un minuto y gratis
+          - link "Hacerme Socio" [ref=e312] [cursor=pointer]:
+            - /url: /programadesocios
+      - generic [ref=e315]:
+        - generic [ref=e316]:
+          - generic [ref=e317]:
+            - paragraph [ref=e318]: Una historia de amor entre dos chicos llena de pasión y emotividad
+            - link "Ver libro" [ref=e319] [cursor=pointer]:
+              - /url: /libro-por-los-fans/9791387810733/18055170
+          - link "portada libro" [ref=e320] [cursor=pointer]:
+            - /url: /libro-por-los-fans/9791387810733/18055170
+            - img "portada libro" [ref=e321]
+        - generic [ref=e322]:
+          - generic [ref=e323]:
+            - paragraph [ref=e324]: Reserva ya sus libros de texto
+            - link "Saber más" [ref=e325] [cursor=pointer]:
+              - /url: /librosdetexto
+          - link "niños leyendo" [ref=e326] [cursor=pointer]:
+            - /url: /librosdetexto
+            - img "niños leyendo" [ref=e327]
+      - generic [ref=e329]:
+        - heading "Comprar libros nunca ha sido tan fácil" [level=1] [ref=e330]
+        - paragraph [ref=e332]: Tanto en nuestra librería online como en nuestras más de 70 librerías físicas, explora nuestro amplio catálogo y encuentra el libro perfecto para cada ocasión.
+      - generic [ref=e334]:
+        - generic [ref=e335]:
+          - heading "Libros recomendados" [level=2] [ref=e336]
+          - link "Ver más listado" [ref=e337] [cursor=pointer]:
+            - /url: /libros-recomendados
+            - text: Ver más
+            - img "listado" [ref=e338]
+        - separator [ref=e340]
+        - generic [ref=e341]:
+          - generic [ref=e342]:
+            - link "el estado de la unión-nick hornby-9788433949752" [ref=e343] [cursor=pointer]:
+              - /url: /libro-el-estado-de-la-union/9788433949752/18079915
+              - img "el estado de la unión-nick hornby-9788433949752"
+            - generic [ref=e344]: Bolsillo
+            - link "El estado de la unión" [ref=e345] [cursor=pointer]:
+              - /url: /libro-el-estado-de-la-union/9788433949752/18079915
+            - paragraph [ref=e346]: Nick Hornby
+            - button "Añadir a la cesta" [ref=e351] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e352]
+          - generic [ref=e354]:
+            - link "nada se opone a la noche-delphine de vigan-9788433977366" [ref=e355] [cursor=pointer]:
+              - /url: /libro-nada-se-opone-a-la-noche/9788433977366/2249433
+              - img "nada se opone a la noche-delphine de vigan-9788433977366"
+            - generic [ref=e356]: Bolsillo
+            - link "Nada se opone a la noche" [ref=e357] [cursor=pointer]:
+              - /url: /libro-nada-se-opone-a-la-noche/9788433977366/2249433
+            - paragraph [ref=e358]: Delphine de Vigan
+            - generic [ref=e365]: (24)
+            - button "Añadir a la cesta" [ref=e369] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e370]
+          - generic [ref=e372]:
+            - link "metafísica de los tubos-amelie nothomb-9788433977199" [ref=e373] [cursor=pointer]:
+              - /url: /libro-metafisica-de-los-tubos/9788433977199/2112737
+              - img "metafísica de los tubos-amelie nothomb-9788433977199"
+            - generic [ref=e374]: Bolsillo
+            - link "Metafísica de los tubos" [ref=e375] [cursor=pointer]:
+              - /url: /libro-metafisica-de-los-tubos/9788433977199/2112737
+            - paragraph [ref=e376]: Amélie Nothomb
+            - generic [ref=e383]: (18)
+            - button "Añadir a la cesta" [ref=e387] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e388]
+          - generic [ref=e390]:
+            - link "la conjura de los necios-john kennedy toole-9788433920423" [ref=e391] [cursor=pointer]:
+              - /url: /libro-la-conjura-de-los-necios/9788433920423/109791
+              - img "la conjura de los necios-john kennedy toole-9788433920423"
+            - generic [ref=e392]: Bolsillo
+            - link "La conjura de los necios" [ref=e393] [cursor=pointer]:
+              - /url: /libro-la-conjura-de-los-necios/9788433920423/109791
+            - paragraph [ref=e394]: John Kennedy Toole
+            - generic [ref=e401]: (40)
+            - button "Añadir a la cesta" [ref=e405] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e406]
+          - generic [ref=e408]:
+            - link "el adversario-emmanuel carrere-9788433977151" [ref=e409] [cursor=pointer]:
+              - /url: /libro-el-adversario/9788433977151/2094661
+              - img "el adversario-emmanuel carrere-9788433977151"
+            - generic [ref=e410]: Bolsillo
+            - link "El adversario" [ref=e411] [cursor=pointer]:
+              - /url: /libro-el-adversario/9788433977151/2094661
+            - paragraph [ref=e412]: Emmanuel Carrère
+            - generic [ref=e419]: (26)
+            - button "Añadir a la cesta" [ref=e423] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e424]
+          - generic [ref=e426]:
+            - link "la vuelta al fútbol en 80 (+20) historias-iker ruiz del barco-9791387869724" [ref=e427] [cursor=pointer]:
+              - /url: /libro-la-vuelta-al-futbol-en-80-20-historias/9791387869724/17848472
+              - img "la vuelta al fútbol en 80 (+20) historias-iker ruiz del barco-9791387869724"
+            - generic [ref=e428]: Tapa blanda
+            - link "La vuelta al fútbol en 80 (+20) historias" [ref=e429] [cursor=pointer]:
+              - /url: /libro-la-vuelta-al-futbol-en-80-20-historias/9791387869724/17848472
+            - paragraph [ref=e430]: Iker Ruiz del Barco (@elefutbol)
+            - generic [ref=e434]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e436] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e437]
+          - generic [ref=e439]:
+            - link "las pizarras del fútbol-pedro el ingeniero saez-9788419441591" [ref=e440] [cursor=pointer]:
+              - /url: /libro-las-pizarras-del-futbol/9788419441591/17720394
+              - img "las pizarras del fútbol-pedro el ingeniero saez-9788419441591"
+            - generic [ref=e441]: Tapa blanda
+            - link "Las pizarras del fútbol" [ref=e442] [cursor=pointer]:
+              - /url: /libro-las-pizarras-del-futbol/9788419441591/17720394
+            - paragraph [ref=e443]: Pedro Sáez (@pedroelingeniero)
+            - generic [ref=e447]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e449] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e450]
+          - generic [ref=e452]:
+            - link "dieciséis minutos (el viaje de andrea orlandi)-ilie oleart-9791399083538" [ref=e453] [cursor=pointer]:
+              - /url: /libro-dieciseis-minutos/9791399083538/17933630
+              - img "dieciséis minutos (el viaje de andrea orlandi)-ilie oleart-9791399083538"
+            - generic [ref=e454]: Tapa blanda
+            - link "Dieciséis minutos (El viaje de Andrea Orlandi)" [ref=e455] [cursor=pointer]:
+              - /url: /libro-dieciseis-minutos/9791399083538/17933630
+            - paragraph [ref=e456]: Ilie Oleart
+            - generic [ref=e463]: (1)
+            - button "Añadir a la cesta" [ref=e467] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e468]
+          - generic [ref=e470]:
+            - link "guía poco práctica del fútbol español-miguel gutierrez-carlos marañon-antonio pacheco-9788408310686" [ref=e471] [cursor=pointer]:
+              - /url: /libro-guia-poco-practica-del-futbol-espanol/9788408310686/17422281
+              - img "guía poco práctica del fútbol español-miguel gutierrez-carlos marañon-antonio pacheco-9788408310686"
+            - generic [ref=e472]: Tapa dura
+            - link "Guía poco práctica del fútbol español" [ref=e473] [cursor=pointer]:
+              - /url: /libro-guia-poco-practica-del-futbol-espanol/9788408310686/17422281
+            - paragraph [ref=e474]: Miguel Gutiérrez, Carlos Marañón y Antonio Pacheco
+            - generic [ref=e481]: (2)
+            - generic [ref=e484]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e486] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e487]
+          - generic [ref=e489]:
+            - link "por miedo a decepcionar-robin le normand-9788408318811" [ref=e490] [cursor=pointer]:
+              - /url: /libro-por-miedo-a-decepcionar/9788408318811/17937121
+              - img "por miedo a decepcionar-robin le normand-9788408318811"
+            - generic [ref=e491]: Tapa blanda
+            - link "Por miedo a decepcionar" [ref=e492] [cursor=pointer]:
+              - /url: /libro-por-miedo-a-decepcionar/9788408318811/17937121
+            - paragraph [ref=e493]: Robin Le Normand
+            - button "Añadir a la cesta" [ref=e498] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e499]
+          - generic [ref=e501]:
+            - link "Ver más libros recomendados" [ref=e502] [cursor=pointer]:
+              - /url: /libros-recomendados
+            - link "Ver productos" [ref=e503] [cursor=pointer]:
+              - /url: /libros-recomendados
+          - generic [ref=e504]:
+            - button "anterior" [disabled] [ref=e505]:
+              - img [ref=e506]
+            - button "siguiente" [disabled] [ref=e508]:
+              - img [ref=e509]
+      - generic [ref=e513]:
+        - generic [ref=e514]:
+          - generic [ref=e515]:
+            - paragraph [ref=e516]: Cuadernos de vacaciones
+            - link "Ver cuadernos" [ref=e517] [cursor=pointer]:
+              - /url: /libros/libros-de-texto-y-formacion/cuadernos-de-vacaciones/132004000
+          - link "niño con tabla de sufr" [ref=e518] [cursor=pointer]:
+            - /url: /libros/libros-de-texto-y-formacion/cuadernos-de-vacaciones/132004000
+            - img "niño con tabla de sufr" [ref=e519]
+        - generic [ref=e520]:
+          - generic [ref=e521]:
+            - paragraph [ref=e522]: Los libros de bolsillo más refrescantes están aquí
+            - link "Ver libros" [ref=e523] [cursor=pointer]:
+              - /url: /libros/literatura/narrativa-en-bolsillo/121005000
+          - link "Chica con gafas de sol" [ref=e524] [cursor=pointer]:
+            - /url: /libros/literatura/narrativa-en-bolsillo/121005000
+            - img "Chica con gafas de sol" [ref=e525]
+      - generic [ref=e527]:
+        - generic [ref=e528]:
+          - heading "Novedades" [level=2] [ref=e529]
+          - link "Ver más listado" [ref=e530] [cursor=pointer]:
+            - /url: /novedades-libros
+            - text: Ver más
+            - img "listado" [ref=e531]
+        - separator [ref=e533]
+        - generic [ref=e534]:
+          - generic [ref=e535]:
+            - link "jaque a la reina-lena sundstrom-9788423370191" [ref=e536] [cursor=pointer]:
+              - /url: /libro-jaque-a-la-reina/9788423370191/18067467
+              - img "jaque a la reina-lena sundstrom-9788423370191"
+            - generic [ref=e537]: Tapa blanda
+            - link "Jaque a la reina" [ref=e538] [cursor=pointer]:
+              - /url: /libro-jaque-a-la-reina/9788423370191/18067467
+            - paragraph [ref=e539]: Lena Sundström
+            - button "Añadir a la cesta" [ref=e544] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e545]
+          - generic [ref=e547]:
+            - link "hydra-irene nortes-9791388163388" [ref=e548] [cursor=pointer]:
+              - /url: /libro-hydra/9791388163388/18140556
+              - img "hydra-irene nortes-9791388163388"
+            - generic [ref=e549]: Tapa blanda
+            - link "Hydra" [ref=e550] [cursor=pointer]:
+              - /url: /libro-hydra/9791388163388/18140556
+            - paragraph [ref=e551]: Irene Nortes
+            - button "Añadir a la cesta" [ref=e556] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e557]
+          - generic [ref=e559]:
+            - link "el juego del silencio-gil pratsobrerroca-9791387740856" [ref=e560] [cursor=pointer]:
+              - /url: /libro-el-juego-del-silencio/9791387740856/18013629
+              - img "el juego del silencio-gil pratsobrerroca-9791387740856"
+            - generic [ref=e561]: Tapa blanda
+            - link "El juego del silencio" [ref=e562] [cursor=pointer]:
+              - /url: /libro-el-juego-del-silencio/9791387740856/18013629
+            - paragraph [ref=e563]: Gil Pratsobrerroca
+            - generic [ref=e570]: (1)
+            - button "Añadir a la cesta" [ref=e574] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e575]
+          - generic [ref=e577]:
+            - link "morgana-nerea riesco-9791387810757" [ref=e578] [cursor=pointer]:
+              - /url: /libro-morgana/9791387810757/18055207
+              - img "morgana-nerea riesco-9791387810757"
+            - generic [ref=e579]: Tapa dura
+            - link "Morgana" [ref=e580] [cursor=pointer]:
+              - /url: /libro-morgana/9791387810757/18055207
+            - paragraph [ref=e581]: Nerea Riesco
+            - button "Añadir a la cesta" [ref=e586] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e587]
+          - generic [ref=e589]:
+            - link "todos queremos cosas imposibles-catherine newman-9791387595517" [ref=e590] [cursor=pointer]:
+              - /url: /libro-todos-queremos-cosas-imposibles/9791387595517/17958336
+              - img "todos queremos cosas imposibles-catherine newman-9791387595517"
+            - generic [ref=e591]: Otros
+            - link "Todos queremos cosas imposibles" [ref=e592] [cursor=pointer]:
+              - /url: /libro-todos-queremos-cosas-imposibles/9791387595517/17958336
+            - paragraph [ref=e593]: Catherine Newman
+            - button "Añadir a la cesta" [ref=e598] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e599]
+          - generic [ref=e601]:
+            - link "la chica de nadie-virginia roberts giuffre-9788408322245" [ref=e602] [cursor=pointer]:
+              - /url: /libro-la-chica-de-nadie/9788408322245/18067388
+              - img "la chica de nadie-virginia roberts giuffre-9788408322245"
+            - generic [ref=e603]: Tapa blanda
+            - link "La chica de nadie" [ref=e604] [cursor=pointer]:
+              - /url: /libro-la-chica-de-nadie/9788408322245/18067388
+            - paragraph [ref=e605]: Virginia Roberts Giuffre
+            - button "Añadir a la cesta" [ref=e610] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e611]
+          - generic [ref=e613]:
+            - link "profecía-carissa veliz-9791387600631" [ref=e614] [cursor=pointer]:
+              - /url: /libro-profecia/9791387600631/18013599
+              - img "profecía-carissa veliz-9791387600631"
+            - generic [ref=e615]: Tapa blanda
+            - link "Profecía" [ref=e616] [cursor=pointer]:
+              - /url: /libro-profecia/9791387600631/18013599
+            - paragraph [ref=e617]: Carissa Véliz
+            - button "Añadir a la cesta" [ref=e622] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e623]
+          - generic [ref=e625]:
+            - link "el universo de taylor swift-jess zahra-9791388177101" [ref=e626] [cursor=pointer]:
+              - /url: /libro-el-universo-de-taylor-swift/9791388177101/18235119
+              - img "el universo de taylor swift-jess zahra-9791388177101"
+            - generic [ref=e627]: Tapa dura
+            - link "El Universo de Taylor Swift" [ref=e628] [cursor=pointer]:
+              - /url: /libro-el-universo-de-taylor-swift/9791388177101/18235119
+            - paragraph [ref=e629]: JESS ZAHRA
+            - button "Añadir a la cesta" [ref=e634] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e635]
+          - generic [ref=e637]:
+            - link "el universo de bts-saumya malik-9791388177118" [ref=e638] [cursor=pointer]:
+              - /url: /libro-el-universo-de-bts/9791388177118/18235120
+              - img "el universo de bts-saumya malik-9791388177118"
+            - generic [ref=e639]: Tapa dura
+            - link "El Universo de BTS" [ref=e640] [cursor=pointer]:
+              - /url: /libro-el-universo-de-bts/9791388177118/18235120
+            - paragraph [ref=e641]: SAUMYA MALIK
+            - button "Añadir a la cesta" [ref=e646] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e647]
+          - generic [ref=e649]:
+            - link "un paso por delante de wall street-peter lynch-9788423440610" [ref=e650] [cursor=pointer]:
+              - /url: /libro-un-paso-por-delante-de-wall-street-renovacion/9788423440610/18067472
+              - img "un paso por delante de wall street-peter lynch-9788423440610"
+            - generic [ref=e651]: Tapa blanda
+            - link "Un paso por delante de Wall Street" [ref=e652] [cursor=pointer]:
+              - /url: /libro-un-paso-por-delante-de-wall-street-renovacion/9788423440610/18067472
+            - paragraph [ref=e653]: Peter Lynch
+            - button "Añadir a la cesta" [ref=e658] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e659]
+          - generic [ref=e661]:
+            - link "Ver más novedades" [ref=e662] [cursor=pointer]:
+              - /url: /novedades-libros
+            - link "Ver productos" [ref=e663] [cursor=pointer]:
+              - /url: /novedades-libros
+          - generic [ref=e664]:
+            - button "anterior" [disabled] [ref=e665]:
+              - img [ref=e666]
+            - button "siguiente" [disabled] [ref=e668]:
+              - img [ref=e669]
+      - generic [ref=e672]:
+        - iframe [ref=e674]:
+          - generic [active] [ref=f1e1]:
+            - generic "YouTube Video Player" [ref=f1e3]
+            - generic [ref=f1e5]:
+              - generic:
+                - generic:
+                  - button "Play video" [ref=f1e10] [cursor=pointer]
+                  - button "Hide player controls" [ref=f1e12] [cursor=pointer]
+                  - generic [ref=f1e14]:
+                    - generic [ref=f1e19]:
+                      - generic [ref=f1e20]:
+                        - link "Roberto Leal nos habla de su primera novela, \"El sótano\" 😱" [ref=f1e21] [cursor=pointer]:
+                          - /url: https://www.youtube.com/watch?v=08vPvNPjzx4
+                        - link "Casa del Libro" [ref=f1e22] [cursor=pointer]:
+                          - /url: /channel/UCoIjtjay6skDbz0XkKacN8Q
+                          - generic [ref=f1e23]: Casa del Libro
+                      - generic [ref=f1e24]:
+                        - button [ref=f1e25] [cursor=pointer]
+                        - generic [ref=f1e27]:
+                          - generic: Casa del Libro
+                          - generic: 29.6K subscribers
+                    - generic [ref=f1e28]:
+                      - button "Copy link" [ref=f1e31] [cursor=pointer]:
+                        - generic [ref=f1e35]:
+                          - img
+                      - link "Watch on YouTube" [ref=f1e42] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=08vPvNPjzx4
+                        - generic [ref=f1e45]:
+                          - text: Watch on
+                          - img [ref=f1e47]:
+                            - generic [ref=f1e49]:
+                              - img
+        - generic [ref=e675]:
+          - paragraph [ref=e676]: RECOMENDACIONES
+          - paragraph [ref=e677]: El sótano
+          - paragraph [ref=e678]: "En este vídeo, Roberto Leal nos invita a descubrir una faceta más personal y creativa: la de escritor. El conocido presentador nos habla de El sótano, su primera novela.¡No te lo pierdas!"
+          - link "Ver vídeo" [ref=e679] [cursor=pointer]:
+            - /url: https://www.youtube.com/embed/08vPvNPjzx4?si=XBpz-Uoco9m2uxxF
+      - generic [ref=e682]:
+        - generic [ref=e683]:
+          - generic [ref=e684]:
+            - paragraph [ref=e685]: Booktokers. En redes también se lee
+            - link "Ver más" [ref=e686] [cursor=pointer]:
+              - /url: /libros-booktok
+          - link "Móvil del que salen iconos de redes" [ref=e687] [cursor=pointer]:
+            - /url: /libros-booktok
+            - img "Móvil del que salen iconos de redes" [ref=e688]
+        - generic [ref=e690]:
+          - paragraph [ref=e691]: Los favoritos de nuestros libreros
+          - link "Ver más" [ref=e692] [cursor=pointer]:
+            - /url: /recomendaciones-de-libreros-y-libreras
+        - generic [ref=e693]:
+          - generic [ref=e694]:
+            - paragraph [ref=e695]: Libros que inspiran
+            - link "Ver libros" [ref=e696] [cursor=pointer]:
+              - /url: /tu-puedes
+          - link "chica con un libro sentada en la playa" [ref=e697] [cursor=pointer]:
+            - /url: /tu-puedes
+            - img "chica con un libro sentada en la playa" [ref=e698]
+      - generic [ref=e700]:
+        - generic [ref=e701]:
+          - heading "Libros en inglés" [level=2] [ref=e702]
+          - link "Ver más listado" [ref=e703] [cursor=pointer]:
+            - /url: /libros/literatura-en-otros-idiomas/literatura-en-ingles/124002000
+            - text: Ver más
+            - img "listado" [ref=e704]
+        - separator [ref=e706]
+        - generic [ref=e707]:
+          - generic [ref=e708]:
+            - link "the curious incident of the dog in the night-time-mark haddon-9780099450252" [ref=e709] [cursor=pointer]:
+              - /url: /libro-the-curious-incident-of-the-dog-in-the-night-time/9780099450252/1013906
+              - img "the curious incident of the dog in the night-time-mark haddon-9780099450252"
+            - generic [ref=e710]: Bolsillo
+            - link "The Curious Incident of the Dog in the Night-Time" [ref=e711] [cursor=pointer]:
+              - /url: /libro-the-curious-incident-of-the-dog-in-the-night-time/9780099450252/1013906
+            - paragraph [ref=e712]: Mark Haddon
+            - generic [ref=e719]: (5)
+            - generic [ref=e722]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e724] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e725]
+          - generic [ref=e727]:
+            - link "sunburn-chloe michelle howarth-9780857308412" [ref=e728] [cursor=pointer]:
+              - /url: /libro-sunburn/9780857308412/16538323
+              - img "sunburn-chloe michelle howarth-9780857308412"
+            - generic [ref=e729]: Tapa blanda
+            - link "Sunburn" [ref=e730] [cursor=pointer]:
+              - /url: /libro-sunburn/9780857308412/16538323
+            - paragraph [ref=e731]: CHLOE MICHELLE HOWARTH
+            - generic [ref=e735]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e737] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e738]
+          - generic [ref=e740]:
+            - link "i who have never known men-jacqueline harpman-9781529111798" [ref=e741] [cursor=pointer]:
+              - /url: /libro-i-who-have-never-known-men/9781529111798/9677489
+              - img "i who have never known men-jacqueline harpman-9781529111798"
+            - generic [ref=e742]: Bolsillo
+            - link "I Who Have Never Known Men" [ref=e743] [cursor=pointer]:
+              - /url: /libro-i-who-have-never-known-men/9781529111798/9677489
+            - paragraph [ref=e744]: Jacqueline Harpman
+            - generic [ref=e751]: (3)
+            - button "Añadir a la cesta" [ref=e755] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e756]
+          - generic [ref=e758]:
+            - link "never lie-freida mcfadden-9781464221361" [ref=e759] [cursor=pointer]:
+              - /url: /libro-never-lie/9781464221361/16493528
+              - img "never lie-freida mcfadden-9781464221361"
+            - generic [ref=e760]: Bolsillo
+            - link "Never Lie" [ref=e761] [cursor=pointer]:
+              - /url: /libro-never-lie/9781464221361/16493528
+            - paragraph [ref=e762]: Freida McFadden
+            - generic [ref=e769]: (1)
+            - button "Añadir a la cesta" [ref=e773] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e774]
+          - generic [ref=e776]:
+            - link "klara and the sun-kazuo ishiguro-9780571364909" [ref=e777] [cursor=pointer]:
+              - /url: /libro-klara-and-the-sun/9780571364909/12731537
+              - img "klara and the sun-kazuo ishiguro-9780571364909"
+            - generic [ref=e778]: Bolsillo
+            - link "Klara and the Sun" [ref=e779] [cursor=pointer]:
+              - /url: /libro-klara-and-the-sun/9780571364909/12731537
+            - paragraph [ref=e780]: Kazuo Ishiguro
+            - generic [ref=e787]: (3)
+            - button "Añadir a la cesta" [ref=e791] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e792]
+          - generic [ref=e794]:
+            - link "hamnet-maggie o farrell-9781472223821" [ref=e795] [cursor=pointer]:
+              - /url: /libro-hamnet/9781472223821/12135317
+              - img "hamnet-maggie o farrell-9781472223821"
+            - generic [ref=e796]: Tapa blanda
+            - link "Hamnet" [ref=e797] [cursor=pointer]:
+              - /url: /libro-hamnet/9781472223821/12135317
+            - paragraph [ref=e798]: Maggie O'Farrell
+            - generic [ref=e805]: (10)
+            - generic [ref=e808]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e810] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e811]
+          - generic [ref=e813]:
+            - link "animal farm-george orwell-9780141036137" [ref=e814] [cursor=pointer]:
+              - /url: /libro-animal-farm/9780141036137/1196264
+              - img "animal farm-george orwell-9780141036137"
+            - generic [ref=e815]: Tapa blanda
+            - link "ANIMAL FARM" [ref=e816] [cursor=pointer]:
+              - /url: /libro-animal-farm/9780141036137/1196264
+            - paragraph [ref=e817]: George Orwell
+            - generic [ref=e824]: (8)
+            - button "Añadir a la cesta" [ref=e828] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e829]
+          - generic [ref=e831]:
+            - link "the housemaid-freida mcfadden-9781408728512" [ref=e832] [cursor=pointer]:
+              - /url: /libro-the-housemaid/9781408728512/13897576
+              - img "the housemaid-freida mcfadden-9781408728512"
+            - generic [ref=e833]: Tapa blanda
+            - link "The Housemaid" [ref=e834] [cursor=pointer]:
+              - /url: /libro-the-housemaid/9781408728512/13897576
+            - paragraph [ref=e835]: Freida McFadden
+            - generic [ref=e842]: (21)
+            - generic [ref=e845]: ¡Últimas unidades!
+            - button "Añadir a la cesta" [ref=e847] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e848]
+          - generic [ref=e850]:
+            - link "the housemaid’s secret-freida mcfadden-9780349132600" [ref=e851] [cursor=pointer]:
+              - /url: /libro-the-housemaids-secret/9780349132600/15959290
+              - img "the housemaid’s secret-freida mcfadden-9780349132600"
+            - generic [ref=e852]: Tapa blanda
+            - link "The Housemaid’s Secret" [ref=e853] [cursor=pointer]:
+              - /url: /libro-the-housemaids-secret/9780349132600/15959290
+            - paragraph [ref=e854]: Freida McFadden
+            - generic [ref=e861]: (1)
+            - button "Añadir a la cesta" [ref=e865] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e866]
+          - generic [ref=e868]:
+            - link "better than the movies-lynn painter-9781398536517" [ref=e869] [cursor=pointer]:
+              - /url: /libro-better-than-the-movies/9781398536517/15983462
+              - img "better than the movies-lynn painter-9781398536517"
+            - generic [ref=e870]: Tapa blanda
+            - link "Better than the Movies" [ref=e871] [cursor=pointer]:
+              - /url: /libro-better-than-the-movies/9781398536517/15983462
+            - paragraph [ref=e872]: Lynn Painter
+            - generic [ref=e879]: (14)
+            - button "Añadir a la cesta" [ref=e883] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e884]
+          - generic [ref=e886]:
+            - link "Ver más libros en inglés" [ref=e887] [cursor=pointer]:
+              - /url: /libros/literatura-en-otros-idiomas/literatura-en-ingles/124002000
+            - link "Ver productos" [ref=e888] [cursor=pointer]:
+              - /url: /libros/literatura-en-otros-idiomas/literatura-en-ingles/124002000
+          - generic [ref=e889]:
+            - button "anterior" [disabled] [ref=e890]:
+              - img [ref=e891]
+            - button "siguiente" [disabled] [ref=e893]:
+              - img [ref=e894]
+      - generic [ref=e897]:
+        - paragraph [ref=e899]: No te lo pienses más
+        - generic [ref=e900]:
+          - generic [ref=e901]:
+            - 'link "Murdoku: 80 acertijos de lógica y asesinatos" [ref=e902] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-1/9791387869380/17135403
+              - 'img "Murdoku: 80 acertijos de lógica y asesinatos"'
+            - generic [ref=e903]: Tapa blanda
+            - 'link "Murdoku: 80 acertijos de lógica y asesinatos" [ref=e904] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-1/9791387869380/17135403
+            - paragraph [ref=e905]: Manuel Garand
+            - button "Añadir a la cesta" [ref=e910] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e911]
+          - generic [ref=e913]:
+            - 'link "Murdoku: Viaje al pasado" [ref=e914] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-2-viaje-al-pasado/9791388279119/18224989
+              - 'img "Murdoku: Viaje al pasado"'
+            - generic [ref=e915]: Tapa blanda
+            - 'link "Murdoku: Viaje al pasado" [ref=e916] [cursor=pointer]':
+              - /url: /libro-murdoku-volumen-2-viaje-al-pasado/9791388279119/18224989
+            - paragraph [ref=e917]: Manuel Garand
+            - button "Añadir a la cesta" [ref=e922] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e923]
+          - generic [ref=e925]:
+            - 'link "Prohibido enamorarse (Off Campus 1 / #Kiss Me 1)" [ref=e926] [cursor=pointer]':
+              - /url: /libro-prohibido-enamorarse-off-campus-1--kiss-me-1/9788410425224/17031870
+              - 'img "Prohibido enamorarse (Off Campus 1 / #Kiss Me 1)"'
+            - generic [ref=e927]: Tapa blanda
+            - 'link "Prohibido enamorarse (Off Campus 1 / #Kiss Me 1)" [ref=e928] [cursor=pointer]':
+              - /url: /libro-prohibido-enamorarse-off-campus-1--kiss-me-1/9788410425224/17031870
+            - paragraph [ref=e929]: Elle Kennedy
+            - button "Añadir a la cesta" [ref=e934] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e935]
+          - generic [ref=e937]:
+            - link "El baile de las criadas" [ref=e938] [cursor=pointer]:
+              - /url: /libro-el-baile-de-las-criadas-premio-fernando-lara-2026/9788408322764/18212715
+              - img "El baile de las criadas"
+            - generic [ref=e939]: Tapa dura
+            - link "El baile de las criadas" [ref=e940] [cursor=pointer]:
+              - /url: /libro-el-baile-de-las-criadas-premio-fernando-lara-2026/9788408322764/18212715
+            - paragraph [ref=e941]: Marta Platel
+            - button "Añadir a la cesta" [ref=e946] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e947]
+          - generic [ref=e949]:
+            - 'link "Rojo sangre (Serie Mindf*ck #5)" [ref=e950] [cursor=pointer]':
+              - /url: /libro-rojo-sangre-serie-mindfck-5/9791387810580/17840748
+              - 'img "Rojo sangre (Serie Mindf*ck #5)"'
+            - generic [ref=e951]: Bolsillo
+            - 'link "Rojo sangre (Serie Mindf*ck #5)" [ref=e952] [cursor=pointer]':
+              - /url: /libro-rojo-sangre-serie-mindfck-5/9791387810580/17840748
+            - paragraph [ref=e953]: S.T. Abby
+            - button "Añadir a la cesta" [ref=e958] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e959]
+          - generic [ref=e961]:
+            - link "Franqueza radical" [ref=e962] [cursor=pointer]:
+              - /url: /libro-franqueza-radical/9788411002189/14360993
+              - img "Franqueza radical"
+            - generic [ref=e963]: Tapa blanda
+            - link "Franqueza radical" [ref=e964] [cursor=pointer]:
+              - /url: /libro-franqueza-radical/9788411002189/14360993
+            - paragraph [ref=e965]: Kim Scott
+            - button "Añadir a la cesta" [ref=e970] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e971]
+          - generic [ref=e973]:
+            - link "Cómo hacer que te pasen cosas buenas" [ref=e974] [cursor=pointer]:
+              - /url: /libro-como-hacer-que-te-pasen-cosas-buenas/9788467053302/7013936
+              - img "Cómo hacer que te pasen cosas buenas"
+            - generic [ref=e975]: Tapa blanda
+            - link "Cómo hacer que te pasen cosas buenas" [ref=e976] [cursor=pointer]:
+              - /url: /libro-como-hacer-que-te-pasen-cosas-buenas/9788467053302/7013936
+            - paragraph [ref=e977]: Marian Rojas Estapé
+            - button "Añadir a la cesta" [ref=e982] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e983]
+          - generic [ref=e985]:
+            - link "Alas de hierro (Empíreo 2)" [ref=e986] [cursor=pointer]:
+              - /url: /libro-alas-de-hierro-empireo-2/9788408284550/14434148
+              - img "Alas de hierro (Empíreo 2)"
+            - generic [ref=e987]: Tapa dura
+            - link "Alas de hierro (Empíreo 2)" [ref=e988] [cursor=pointer]:
+              - /url: /libro-alas-de-hierro-empireo-2/9788408284550/14434148
+            - paragraph [ref=e989]: Rebecca Yarros
+            - button "Añadir a la cesta" [ref=e994] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e995]
+          - generic [ref=e997]:
+            - link "Hábitos atómicos" [ref=e998] [cursor=pointer]:
+              - /url: /libro-habitos-atomicos/9788418118036/11364192
+              - img "Hábitos atómicos"
+            - generic [ref=e999]: Tapa blanda
+            - link "Hábitos atómicos" [ref=e1000] [cursor=pointer]:
+              - /url: /libro-habitos-atomicos/9788418118036/11364192
+            - paragraph [ref=e1001]: James Clear
+            - button "Añadir a la cesta" [ref=e1006] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1007]
+          - generic [ref=e1009]:
+            - link "La asistenta" [ref=e1010] [cursor=pointer]:
+              - /url: /libro-la-asistenta/9788491294283/13931484
+              - img "La asistenta"
+            - generic [ref=e1011]: Tapa blanda
+            - link "La asistenta" [ref=e1012] [cursor=pointer]:
+              - /url: /libro-la-asistenta/9788491294283/13931484
+            - paragraph [ref=e1013]: Freida McFadden
+            - button "Añadir a la cesta" [ref=e1018] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1019]
+          - generic [ref=e1021]:
+            - button "anterior" [disabled] [ref=e1022]:
+              - img [ref=e1023]
+            - button "siguiente" [disabled] [ref=e1025]:
+              - img [ref=e1026]
+      - generic [ref=e1029]:
+        - paragraph [ref=e1030]: Categorías destacadas
+        - generic [ref=e1031]:
+          - link "Novela contemporánea" [ref=e1032] [cursor=pointer]:
+            - /url: /libros/literatura/novela-contemporanea/121016000
+            - img [ref=e1033]
+            - generic [ref=e1034]: Novela contemporánea
+          - link "Cómics" [ref=e1035] [cursor=pointer]:
+            - /url: /libros/comics/411000000
+            - img [ref=e1036]
+            - generic [ref=e1037]: Cómics
+          - link "Juvenil" [ref=e1038] [cursor=pointer]:
+            - /url: /libros/juvenil/473000000
+            - img [ref=e1039]
+            - generic [ref=e1040]: Juvenil
+          - link "Infantil" [ref=e1041] [cursor=pointer]:
+            - /url: /libros/infantil/117000000
+            - img [ref=e1042]
+            - generic [ref=e1043]: Infantil
+        - button "Ver más temáticas" [ref=e1045] [cursor=pointer]:
+          - text: Ver más temáticas
+          - img [ref=e1046]
+      - generic [ref=e1050]:
+        - paragraph [ref=e1051]: Descubrir, conocer, disfrutar
+        - generic [ref=e1052]:
+          - button "Autoayuda" [ref=e1053] [cursor=pointer]:
+            - img [ref=e1054]
+            - text: Autoayuda
+          - button "Ciencias Humanas" [ref=e1055] [cursor=pointer]:
+            - img [ref=e1056]
+            - text: Ciencias Humanas
+          - button "Historia" [ref=e1057] [cursor=pointer]:
+            - img [ref=e1058]
+            - text: Historia
+          - button "Ciencias" [ref=e1059] [cursor=pointer]:
+            - img [ref=e1060]
+            - text: Ciencias
+          - button "Salud y Dietas" [ref=e1061] [cursor=pointer]:
+            - img [ref=e1062]
+            - text: Salud y Dietas
+          - generic:
+            - button "anterior" [disabled] [ref=e1063]:
+              - img [ref=e1064]
+            - button "siguiente" [disabled] [ref=e1066]:
+              - img [ref=e1067]
+        - generic [ref=e1070]:
+          - generic [ref=e1071]:
+            - link "-9788425375811":
+              - /url: /libro-dormir-cuando-no-puedes-dormir/9788425375811/18085063
+              - img "-9788425375811"
+            - link "Dormir cuando no puedes dormir" [ref=e1072] [cursor=pointer]:
+              - /url: /libro-dormir-cuando-no-puedes-dormir/9788425375811/18085063
+            - paragraph [ref=e1073]: Rafael Santandreu
+            - button "Añadir a la cesta" [ref=e1081] [cursor=pointer]:
+              - text: Añadir
+              - img [ref=e1082]
+          - generic [ref=e1084]:
+            - link "-9788418118036":
+              - /url: /libro-habitos-atomicos/9788418118036/11364192
+              - img "-9788418118036"
+            - link "Hábitos atómicos" [ref=e1085] [cursor=pointer]:
+              - /url: /libro-habitos-atomicos/9788418118036/11364192
+            - paragraph [ref=e1086]: James Clear
+            - button "Añadir a la cesta" [ref=e1094] [cursor=pointer]:
+              - text: Añadir
+              - img [ref=e1095]
+          - generic [ref=e1097]:
+            - link "-9788425372469":
+              - /url: /libro-deja-de-ser-tu/9788425372469/17958638
+              - img "-9788425372469"
+            - link "Deja de ser tú" [ref=e1098] [cursor=pointer]:
+              - /url: /libro-deja-de-ser-tu/9788425372469/17958638
+            - paragraph [ref=e1099]: Joe Dispenza
+            - button "Añadir a la cesta" [ref=e1101] [cursor=pointer]:
+              - text: Añadir
+              - img [ref=e1102]
+          - generic [ref=e1104]:
+            - link "-9788467053302":
+              - /url: /libro-como-hacer-que-te-pasen-cosas-buenas/9788467053302/7013936
+              - img "-9788467053302"
+            - link "Cómo hacer que te pasen cosas buenas" [ref=e1105] [cursor=pointer]:
+              - /url: /libro-como-hacer-que-te-pasen-cosas-buenas/9788467053302/7013936
+            - paragraph [ref=e1106]: Marian Rojas Estapé
+            - button "Añadir a la cesta" [ref=e1114] [cursor=pointer]:
+              - text: Añadir
+              - img [ref=e1115]
+          - generic [ref=e1117]:
+            - link "-9788413445090":
+              - /url: /libro-encontrar-un-hogar/9788413445090/17937165
+              - img "-9788413445090"
+            - link "Encontrar un hogar" [ref=e1118] [cursor=pointer]:
+              - /url: /libro-encontrar-un-hogar/9788413445090/17937165
+            - paragraph [ref=e1119]: René Ponte (@renezz)
+            - button "Añadir a la cesta" [ref=e1127] [cursor=pointer]:
+              - text: Añadir
+              - img [ref=e1128]
+          - generic [ref=e1130]:
+            - link "-9788479532536":
+              - /url: /libro-los-cuatro-acuerdos/9788479532536/626219
+              - img "-9788479532536"
+            - link "Los cuatro acuerdos" [ref=e1131] [cursor=pointer]:
+              - /url: /libro-los-cuatro-acuerdos/9788479532536/626219
+            - paragraph [ref=e1132]: Miguel Ruiz
+            - button "Añadir a la cesta" [ref=e1140] [cursor=pointer]:
+              - text: Añadir
+              - img [ref=e1141]
+        - link "Todas las categorías enlace" [ref=e1143] [cursor=pointer]:
+          - /url: /libros/autoayuda-y-espiritualidad/autoayuda/102001000
+          - text: Todas las categorías
+          - img "enlace" [ref=e1144]
+      - generic [ref=e1147]:
+        - generic [ref=e1148]:
+          - heading "No te pierdas nuestro blog" [level=3] [ref=e1149]
+          - link "Ir al blog" [ref=e1150] [cursor=pointer]:
+            - /url: https://www.casadellibro.com/blog/index.php
+            - text: Ir al blog
+            - img [ref=e1151]
+        - separator [ref=e1153]
+        - generic [ref=e1155]:
+          - generic [ref=e1156]:
+            - link "logo premio" [ref=e1158] [cursor=pointer]:
+              - /url: /blog/espasa-y-casa-del-libro-presentan-el-premio-espasa-calpe-de-novela-juvenil/
+              - img "logo premio" [ref=e1159]
+            - generic [ref=e1160]:
+              - generic [ref=e1161]:
+                - paragraph [ref=e1162]: ACTUALIDAD
+                - paragraph [ref=e1163]: Espasa y Casa del Libro presentan el Premio Espasa Calpe de Novela Juvenil
+                - paragraph [ref=e1164]: El pasado 5 de junio, el Real Teatro Retiro de Madrid acogió la presentación del Premio Espasa Calpe de Novela Juvenil, una nueva iniciativa impulsada por Espasa y Casa del Libro que nace con la vocación de convertirse en un referente para las nuevas voces de la literatura juvenil en lengua española.
+              - link "Leer más enlace" [ref=e1165] [cursor=pointer]:
+                - /url: /blog/espasa-y-casa-del-libro-presentan-el-premio-espasa-calpe-de-novela-juvenil/
+                - text: Leer más
+                - img "enlace" [ref=e1166]
+          - generic [ref=e1168]:
+            - link "Mujer leyendo" [ref=e1170] [cursor=pointer]:
+              - /url: /blog/10-libros-sobre-corea-del-norte-que-pueden-ser-de-interes/
+              - img "Mujer leyendo" [ref=e1171]
+            - generic [ref=e1172]:
+              - generic [ref=e1173]:
+                - paragraph [ref=e1174]: TOP 10
+                - paragraph [ref=e1175]: 10 libros sobre Corea del Norte que pueden ser de interés
+                - paragraph [ref=e1176]: En este artículo de Casa del Libro queremos centrarnos en hablarte acerca de 10 libros sobre Corea del Norte. Aquí encontrarás una lista cuidada con obras que te ayudarán a conocer mucho más sobre el hermético país asiático.
+              - link "Leer más enlace" [ref=e1177] [cursor=pointer]:
+                - /url: /blog/10-libros-sobre-corea-del-norte-que-pueden-ser-de-interes/
+                - text: Leer más
+                - img "enlace" [ref=e1178]
+          - generic [ref=e1180]:
+            - link "pila de libros" [ref=e1182] [cursor=pointer]:
+              - /url: /blog/los-mejores-ebooks-de-ingles-por-niveles/
+              - img "pila de libros" [ref=e1183]
+            - generic [ref=e1184]:
+              - generic [ref=e1185]:
+                - paragraph [ref=e1186]: GUÍAS DE COMPRA
+                - paragraph [ref=e1187]: Los mejores eBooks de inglés por niveles
+                - paragraph [ref=e1188]: En casa del Libro queremos dedicar un espacio a todos esos lectores que estén buscando un ebook en inglés por niveles. Y es que mucho mejor que ir a clases particulares o a una academia, es leer un libro que te pueda ayudar a mejorar tu aprendizaje del idioma.
+              - link "Leer más enlace" [ref=e1189] [cursor=pointer]:
+                - /url: /blog/los-mejores-ebooks-de-ingles-por-niveles/
+                - text: Leer más
+                - img "enlace" [ref=e1190]
+          - generic [ref=e1192]:
+            - link "Bryce Quinlan" [ref=e1194] [cursor=pointer]:
+              - /url: /blog/bryce-quinlan-ciudad-medialuna/
+              - img "Bryce Quinlan" [ref=e1195]
+            - generic [ref=e1196]:
+              - generic [ref=e1197]:
+                - paragraph [ref=e1198]: FANTASÍA
+                - paragraph [ref=e1199]: Bryce Quinlan | Ciudad Medialuna
+                - paragraph [ref=e1200]: "En Casa del Libro queremos dedicar un artículo a analizar en profundidad a Bryce Quinlan, la carismática protagonista de la saga Ciudad Medialuna. Vamos a entrar en ese mundo de fantasía urbana y juvenil y a explicarte aspectos clave de Bryce: desde su biografía hasta su presencia física."
+              - link "Leer más enlace" [ref=e1201] [cursor=pointer]:
+                - /url: /blog/bryce-quinlan-ciudad-medialuna/
+                - text: Leer más
+                - img "enlace" [ref=e1202]
+          - generic [ref=e1204]:
+            - link "Foto Papa León XIV" [ref=e1206] [cursor=pointer]:
+              - /url: /blog/merece-la-pena-comprar-la-enciclica-del-papa-leon/
+              - img "Foto Papa León XIV" [ref=e1207]
+            - generic [ref=e1208]:
+              - generic [ref=e1209]:
+                - paragraph [ref=e1210]: PAPA LEÓN XIV
+                - paragraph [ref=e1211]: "Encíclica de León XIV Magnifica Humanitas: ¿Merece la pena comprarla?"
+                - paragraph [ref=e1212]: "El 25 de mayo de 2026 la Santa Sede publicó oficialmente Magnifica Humanitas, la primera encíclica del Papa León XIV. En cuestión de días se ha convertido en uno de los documentos magisteriales más comentados de las últimas décadas y, por supuesto, en un título muy buscado en librerías de toda España. Si has llegado hasta aquí es porque te preguntas lo mismo que miles de lectores: ¿merece la pena adquirir la edición impresa o me basta con leerla en PDF? Te lo contamos con detalle."
+              - link "Leer más enlace" [ref=e1213] [cursor=pointer]:
+                - /url: /blog/merece-la-pena-comprar-la-enciclica-del-papa-leon/
+                - text: Leer más
+                - img "enlace" [ref=e1214]
+          - generic [ref=e1216]:
+            - button "anterior" [disabled] [ref=e1217]:
+              - img [ref=e1218]
+            - button "siguiente" [disabled] [ref=e1220]:
+              - img [ref=e1221]
+      - generic [ref=e1225]:
+        - generic [ref=e1226]:
+          - generic [ref=e1227]:
+            - paragraph [ref=e1228]: ¡Todas las ofertas en eBook por tiempo limitado!
+            - link "Ver ofertas" [ref=e1229] [cursor=pointer]:
+              - /url: /ebooks-recomendados-en-ofertas
+          - link "mujer con eReader" [ref=e1230] [cursor=pointer]:
+            - /url: /ebooks-recomendados-en-ofertas
+            - img "mujer con eReader" [ref=e1231]
+        - generic [ref=e1232]:
+          - generic [ref=e1233]:
+            - paragraph [ref=e1234]: Conoce nuestros eReaders Vivlio
+            - link "Ver eReader" [ref=e1235] [cursor=pointer]:
+              - /url: /vivlio-ereader-ebooks
+          - link "Dispositivos eReader de Vivlio sobre fondo gris" [ref=e1236] [cursor=pointer]:
+            - /url: /vivlio-ereader-ebooks
+            - img "Dispositivos eReader de Vivlio sobre fondo gris" [ref=e1237]
+      - generic [ref=e1239]:
+        - generic [ref=e1240]:
+          - heading "Los eBooks más vendidos" [level=2] [ref=e1241]
+          - link "Ver más listado" [ref=e1242] [cursor=pointer]:
+            - /url: /ebooks
+            - text: Ver más
+            - img "listado" [ref=e1243]
+        - separator [ref=e1245]
+        - generic [ref=e1246]:
+          - generic [ref=e1247]:
+            - link "la cámara de las maravillas-maria oruña-9788401038648" [ref=e1248] [cursor=pointer]:
+              - /url: /ebook-la-camara-de-las-maravillas-ebook/9788401038648/18147986
+              - img "la cámara de las maravillas-maria oruña-9788401038648"
+            - generic [ref=e1249]: eBook
+            - link "La Cámara de las Maravillas" [ref=e1250] [cursor=pointer]:
+              - /url: /ebook-la-camara-de-las-maravillas-ebook/9788401038648/18147986
+            - paragraph [ref=e1251]: María Oruña
+            - generic [ref=e1258]: (13)
+            - img [ref=e1262]
+            - button "Añadir a la cesta" [ref=e1265] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1266]
+          - generic [ref=e1268]:
+            - link "el baile de las criadas-marta platel-9788408322771" [ref=e1269] [cursor=pointer]:
+              - /url: /ebook-el-baile-de-las-criadas-ebook/9788408322771/18215707
+              - img "el baile de las criadas-marta platel-9788408322771"
+            - generic [ref=e1270]: eBook
+            - link "El baile de las criadas" [ref=e1271] [cursor=pointer]:
+              - /url: /ebook-el-baile-de-las-criadas-ebook/9788408322771/18215707
+            - paragraph [ref=e1272]: Marta Platel
+            - img [ref=e1277]
+            - button "Añadir a la cesta" [ref=e1280] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1281]
+          - generic [ref=e1283]:
+            - link "el sótano-roberto leal-9788467082401" [ref=e1284] [cursor=pointer]:
+              - /url: /ebook-el-sotano-ebook/9788467082401/18196323
+              - img "el sótano-roberto leal-9788467082401"
+            - generic [ref=e1285]: eBook
+            - link "El sótano" [ref=e1286] [cursor=pointer]:
+              - /url: /ebook-el-sotano-ebook/9788467082401/18196323
+            - paragraph [ref=e1287]: Roberto Leal
+            - generic [ref=e1294]: (8)
+            - img [ref=e1298]
+            - button "Añadir a la cesta" [ref=e1301] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1302]
+          - generic [ref=e1304]:
+            - link "mentira-juan gomez jurado-9788466683098" [ref=e1305] [cursor=pointer]:
+              - /url: /ebook-mentira-ebook/9788466683098/17891554
+              - img "mentira-juan gomez jurado-9788466683098"
+            - generic [ref=e1306]: eBook
+            - link "Mentira" [ref=e1307] [cursor=pointer]:
+              - /url: /ebook-mentira-ebook/9788466683098/17891554
+            - paragraph [ref=e1308]: Juan Gómez-Jurado
+            - generic [ref=e1315]: (154)
+            - img [ref=e1319]
+            - button "Añadir a la cesta" [ref=e1322] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1323]
+          - generic [ref=e1325]:
+            - link "la enfermera-martin torres-9788410140547" [ref=e1326] [cursor=pointer]:
+              - /url: /ebook-la-enfermera-ebook/9788410140547/18183577
+              - img "la enfermera-martin torres-9788410140547"
+            - generic [ref=e1327]: eBook
+            - link "La enfermera" [ref=e1328] [cursor=pointer]:
+              - /url: /ebook-la-enfermera-ebook/9788410140547/18183577
+            - paragraph [ref=e1329]: Martín Torres
+            - generic [ref=e1336]: (4)
+            - img [ref=e1340]
+            - button "Añadir a la cesta" [ref=e1343] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1344]
+          - generic [ref=e1346]:
+            - link "el amo (jotadé 2)-santiago diaz-9788420479293" [ref=e1347] [cursor=pointer]:
+              - /url: /ebook-el-amo-jotade-2-ebook/9788420479293/17655364
+              - img "el amo (jotadé 2)-santiago diaz-9788420479293"
+            - generic [ref=e1348]: eBook
+            - link "El amo (Jotadé 2)" [ref=e1349] [cursor=pointer]:
+              - /url: /ebook-el-amo-jotade-2-ebook/9788420479293/17655364
+            - paragraph [ref=e1350]: Santiago Díaz
+            - generic [ref=e1357]: (72)
+            - img [ref=e1361]
+            - button "Añadir a la cesta" [ref=e1364] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1365]
+          - generic [ref=e1367]:
+            - link "llevará tu nombre-sonsoles onega-9788408315254" [ref=e1368] [cursor=pointer]:
+              - /url: /ebook-llevara-tu-nombre-ebook/9788408315254/17721593
+              - img "llevará tu nombre-sonsoles onega-9788408315254"
+            - generic [ref=e1369]: eBook
+            - link "Llevará tu nombre" [ref=e1370] [cursor=pointer]:
+              - /url: /ebook-llevara-tu-nombre-ebook/9788408315254/17721593
+            - paragraph [ref=e1371]: Sonsoles Ónega
+            - generic [ref=e1378]: (59)
+            - img [ref=e1382]
+            - button "Añadir a la cesta" [ref=e1385] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1386]
+          - generic [ref=e1388]:
+            - link "comerás flores-lucia solla sobral-9788410178748" [ref=e1389] [cursor=pointer]:
+              - /url: /ebook-comeras-flores-ebook/9788410178748/17155872
+              - img "comerás flores-lucia solla sobral-9788410178748"
+            - generic [ref=e1390]: eBook
+            - link "Comerás flores" [ref=e1391] [cursor=pointer]:
+              - /url: /ebook-comeras-flores-ebook/9788410178748/17155872
+            - paragraph [ref=e1392]: Lucía Solla Sobral
+            - generic [ref=e1399]: (258)
+            - img [ref=e1403]
+            - button "Añadir a la cesta" [ref=e1406] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1407]
+          - generic [ref=e1409]:
+            - link "maite-fernando aramburu-9788411077491" [ref=e1410] [cursor=pointer]:
+              - /url: /ebook-maite-ebook/9788411077491/17934474
+              - img "maite-fernando aramburu-9788411077491"
+            - generic [ref=e1411]: eBook
+            - link "Maite" [ref=e1412] [cursor=pointer]:
+              - /url: /ebook-maite-ebook/9788411077491/17934474
+            - paragraph [ref=e1413]: Fernando Aramburu
+            - generic [ref=e1420]: (67)
+            - img [ref=e1424]
+            - button "Añadir a la cesta" [ref=e1427] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1428]
+          - generic [ref=e1430]:
+            - link "ríete de las bodas-megan maxwell-9788467082654" [ref=e1431] [cursor=pointer]:
+              - /url: /ebook-riete-de-las-bodas-ebook/9788467082654/18179194
+              - img "ríete de las bodas-megan maxwell-9788467082654"
+            - generic [ref=e1432]: eBook
+            - link "Ríete de las bodas" [ref=e1433] [cursor=pointer]:
+              - /url: /ebook-riete-de-las-bodas-ebook/9788467082654/18179194
+            - paragraph [ref=e1434]: Megan Maxwell
+            - generic [ref=e1441]: (4)
+            - img [ref=e1445]
+            - button "Añadir a la cesta" [ref=e1448] [cursor=pointer]:
+              - text: Añadir a la cesta
+              - img [ref=e1449]
+          - generic [ref=e1451]:
+            - link "Ver todos los eBooks" [ref=e1452] [cursor=pointer]:
+              - /url: /ebooks
+            - link "Ver productos" [ref=e1453] [cursor=pointer]:
+              - /url: /ebooks
+          - generic [ref=e1454]:
+            - button "anterior" [disabled] [ref=e1455]:
+              - img [ref=e1456]
+            - button "siguiente" [disabled] [ref=e1458]:
+              - img [ref=e1459]
+      - generic [ref=e1464]:
+        - generic [ref=e1465]:
+          - paragraph [ref=e1466]: Papelería y regalo
+          - paragraph [ref=e1467]: Los mejores accesorios de lectura
+          - link "Ver más" [ref=e1468] [cursor=pointer]:
+            - /url: /papeleria
+        - link "Colección de lápices, cuadernos y accesorios" [ref=e1469] [cursor=pointer]:
+          - /url: /papeleria
+          - img "Colección de lápices, cuadernos y accesorios" [ref=e1470]
+      - generic [ref=e1472]:
+        - generic [ref=e1473]:
+          - paragraph [ref=e1474]: Eventos destacados
+          - link "Ver todos los eventos ver eventos" [ref=e1475] [cursor=pointer]:
+            - /url: /nosotros/nuestras-tiendas-nuestrastiendas/0
+            - text: Ver todos los eventos
+            - img "ver eventos" [ref=e1476]
+        - generic [ref=e1479]:
+          - generic [ref=e1480]:
+            - generic [ref=e1481]:
+              - paragraph [ref=e1482]: 03/07/2026
+              - paragraph [ref=e1483]: Cuentacuentos
+              - paragraph [ref=e1484]: Cuentacuentos infantil alrededor del libro «Mantén el equilibrio».
+            - generic [ref=e1485]:
+              - paragraph [ref=e1486]:
+                - img [ref=e1487]
+                - text: C. C. Área Sur Crta. N-IV Km. 639
+              - link "Saber más" [ref=e1489] [cursor=pointer]:
+                - /url: /nosotros/evento-cuentacuentos/34274
+          - generic [ref=e1490]:
+            - generic [ref=e1491]:
+              - paragraph [ref=e1492]: 04/07/2026 19:00 h
+              - paragraph [ref=e1493]: Encuentro literario
+              - paragraph [ref=e1494]: Encuentro literario con la autora Laura Manzanera.
+            - generic [ref=e1495]:
+              - paragraph [ref=e1496]:
+                - img [ref=e1497]
+                - text: Raval de Santa Anna, 11
+              - link "Saber más" [ref=e1499] [cursor=pointer]:
+                - /url: /nosotros/evento-encuentro-literario/34304
+          - generic [ref=e1500]:
+            - generic [ref=e1501]:
+              - paragraph [ref=e1502]: 04/07/2026 12:00 h
+              - paragraph [ref=e1503]: Taller de pasatiempos
+              - paragraph [ref=e1504]: Taller de pasatiempos veraniegos.
+            - generic [ref=e1505]:
+              - paragraph [ref=e1506]:
+                - img [ref=e1507]
+                - text: C. C. El Rosal, av. de Asturias s/n.
+              - link "Saber más" [ref=e1509] [cursor=pointer]:
+                - /url: /nosotros/evento-taller-de-pasatiempos/34303
+          - generic [ref=e1510]:
+            - generic [ref=e1511]:
+              - paragraph [ref=e1512]: 09/07/2026 19:00 h
+              - paragraph [ref=e1513]: "Presentación: Las flores del ayer, de Virginia Bonet"
+              - paragraph [ref=e1514]: La valenciana Virginia Bonet nos presenta su primera novela, «Las flores del ayer».
+            - generic [ref=e1515]:
+              - paragraph [ref=e1516]:
+                - img [ref=e1517]
+                - text: Passeig Russafa, 11
+              - link "Saber más" [ref=e1519] [cursor=pointer]:
+                - /url: /nosotros/evento-presentacion-las-flores-del-ayer-de-virginia-bonet/34331
+          - generic [ref=e1520]:
+            - generic [ref=e1521]:
+              - paragraph [ref=e1522]: 11/07/2026 12:30 h
+              - paragraph [ref=e1523]: "Presentación: La era de los mansos, de Manuel Esteban"
+              - paragraph [ref=e1524]: Presentación del libro.
+            - generic [ref=e1525]:
+              - paragraph [ref=e1526]:
+                - img [ref=e1527]
+                - text: Palacio Valdés, 13
+              - link "Saber más" [ref=e1529] [cursor=pointer]:
+                - /url: /nosotros/evento-presentacion-la-era-de-los-mansos-de-manuel-esteban/34298
+          - generic [ref=e1530]:
+            - generic [ref=e1531]:
+              - paragraph [ref=e1532]: 11/07/2026 18:00 h
+              - paragraph [ref=e1533]: "Firma: El fin de ninguna parte, de Israel Díaz"
+              - paragraph [ref=e1534]: El autor nos acompañará y firmará ejemplares de su libro.
+            - generic [ref=e1535]:
+              - paragraph [ref=e1536]:
+                - img [ref=e1537]
+                - text: C. C. Las Dunas, Pol. Ind. Rematacaudales, Ctra. Puerto Sta. María Km. 1,5
+              - link "Saber más" [ref=e1539] [cursor=pointer]:
+                - /url: /nosotros/evento-firma-el-fin-de-ninguna-parte-de-israel-diaz/34313
+          - generic [ref=e1540]:
+            - generic [ref=e1541]:
+              - paragraph [ref=e1542]: 15/07/2026 19:00 h
+              - paragraph [ref=e1543]: "Presentación: El mundo entre nosotros, de Juan Arcones"
+              - paragraph [ref=e1544]: Presentación de literatura LGTBIQ+ en la Semana del Orgullo en Alicante.
+            - generic [ref=e1545]:
+              - paragraph [ref=e1546]:
+                - img [ref=e1547]
+                - text: Poeta Vila y Blanco, 8
+              - link "Saber más" [ref=e1549] [cursor=pointer]:
+                - /url: /nosotros/evento-presentacion-el-mundo-entre-nosotros-de-juan-arcones/34246
+          - generic [ref=e1550]:
+            - button "anterior" [disabled] [ref=e1551]:
+              - img [ref=e1552]
+            - button "siguiente" [disabled] [ref=e1554]:
+              - img [ref=e1555]
+    - contentinfo [ref=e1557]:
+      - generic [ref=e1558]:
+        - generic [ref=e1559]:
+          - img "ventajas" [ref=e1560]
+          - paragraph [ref=e1562]: Compra segura
+        - generic [ref=e1563]:
+          - img "envío" [ref=e1564]
+          - paragraph [ref=e1566]: Envío gratis a partir de 19 €
+        - generic [ref=e1567]:
+          - img "tiendas" [ref=e1568]
+          - paragraph [ref=e1570]: Recogida en librería gratis
+        - generic [ref=e1571]:
+          - img "devolución" [ref=e1572]
+          - paragraph [ref=e1574]: Devoluciones gratis hasta 14 días
+      - generic [ref=e1577]:
+        - paragraph [ref=e1578]: Nuestras novedades de libros en tu mail
+        - generic [ref=e1579]:
+          - generic [ref=e1580]:
+            - textbox [ref=e1583]:
+              - /placeholder: Introduce tu correo electrónico
+            - button "Suscribirme" [ref=e1584] [cursor=pointer]
+          - generic [ref=e1586]: "ESPASA CALPE, S.A. (Casa del Libro) tratará tus datos personales para informarte de nuestras novedades y descuentos. Conservaremos tus datos mientras no te des de baja o nos solicites su supresión. Podrás ejercer los derechos de acceso, supresión, rectificación, oposición, limitación y portabilidad, mediante carta a ESPASA CALPE, S.A. (Casa del Libro), Apartado de Correos 221 de Barcelona o remitiendo un email a protecciondedatos@casadellibro.com. Asimismo, cuando lo consideres oportuno, podrás presentar una reclamación ante la Agencia Española de protección de datos. Podrás ponerte en contacto con nuestro Delegado de Protección de Datos mediante escrito dirigido a dpo@planeta.es o a Grupo Planeta, At.: Delegado de Protección de Datos, Avda. Diagonal 662-664, 08034 Barcelona."
+      - generic [ref=e1589]:
+        - generic [ref=e1590]:
+          - img "logo-CDL-Footer" [ref=e1591]
+          - generic [ref=e1592]:
+            - link "ir a casadellibro en Facebook" [ref=e1593] [cursor=pointer]:
+              - /url: https://www.facebook.com/casadellibro
+              - img [ref=e1594]
+            - link "ir a casadellibro en Twitter" [ref=e1596] [cursor=pointer]:
+              - /url: https://twitter.com/casadellibro
+              - img [ref=e1597]
+            - link "ir a casadellibro en Instagram" [ref=e1599] [cursor=pointer]:
+              - /url: https://www.instagram.com/casadellibro/?hl=es
+              - img [ref=e1600]
+            - link "ir a casadellibro en YouTube" [ref=e1602] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/casadellibropuntocom
+              - img [ref=e1603]
+            - link "ir a casadellibro en Pinterest" [ref=e1605] [cursor=pointer]:
+              - /url: https://www.pinterest.es/casadellibro
+              - img [ref=e1606]
+            - link "ir a casadellibro en Spotify" [ref=e1608] [cursor=pointer]:
+              - /url: https://open.spotify.com/user/wi2k27ijtmw114f531okf8nd4?si=JEaWkM75S56kXufnbmExww
+              - img [ref=e1609]
+            - link "ir a casadellibro en TikTok" [ref=e1611] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@casadellibro?lang=es
+              - img [ref=e1612]
+        - generic [ref=e1614]:
+          - generic [ref=e1615]:
+            - paragraph [ref=e1616]: Casa del Libro
+            - link "Quienes somos" [ref=e1617] [cursor=pointer]:
+              - /url: /nosotros/quienesSomos
+            - link "Trabaja con nosotros" [ref=e1618] [cursor=pointer]:
+              - /url: /nosotros/trabajaNosotros
+            - link "Nuestras librerías" [ref=e1619] [cursor=pointer]:
+              - /url: /nosotros/nuestras-tiendas-nuestrastiendas/0
+            - link "Casa del Libro México" [ref=e1620] [cursor=pointer]:
+              - /url: https://latam.casadellibro.com/
+            - link "Casa del Libro Colombia" [ref=e1621] [cursor=pointer]:
+              - /url: https://www.casadellibro.com.co/
+          - generic [ref=e1622]:
+            - paragraph [ref=e1623]: Ayuda
+            - link "Pago seguro con tarjeta" [ref=e1624] [cursor=pointer]:
+              - /url: https://www.casadellibro.com/pago-seguro-PSD2
+            - link "Pagar con Klarna" [ref=e1625] [cursor=pointer]:
+              - /url: /klarna
+            - link "Devoluciones" [ref=e1626] [cursor=pointer]:
+              - /url: /atc/asistente
+            - link "Gastos y formas de envío" [ref=e1627] [cursor=pointer]:
+              - /url: /gastos-de-envio-y-recogida-en-libreria
+            - link "Preguntas frecuentes" [ref=e1628] [cursor=pointer]:
+              - /url: /atc/asistente
+            - link "Estado de tu pedido" [ref=e1629] [cursor=pointer]:
+              - /url: /atc/estadoPedido
+            - link "Incidencias de pedidos" [ref=e1630] [cursor=pointer]:
+              - /url: /atc/asistente
+            - link "Contacta con nosotros" [ref=e1631] [cursor=pointer]:
+              - /url: /atencion-al-cliente/consulta-dudas
+            - link "Bono Cultural Joven" [ref=e1632] [cursor=pointer]:
+              - /url: /bono-cultural-joven
+          - generic [ref=e1633]:
+            - paragraph [ref=e1634]: Servicios
+            - link "Casa del Libro Plus" [ref=e1635] [cursor=pointer]:
+              - /url: /ayuda/cdlPlus
+            - link "Vende con nosotros" [ref=e1636] [cursor=pointer]:
+              - /url: /vende-con-nosotros
+            - link "Venta a Empresas e Instituciones" [ref=e1637] [cursor=pointer]:
+              - /url: /empresas/empresas
+            - link "Preventa" [ref=e1638] [cursor=pointer]:
+              - /url: /proximos-lanzamientos-en-libros
+            - link "Información para editoriales" [ref=e1639] [cursor=pointer]:
+              - /url: /faq-informacion-editoriales
+            - link "Libros al por mayor" [ref=e1640] [cursor=pointer]:
+              - /url: /empresas/empresas
+            - link "Programa afiliados" [ref=e1641] [cursor=pointer]:
+              - /url: /afiliado
+          - generic [ref=e1642]:
+            - paragraph [ref=e1643]: Información legal
+            - link "Condiciones generales" [ref=e1644] [cursor=pointer]:
+              - /url: /ventajas-comprar-online
+            - link "Condiciones de uso" [ref=e1645] [cursor=pointer]:
+              - /url: /ayuda/condicionesUso
+            - link "Condiciones de contratación" [ref=e1646] [cursor=pointer]:
+              - /url: /ayuda/condicionesContratacion
+            - link "Condiciones para vender" [ref=e1647] [cursor=pointer]:
+              - /url: /ayuda/condVentaSegMano
+            - link "Política de privacidad" [ref=e1648] [cursor=pointer]:
+              - /url: /ayuda/politica_de_privacidad
+            - link "Política de devoluciones y anulaciones" [ref=e1649] [cursor=pointer]:
+              - /url: /ayuda/politicasDevolucion
+            - link "Política de cookies" [ref=e1650] [cursor=pointer]:
+              - /url: /politica-cookies
+            - button "Configurar cookies" [ref=e1651] [cursor=pointer]
+            - link "Resolución de litigios en línea" [ref=e1652] [cursor=pointer]:
+              - /url: /resolucion-de-litigios-en-linea
+            - link "Oficina de Buenas Prácticas" [ref=e1653] [cursor=pointer]:
+              - /url: https://www.planeta.es/es/oficina-de-buenas-practicas
+      - generic [ref=e1655]:
+        - link "Comercial Grupo Anaya" [ref=e1656] [cursor=pointer]:
+          - /url: /libros-comercial-grupo-anaya
+          - img "Comercial Grupo Anaya" [ref=e1657]
+        - link "Random House Mondadori" [ref=e1658] [cursor=pointer]:
+          - /url: /escaparate-penguin-random-house-mondadori
+          - img "Random House Mondadori" [ref=e1659]
+        - link "Grupo Planeta" [ref=e1660] [cursor=pointer]:
+          - /url: /escaparate-grupo-planeta
+          - img "Grupo Planeta" [ref=e1661]
+        - link "SM" [ref=e1662] [cursor=pointer]:
+          - /url: /libros-editorial-sm
+          - img "SM" [ref=e1663]
+      - generic [ref=e1665]:
+        - paragraph [ref=e1666]: © 2026 Casa del Libro. Todos los derechos reservados. v.5.2.30
+        - generic [ref=e1667]:
+          - img "plan avanza" [ref=e1668]
+          - img "gobierno logo" [ref=e1669]
+  - alertdialog "Protegemos tu privacidad" [ref=e1678]:
+    - generic [ref=e1679]:
+      - generic [ref=e1680]:
+        - generic:
+          - heading "Protegemos tu privacidad" [level=2] [ref=e1681]
+          - paragraph [ref=e1682]:
+            - text: Utilizamos cookies propias y de terceros para analizar el uso del sitio web y para mostrarte publicidad relacionada con tus preferencias sobre la base de un perfil elaborado a partir de tus hábitos de navegación (por ejemplo, páginas visitadas). Puedes aceptar o rechazar todas las cookies pulsando el botón correspondiente o configurarlas mediante el enlace “Configuración de cookies”. Para más información,
+            - link "consulta nuestra Política de cookies" [active] [ref=e1683] [cursor=pointer]:
+              - /url: https://www.casadellibro.com/politica-cookies
+            - text: .
+      - generic [ref=e1685]:
+        - generic [ref=e1686]:
+          - button "Rechazar" [ref=e1687] [cursor=pointer]
+          - button "Aceptar" [ref=e1688] [cursor=pointer]
+        - button "Configurar cookies" [ref=e1689] [cursor=pointer]

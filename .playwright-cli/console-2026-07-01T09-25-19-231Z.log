@@ -1,0 +1,8 @@
+[    1137ms] [INFO] %c🛠️ Build Info
+%c📅 Fecha: %s
+🌿 Rama: %s
+🏷️ Tag: %s font-weight: bold; color: #4CAF50; color:rgb(139, 197, 244); 16/6/2026, 13:27:39 hotfix-v.5.1 v.5.1.28 @ https://www.casadellibro.com/assets/1781609259164/index-B7wzmE4C.js:7
+[    1381ms] [LOG] exclude_tp options [truman, abtasty, connectif, cookiepro, einstein, gtm, indigitall, salesforce, chatactiva, all] @ https://www.casadellibro.com/assets/1781609259164/index-B7wzmE4C.js:7
+[    1501ms] [LOG] view_item {event: view_item, context: Object, user: Object, ecommerce: Object, gtm.uniqueEventId: 11} @ https://www.casadellibro.com/assets/1781609259164/index-CnX8F1o1.js:0
+[    1604ms] [LOG] imPageView {event: imPageView, context: Object, user: Object, gtm.uniqueEventId: 44} @ https://www.casadellibro.com/assets/1781609259164/index-CnX8F1o1.js:0
+[    1741ms] [LOG] view_item {event: view_item, context: Object, user: Object, ecommerce: Object, gtm.uniqueEventId: 70} @ https://www.casadellibro.com/assets/1781609259164/index-CnX8F1o1.js:0

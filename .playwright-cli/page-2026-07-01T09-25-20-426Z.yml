@@ -1,0 +1,571 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e7]:
+        - link "5% dto. en libros, eBooks y audiolibros" [ref=e8] [cursor=pointer]:
+          - /url: /ventajas-comprar-online
+        - link "Envío GRATIS a partir de 19 €" [ref=e9] [cursor=pointer]:
+          - /url: /gastos-envio-gratis
+        - link "Descarga nuestra app gratis" [ref=e10] [cursor=pointer]:
+          - /url: /app-gratis
+      - generic [ref=e13]:
+        - link "Blog" [ref=e14] [cursor=pointer]:
+          - /url: https://www.casadellibro.com/blog/index.php
+        - link "Estado de tu pedido" [ref=e15] [cursor=pointer]:
+          - /url: /atc/estadoPedido
+        - link "Ayuda" [ref=e16] [cursor=pointer]:
+          - /url: /atc/asistente
+        - link "Venta a empresas e instituciones" [ref=e17] [cursor=pointer]:
+          - /url: /empresas/empresas
+    - generic [ref=e18]:
+      - link "Casa del Libro" [ref=e19] [cursor=pointer]:
+        - /url: /
+        - img "Casa del Libro" [ref=e21]
+      - generic "buscador" [ref=e23]:
+        - textbox "buscador" [ref=e24]:
+          - /placeholder: Busca por autor, título, género, ISBN
+        - img [ref=e26]
+      - link "Hazte socio" [ref=e28] [cursor=pointer]:
+        - /url: /programadesocios
+        - img [ref=e29]
+        - text: Hazte socio
+      - link "Librerías" [ref=e31] [cursor=pointer]:
+        - /url: /nosotros/nuestras-tiendas-nuestrastiendas/0
+        - img [ref=e32]
+        - text: Librerías
+      - button "login":
+        - img
+        - generic: Mi cuenta
+      - button "cesta":
+        - img
+      - navigation [ref=e35]:
+        - link "Imprescindibles" [ref=e37] [cursor=pointer]:
+          - /url: /libros-imprescindibles
+          - img [ref=e38]
+          - text: Imprescindibles
+        - generic [ref=e39]: "|"
+        - link "Ficción" [ref=e41] [cursor=pointer]:
+          - /url: /libros/literatura/121000000
+        - generic [ref=e42]: "|"
+        - link "No Ficción" [ref=e44] [cursor=pointer]:
+          - /url: /libros-no-ficcion
+        - generic [ref=e45]: "|"
+        - link "Cómic y Manga" [ref=e47] [cursor=pointer]:
+          - /url: /libros/comics/411000000
+        - generic [ref=e48]: "|"
+        - link "Juvenil" [ref=e50] [cursor=pointer]:
+          - /url: /libros/juvenil/473000000
+        - generic [ref=e51]: "|"
+        - link "Infantil" [ref=e53] [cursor=pointer]:
+          - /url: /libros/infantil/117000000
+        - generic [ref=e54]: "|"
+        - link "Books in English" [ref=e56] [cursor=pointer]:
+          - /url: /libros-en-ingles
+        - generic [ref=e57]: "|"
+        - link "Llibres en català" [ref=e59] [cursor=pointer]:
+          - /url: /llibres-en-catala
+        - generic [ref=e60]: "|"
+        - link "Libros de texto" [ref=e62] [cursor=pointer]:
+          - /url: /librosdetexto
+        - generic [ref=e63]: "|"
+        - link "eBooks/Audiolibros" [ref=e65] [cursor=pointer]:
+          - /url: /ebooks
+        - generic [ref=e66]: "|"
+        - link "Papelería" [ref=e68] [cursor=pointer]:
+          - /url: /papeleria
+        - generic [ref=e69]: "|"
+        - link "Ofertas" [ref=e71] [cursor=pointer]:
+          - /url: /libros-descuentos-especiales
+  - navigation "breadcrumbs" [ref=e72]:
+    - list [ref=e73]:
+      - listitem "home" [ref=e74]:
+        - link "regalo" [ref=e75] [cursor=pointer]:
+          - /url: /
+          - img "regalo" [ref=e76]
+        - img "breadcrum" [ref=e77]
+      - listitem [ref=e79]:
+        - link "Libros" [ref=e80] [cursor=pointer]:
+          - /url: /libros
+        - img "breadcrum" [ref=e81]
+      - listitem [ref=e83]:
+        - link "Economía y Empresa" [ref=e84] [cursor=pointer]:
+          - /url: /libros/economia-y-empresa/110000000
+        - img "breadcrum" [ref=e85]
+      - listitem [ref=e87]:
+        - link "Estudios y ensayos" [ref=e88] [cursor=pointer]:
+          - /url: /libros/economia-y-empresa/estudios-y-ensayos/110014000
+  - main [ref=e89]:
+    - generic [ref=e91]:
+      - link "Estudios y ensayos" [ref=e94] [cursor=pointer]:
+        - /url: /libros/economia-y-empresa/estudios-y-ensayos/110014000
+      - button "economía en una lección 2024-henry hazlitt-9788472099333" [ref=e96] [cursor=pointer]:
+        - img "economía en una lección 2024-henry hazlitt-9788472099333" [ref=e97]
+      - generic [ref=e98]:
+        - heading "Economía en una lección 2024" [level=1] [ref=e99]
+        - paragraph [ref=e100]: Edición revisada y aumentada
+        - generic [ref=e101]:
+          - text: Por
+          - link "Henry Hazlitt" [ref=e102] [cursor=pointer]:
+            - /url: /libros-ebooks/henry-hazlitt/839
+            - text: Henry Hazlitt
+            - img [ref=e103]
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - paragraph [ref=e107]:
+            - link "(2)" [ref=e113] [cursor=pointer]:
+              - /url: "#opiniones"
+          - button "Escribe una reseña y accede a ventajas" [ref=e114] [cursor=pointer]:
+            - img [ref=e115]
+            - text: Escribe una reseña y accede a ventajas
+        - link "Tapa blanda 13,83 €" [ref=e118] [cursor=pointer]:
+          - /url: /libro-economia-en-una-leccion-2024/9788472099333/16576970
+          - text: Tapa blanda
+          - generic [ref=e119]: 13,83 €
+        - generic [ref=e121]: 14,56 € 13,83 €
+        - generic [ref=e123]:
+          - img [ref=e124]
+          - text: "-5% de dto. exclusivo web"
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - img [ref=e129]
+              - generic [ref=e131]:
+                - strong [ref=e132]: Recíbelo
+                - text: el martes 30 de junio.
+                - tooltip "info" [ref=e133]:
+                  - img [ref=e134]
+            - button "Añadir a la cesta" [ref=e137] [cursor=pointer]:
+              - img [ref=e138]
+              - text: Añadir a la cesta
+          - separator [ref=e140]
+          - button "Ver disponibilidad en librerías y recogerlo gratis ver disponibilidad" [ref=e142] [cursor=pointer]:
+            - text: Ver disponibilidad en librerías y recogerlo gratis
+            - img "ver disponibilidad" [ref=e143]
+          - separator [ref=e145]
+          - link "Otros vendedores (nuevo y usado) desde 13,83 €" [ref=e146] [cursor=pointer]:
+            - /url: /vender-libro/economia-en-una-leccion-2024/9788472099333/16576970
+        - generic [ref=e148]:
+          - button "compartir" [ref=e149] [cursor=pointer]:
+            - img [ref=e150]
+            - text: Compartir
+          - generic [ref=e152]: "|"
+          - button "Añadir a mis listas" [ref=e153] [cursor=pointer]:
+            - img [ref=e154]
+            - text: Añadir a mis listas
+          - generic [ref=e156]: "|"
+          - button "Marcar como leído" [ref=e157] [cursor=pointer]:
+            - img [ref=e158]
+            - text: Marcar como leído
+    - generic [ref=e161]:
+      - heading "Sinopsis" [level=2] [ref=e162]
+      - generic [ref=e163]:
+        - text: A esta novena edición de uno de los grandes clásicos publicados en español por Unión Editorial, a los prólogos del economista Juan Ramón Rallo y del presidente argentino Javier Milei, se suma el del imprescindible economista y filósofo, periodista y profesor universitario mexicano Arturo Damm Arnal.
+        - text: "Además, se suman al libro existente dos capítulos adicionales: una revisión, por parte del propio Hazlitt, de su obra magna, y un breve tratado sobre los alquileres."
+        - text: Para quienes aún no se hayan adentrado en La economía en una lección, presentamos un brillante análisis de los sofismas económicos que en los últimos tiempos se han convertido en una nueva ortodoxia, a pesar de sus internas contradicciones. Actualmente, no existe en el mundo un solo gobierno importante cuya política económica no se halle influida, cuando no totalmente determinada, por alguno de estos sofismas.
+        - text: El camino más corto y seguro para comprender la economía y la política económica actuales es una previa disección de los sofismas y falacias de que adolecen, singularmente de la falacia radical de la que todas parten y que, como ya puso brillantemente de relieve Frédéric Bastiat, consiste en la tendencia a considerar exclusivamente las consecuencias inmediatas de una política y sus efectos sobre un sector particular, sin reparar en las que produciría a largo plazo y sobre el conjunto de la comunidad.
+    - generic [ref=e165]:
+      - heading "Ficha Técnica" [level=2] [ref=e166]
+      - generic [ref=e167]:
+        - generic [ref=e168]:
+          - generic [ref=e169]: "Traductor:"
+          - text: Marciano Villanueva
+        - 'heading "Editorial: Unión Editorial" [level=3] [ref=e170]':
+          - generic [ref=e171]: "Editorial:"
+          - text: Unión Editorial
+        - 'heading "ISBN: 9788472099333" [level=3] [ref=e172]':
+          - generic [ref=e173]: "ISBN:"
+          - text: "9788472099333"
+        - 'heading "Idioma: Castellano" [level=3] [ref=e174]':
+          - generic [ref=e175]: "Idioma:"
+          - text: Castellano
+        - 'heading "Número de páginas: 278" [level=3] [ref=e176]':
+          - generic [ref=e177]: "Número de páginas:"
+          - text: "278"
+        - 'heading "Encuadernación: Tapa blanda" [level=3] [ref=e178]':
+          - generic [ref=e179]: "Encuadernación:"
+          - text: Tapa blanda
+        - 'heading "Fecha de lanzamiento: 01/12/2024" [level=3] [ref=e180]':
+          - generic [ref=e181]: "Fecha de lanzamiento:"
+          - text: 01/12/2024
+        - 'heading "Año de edición: 2024" [level=3] [ref=e182]':
+          - generic [ref=e183]: "Año de edición:"
+          - text: "2024"
+        - generic [ref=e184]:
+          - generic [ref=e185]: "Plaza de edición:"
+          - text: Es
+        - generic [ref=e186]:
+          - generic [ref=e187]: "Colección:"
+          - generic [ref=e188]:
+            - generic [ref=e189]: LAISSEZ FAIRE
+            - tooltip "info" [ref=e190]:
+              - img [ref=e191]
+        - generic [ref=e193]:
+          - generic [ref=e194]: "Alto:"
+          - text: 21.0 cm
+        - generic [ref=e195]:
+          - generic [ref=e196]: "Ancho:"
+          - text: 13.0 cm
+        - generic [ref=e197]:
+          - generic [ref=e198]: "Peso:"
+          - text: 375.0 gr
+    - generic [ref=e200]:
+      - paragraph [ref=e201]: Especificaciones del producto
+      - generic [ref=e202]:
+        - button "Contacto de seguridad" [ref=e203] [cursor=pointer]:
+          - img [ref=e204]
+          - text: Contacto de seguridad
+        - button "Información otros vendedores" [ref=e206] [cursor=pointer]:
+          - img [ref=e207]
+          - text: Información otros vendedores
+    - generic [ref=e210]:
+      - generic [ref=e212]:
+        - heading "Escrito por Henry Hazlitt" [level=3] [ref=e213]
+        - generic [ref=e214]: Henry Hazlitt fue un brillante escritor de temas económicos y literarios, colaborador y columnista de importantes diarios como el Wall Street Journal y el New York Times. Durante más de 20 años fue director asociado de Newsweek. Es también autor de The Failure of New Economics, Man versus Welfare State, The Foundation of Ethics y The Conquest of Poverty. Ha sido considerado el periodista económico más importante del siglo XX en Estados Unidos y uno de los más destacados paladines de la libertad.
+        - link "Descubre más sobre Henry Hazlitt enlace" [ref=e215] [cursor=pointer]:
+          - /url: /libros-ebooks/henry-hazlitt/839
+          - text: Descubre más sobre Henry Hazlitt
+          - img "enlace" [ref=e216]
+      - generic [ref=e218]:
+        - img [ref=e219]
+        - paragraph [ref=e221]: Recibe novedades de Henry Hazlitt directamente en tu email
+        - generic [ref=e223]:
+          - textbox [ref=e226]:
+            - /placeholder: Introduce tu correo electrónico
+          - button "Suscribirme" [ref=e227] [cursor=pointer]
+    - generic [ref=e230]:
+      - heading "Reseñas sobre Economía en una lección 2024" [level=3] [ref=e231]:
+        - text: Reseñas sobre
+        - generic [ref=e232]: Economía en una lección 2024
+      - paragraph [ref=e233]: Comparte tu experiencia con la comunidad lectora.
+      - generic [ref=e234]:
+        - generic [ref=e235]:
+          - paragraph [ref=e236]: "4.5"
+          - paragraph [ref=e242]: 2 Reseñas
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - text: "5"
+            - img [ref=e245]
+            - progressbar [ref=e247]
+            - generic [ref=e248]: "1"
+          - generic [ref=e249]:
+            - text: "4"
+            - img [ref=e250]
+            - progressbar [ref=e252]
+            - generic [ref=e253]: "1"
+          - generic [ref=e254]:
+            - text: "3"
+            - img [ref=e255]
+            - progressbar [ref=e257]
+            - generic [ref=e258]: "0"
+          - generic [ref=e259]:
+            - text: "2"
+            - img [ref=e260]
+            - progressbar [ref=e262]
+            - generic [ref=e263]: "0"
+          - generic [ref=e264]:
+            - text: "1"
+            - img [ref=e265]
+            - progressbar [ref=e267]
+            - generic [ref=e268]: "0"
+        - generic [ref=e269]:
+          - paragraph [ref=e270]:
+            - generic [ref=e271]:
+              - text: Sólo por opinar entras en el sorteo mensual de tres tarjetas regalo valoradas en
+              - text: 20€
+          - tooltip "info" [ref=e272]:
+            - img [ref=e273]
+          - paragraph
+          - button "Escribir reseña" [ref=e277] [cursor=pointer]
+      - generic [ref=e278]:
+        - text: 1 - 2 de 2 reseñas
+        - generic [ref=e280]:
+          - img [ref=e281]
+          - textbox "ordenar opiniones" [ref=e283]:
+            - /placeholder: ""
+            - text: Más recientes
+          - img [ref=e284]
+      - separator [ref=e286]
+      - generic [ref=e287]:
+        - generic [ref=e288]:
+          - generic "Vicente López Broseta" [ref=e289]:
+            - generic [ref=e291]: V
+          - generic [ref=e292]: Vicente López Broseta
+        - generic [ref=e293]:
+          - paragraph [ref=e294]:
+            - text: "|"
+            - generic [ref=e300]: hace 2 meses
+          - paragraph [ref=e301]: Una lectura clara y directa que desmonta mitos económicos con ejemplos sencillos. Actualiza ideas clásicas a 2024 y te obliga a replantear políticas habituales. Breve, provocador y sorprendentemente útil para entender decisiones públicas.
+          - button "denunciar" [ref=e302] [cursor=pointer]:
+            - img [ref=e303]
+            - text: Denunciar
+      - separator [ref=e305]
+      - generic [ref=e306]:
+        - generic [ref=e307]:
+          - generic "Raúl" [ref=e308]:
+            - generic [ref=e310]: R
+          - generic [ref=e311]: Raúl
+        - generic [ref=e312]:
+          - paragraph [ref=e313]:
+            - text: "|"
+            - generic [ref=e319]: hace 1 año
+          - paragraph [ref=e320]: Muy didáctico y fácil de entender, recomendable si quieres empezar a leer sobre este tipo de corriente/escuela o economía básica en general.
+          - button "denunciar" [ref=e321] [cursor=pointer]:
+            - img [ref=e322]
+            - text: Denunciar
+      - separator [ref=e324]
+      - link "Todas las reseñas todas las opiniones" [ref=e326] [cursor=pointer]:
+        - /url: /opiniones-libro/economia-en-una-leccion-2024/9788472099333/16576970
+        - text: Todas las reseñas
+        - img "todas las opiniones" [ref=e327]
+    - generic [ref=e330]:
+      - heading "Los libros más vendidos de Estudios y ensayos" [level=3] [ref=e332]
+      - generic [ref=e333]:
+        - generic [ref=e334]:
+          - link "por qué los multimillonarios no pagan impuestos sobre la renta y cómo vamos a ponerle fin-gabriel zucman-9788433949622" [ref=e335] [cursor=pointer]:
+            - /url: /libro-por-que-los-multimillonarios-no-pagan-impuestos-sobre-la-renta-y-como-vamos-a-ponerle-fin/9788433949622/18051340
+            - img "por qué los multimillonarios no pagan impuestos sobre la renta y cómo vamos a ponerle fin-gabriel zucman-9788433949622"
+          - generic [ref=e336]: Tapa blanda
+          - link "Por qué los multimillonarios no pagan impuestos sobre la renta y cómo vamos a ponerle fin" [ref=e337] [cursor=pointer]:
+            - /url: /libro-por-que-los-multimillonarios-no-pagan-impuestos-sobre-la-renta-y-como-vamos-a-ponerle-fin/9788433949622/18051340
+          - paragraph [ref=e338]: Gabriel Zucman
+          - button "Añadir a la cesta" [ref=e343] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e344]
+        - generic [ref=e346]:
+          - link "dinero, credito bancario y ciclos económicos (9.ª edición)_-jesus huerta de soto-9788472099692" [ref=e347] [cursor=pointer]:
+            - /url: /libro-dinero-credito-bancario-y-ciclos-economicos-9-edicion-/9788472099692/18158159
+            - img "dinero, credito bancario y ciclos económicos (9.ª edición)_-jesus huerta de soto-9788472099692"
+          - generic [ref=e348]: Tapa blanda
+          - link "DINERO, CREDITO BANCARIO Y CICLOS ECONÓMICOS (9.ª EDICIÓN)_" [ref=e349] [cursor=pointer]:
+            - /url: /libro-dinero-credito-bancario-y-ciclos-economicos-9-edicion-/9788472099692/18158159
+          - paragraph [ref=e350]: Jesús Huerta de Soto
+          - button "Añadir a la cesta" [ref=e355] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e356]
+        - generic [ref=e358]:
+          - link "la maldición del ganador-richard thaler-alex o. imas-9788423439027" [ref=e359] [cursor=pointer]:
+            - /url: /libro-la-maldicion-del-ganador/9788423439027/17994975
+            - img "la maldición del ganador-richard thaler-alex o. imas-9788423439027"
+          - generic [ref=e360]: Tapa blanda
+          - link "La maldición del ganador" [ref=e361] [cursor=pointer]:
+            - /url: /libro-la-maldicion-del-ganador/9788423439027/17994975
+          - paragraph [ref=e362]: Richard Thaler
+          - button "Añadir a la cesta" [ref=e367] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e368]
+        - generic [ref=e370]:
+          - link "muskismo-quinn slobodian-9788430628018" [ref=e371] [cursor=pointer]:
+            - /url: /libro-muskismo/9788430628018/17955772
+            - img "muskismo-quinn slobodian-9788430628018"
+          - generic [ref=e372]: Tapa blanda
+          - link "Muskismo" [ref=e373] [cursor=pointer]:
+            - /url: /libro-muskismo/9788430628018/17955772
+          - paragraph [ref=e374]: Quinn Slobodian
+          - button "Añadir a la cesta" [ref=e379] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e380]
+        - generic [ref=e382]:
+          - link "déficit-emma holten-9788432250293" [ref=e383] [cursor=pointer]:
+            - /url: /libro-deficit/9788432250293/18067494
+            - img "déficit-emma holten-9788432250293"
+          - generic [ref=e384]: Tapa blanda
+          - link "Déficit" [ref=e385] [cursor=pointer]:
+            - /url: /libro-deficit/9788432250293/18067494
+          - paragraph [ref=e386]: Emma Holten
+          - button "Añadir a la cesta" [ref=e391] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e392]
+        - generic [ref=e394]:
+          - link "socialismo, cálculo económico y función empresarial 2026-jesus huerta de soto-9788472099708" [ref=e395] [cursor=pointer]:
+            - /url: /libro-socialismo-calculo-economico-y-funcion-empresarial-2026/9788472099708/18079726
+            - img "socialismo, cálculo económico y función empresarial 2026-jesus huerta de soto-9788472099708"
+          - generic [ref=e396]: Tapa blanda
+          - link "SOCIALISMO, CÁLCULO ECONÓMICO Y FUNCIÓN EMPRESARIAL 2026" [ref=e397] [cursor=pointer]:
+            - /url: /libro-socialismo-calculo-economico-y-funcion-empresarial-2026/9788472099708/18079726
+          - paragraph [ref=e398]: Jesús Huerta de Soto
+          - button "Añadir a la cesta" [ref=e403] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e404]
+        - generic [ref=e406]:
+          - link "lecciones de economía-sergio a. berumen-9788411921480" [ref=e407] [cursor=pointer]:
+            - /url: /libro-lecciones-de-economia/9788411921480/18240047
+            - img "lecciones de economía-sergio a. berumen-9788411921480"
+          - generic [ref=e408]: Tapa blanda
+          - link "LECCIONES DE ECONOMÍA" [ref=e409] [cursor=pointer]:
+            - /url: /libro-lecciones-de-economia/9788411921480/18240047
+          - paragraph [ref=e410]: SERGIO A. BERUMEN
+          - generic [ref=e414]: ¡Últimas unidades!
+          - button "Añadir a la cesta" [ref=e416] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e417]
+        - generic [ref=e419]:
+          - link "economía comprensible-howard yaruss-9788411723817" [ref=e420] [cursor=pointer]:
+            - /url: /libro-economia-comprensible/9788411723817/18055088
+            - img "economía comprensible-howard yaruss-9788411723817"
+          - generic [ref=e421]: Tapa blanda
+          - link "Economía comprensible" [ref=e422] [cursor=pointer]:
+            - /url: /libro-economia-comprensible/9788411723817/18055088
+          - paragraph [ref=e423]: HOWARD YARUSS
+          - button "Añadir a la cesta" [ref=e428] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e429]
+        - generic [ref=e431]:
+          - link "jakob fugger-greg steinmetz-9791388182068" [ref=e432] [cursor=pointer]:
+            - /url: /libro-jakob-fugger/9791388182068/18244557
+            - img "jakob fugger-greg steinmetz-9791388182068"
+          - generic [ref=e433]: Tapa blanda
+          - link "JAKOB FUGGER" [ref=e434] [cursor=pointer]:
+            - /url: /libro-jakob-fugger/9791388182068/18244557
+          - paragraph [ref=e435]: GREG STEINMETZ
+          - button "Añadir a la cesta" [ref=e440] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e441]
+        - generic [ref=e443]:
+          - link "ahora, ahorra-carlos rodriguez braun-9791388130168" [ref=e444] [cursor=pointer]:
+            - /url: /libro-ahora-ahorra/9791388130168/18213060
+            - img "ahora, ahorra-carlos rodriguez braun-9791388130168"
+          - generic [ref=e445]: Tapa blanda
+          - link "AHORA, AHORRA" [ref=e446] [cursor=pointer]:
+            - /url: /libro-ahora-ahorra/9791388130168/18213060
+          - paragraph [ref=e447]: Carlos Rodríguez Braun
+          - button "Añadir a la cesta" [ref=e452] [cursor=pointer]:
+            - text: Añadir a la cesta
+            - img [ref=e453]
+        - generic [ref=e455]:
+          - button "anterior" [disabled] [ref=e456]:
+            - img [ref=e457]
+          - button "siguiente" [disabled] [ref=e459]:
+            - img [ref=e460]
+  - contentinfo [ref=e462]:
+    - generic [ref=e463]:
+      - generic [ref=e464]:
+        - img "ventajas" [ref=e465]
+        - paragraph [ref=e467]: Compra segura
+      - generic [ref=e468]:
+        - img "envío" [ref=e469]
+        - paragraph [ref=e471]: Envío gratis a partir de 19 €
+      - generic [ref=e472]:
+        - img "tiendas" [ref=e473]
+        - paragraph [ref=e475]: Recogida en librería gratis
+      - generic [ref=e476]:
+        - img "devolución" [ref=e477]
+        - paragraph [ref=e479]: Devoluciones gratis hasta 14 días
+    - generic [ref=e482]:
+      - paragraph [ref=e483]: Nuestras novedades de libros en tu mail
+      - generic [ref=e485]:
+        - textbox [ref=e488]:
+          - /placeholder: Introduce tu correo electrónico
+        - button "Suscribirme" [ref=e489] [cursor=pointer]
+    - generic [ref=e493]:
+      - generic [ref=e494]:
+        - img "logo-CDL-Footer" [ref=e495]
+        - generic [ref=e496]:
+          - link "ir a casadellibro en Facebook" [ref=e497] [cursor=pointer]:
+            - /url: https://www.facebook.com/casadellibro
+            - img [ref=e498]
+          - link "ir a casadellibro en Twitter" [ref=e500] [cursor=pointer]:
+            - /url: https://twitter.com/casadellibro
+            - img [ref=e501]
+          - link "ir a casadellibro en Instagram" [ref=e503] [cursor=pointer]:
+            - /url: https://www.instagram.com/casadellibro/?hl=es
+            - img [ref=e504]
+          - link "ir a casadellibro en YouTube" [ref=e506] [cursor=pointer]:
+            - /url: https://www.youtube.com/user/casadellibropuntocom
+            - img [ref=e507]
+          - link "ir a casadellibro en Pinterest" [ref=e509] [cursor=pointer]:
+            - /url: https://www.pinterest.es/casadellibro
+            - img [ref=e510]
+          - link "ir a casadellibro en Spotify" [ref=e512] [cursor=pointer]:
+            - /url: https://open.spotify.com/user/wi2k27ijtmw114f531okf8nd4?si=JEaWkM75S56kXufnbmExww
+            - img [ref=e513]
+          - link "ir a casadellibro en TikTok" [ref=e515] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@casadellibro?lang=es
+            - img [ref=e516]
+      - generic [ref=e518]:
+        - generic [ref=e519]:
+          - paragraph [ref=e520]: Casa del Libro
+          - link "Quienes somos" [ref=e521] [cursor=pointer]:
+            - /url: /nosotros/quienesSomos
+          - link "Trabaja con nosotros" [ref=e522] [cursor=pointer]:
+            - /url: /nosotros/trabajaNosotros
+          - link "Nuestras librerías" [ref=e523] [cursor=pointer]:
+            - /url: /nosotros/nuestras-tiendas-nuestrastiendas/0
+          - link "Casa del Libro México" [ref=e524] [cursor=pointer]:
+            - /url: https://latam.casadellibro.com/
+          - link "Casa del Libro Colombia" [ref=e525] [cursor=pointer]:
+            - /url: https://www.casadellibro.com.co/
+        - generic [ref=e526]:
+          - paragraph [ref=e527]: Ayuda
+          - link "Pago seguro con tarjeta" [ref=e528] [cursor=pointer]:
+            - /url: https://www.casadellibro.com/pago-seguro-PSD2
+          - link "Pagar con Klarna" [ref=e529] [cursor=pointer]:
+            - /url: /klarna
+          - link "Devoluciones" [ref=e530] [cursor=pointer]:
+            - /url: /atc/asistente
+          - link "Gastos y formas de envío" [ref=e531] [cursor=pointer]:
+            - /url: /gastos-de-envio-y-recogida-en-libreria
+          - link "Preguntas frecuentes" [ref=e532] [cursor=pointer]:
+            - /url: /atc/asistente
+          - link "Estado de tu pedido" [ref=e533] [cursor=pointer]:
+            - /url: /atc/estadoPedido
+          - link "Incidencias de pedidos" [ref=e534] [cursor=pointer]:
+            - /url: /atc/asistente
+          - link "Contacta con nosotros" [ref=e535] [cursor=pointer]:
+            - /url: /atencion-al-cliente/consulta-dudas
+          - link "Bono Cultural Joven" [ref=e536] [cursor=pointer]:
+            - /url: /bono-cultural-joven
+        - generic [ref=e537]:
+          - paragraph [ref=e538]: Servicios
+          - link "Casa del Libro Plus" [ref=e539] [cursor=pointer]:
+            - /url: /ayuda/cdlPlus
+          - link "Vende con nosotros" [ref=e540] [cursor=pointer]:
+            - /url: /vende-con-nosotros
+          - link "Venta a Empresas e Instituciones" [ref=e541] [cursor=pointer]:
+            - /url: /empresas/empresas
+          - link "Preventa" [ref=e542] [cursor=pointer]:
+            - /url: /proximos-lanzamientos-en-libros
+          - link "Información para editoriales" [ref=e543] [cursor=pointer]:
+            - /url: /faq-informacion-editoriales
+          - link "Libros al por mayor" [ref=e544] [cursor=pointer]:
+            - /url: /empresas/empresas
+          - link "Programa afiliados" [ref=e545] [cursor=pointer]:
+            - /url: /afiliado
+        - generic [ref=e546]:
+          - paragraph [ref=e547]: Información legal
+          - link "Condiciones generales" [ref=e548] [cursor=pointer]:
+            - /url: /ventajas-comprar-online
+          - link "Condiciones de uso" [ref=e549] [cursor=pointer]:
+            - /url: /ayuda/condicionesUso
+          - link "Condiciones de contratación" [ref=e550] [cursor=pointer]:
+            - /url: /ayuda/condicionesContratacion
+          - link "Condiciones para vender" [ref=e551] [cursor=pointer]:
+            - /url: /ayuda/condVentaSegMano
+          - link "Política de privacidad" [ref=e552] [cursor=pointer]:
+            - /url: /ayuda/politica_de_privacidad
+          - link "Política de devoluciones y anulaciones" [ref=e553] [cursor=pointer]:
+            - /url: /ayuda/politicasDevolucion
+          - link "Política de cookies" [ref=e554] [cursor=pointer]:
+            - /url: /politica-cookies
+          - button "Política de cookies" [ref=e555] [cursor=pointer]
+          - link "Resolución de litigios en línea" [ref=e556] [cursor=pointer]:
+            - /url: /resolucion-de-litigios-en-linea
+          - link "Oficina de Buenas Prácticas" [ref=e557] [cursor=pointer]:
+            - /url: https://www.planeta.es/es/oficina-de-buenas-practicas
+    - generic [ref=e559]:
+      - link "Comercial Grupo Anaya" [ref=e560] [cursor=pointer]:
+        - /url: /libros-comercial-grupo-anaya
+        - img "Comercial Grupo Anaya" [ref=e561]
+      - link "Random House Mondadori" [ref=e562] [cursor=pointer]:
+        - /url: /escaparate-penguin-random-house-mondadori
+        - img "Random House Mondadori" [ref=e563]
+      - link "Grupo Planeta" [ref=e564] [cursor=pointer]:
+        - /url: /escaparate-grupo-planeta
+        - img "Grupo Planeta" [ref=e565]
+      - link "SM" [ref=e566] [cursor=pointer]:
+        - /url: /libros-editorial-sm
+        - img "SM" [ref=e567]
+    - generic [ref=e569]:
+      - paragraph [ref=e570]: © 2026 Casa del Libro. Todos los derechos reservados. v.5.1.28
+      - generic [ref=e571]:
+        - img "plan avanza" [ref=e572]
+        - img "gobierno logo" [ref=e573]

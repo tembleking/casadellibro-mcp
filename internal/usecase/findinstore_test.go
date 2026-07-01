@@ -69,21 +69,42 @@ var _ = Describe("FindBooksInStore", func() {
 		Expect(res.Books[1].ProductID).To(Equal("3"))
 	})
 
-	It("caps the scan at max_scan and reports truncation", func() {
+	It("scans one page from start and reports the next page", func() {
 		catalog.EXPECT().
 			Search(gomock.Any(), gomock.Any()).
 			DoAndReturn(func(_ context.Context, q domain.SearchQuery) (domain.SearchResult, error) {
-				Expect(q.Rows).To(Equal(100))
+				Expect(q.Start).To(Equal(10))
+				Expect(q.Rows).To(Equal(1)) // limit 1 -> fetch only 1 row
 				return domain.SearchResult{Total: 500, Books: []domain.Book{{ProductID: "1"}}}, nil
 			})
 		stock.EXPECT().StockByStore(gomock.Any(), "1", 63).
 			Return([]domain.Province{{Name: "Z", Bookstores: []domain.Bookstore{{StoreID: 38, Stock: 0}}}}, nil)
 
-		res, err := uc.Execute(ctx, usecase.FindInStoreQuery{Query: "x", StoreID: 38, MaxScan: 1})
+		res, err := uc.Execute(ctx, usecase.FindInStoreQuery{Query: "x", StoreID: 38, Start: 10, Limit: 1})
 		Expect(err).ToNot(HaveOccurred())
+		Expect(res.Start).To(Equal(10))
 		Expect(res.Scanned).To(Equal(1))
+		Expect(res.NextStart).To(Equal(11))
 		Expect(res.Total).To(Equal(500))
-		Expect(res.Truncated).To(BeTrue())
+		Expect(res.HasMore).To(BeTrue())
 		Expect(res.Books).To(BeEmpty())
+	})
+
+	It("de-duplicates repeated product ids within a page", func() {
+		catalog.EXPECT().
+			Search(gomock.Any(), gomock.Any()).
+			Return(domain.SearchResult{
+				Total: 2,
+				Books: []domain.Book{{ProductID: "1"}, {ProductID: "1"}},
+			}, nil)
+		// dedup -> product 1 checked once
+		stock.EXPECT().StockByStore(gomock.Any(), "1", 63).
+			Return([]domain.Province{{Name: "Z", Bookstores: []domain.Bookstore{{StoreID: 38, Stock: 1}}}}, nil)
+
+		res, err := uc.Execute(ctx, usecase.FindInStoreQuery{Query: "x", StoreID: 38})
+		Expect(err).ToNot(HaveOccurred())
+		Expect(res.Scanned).To(Equal(2)) // two catalog positions consumed
+		Expect(res.Books).To(HaveLen(1)) // but only one unique book
+		Expect(res.HasMore).To(BeFalse())
 	})
 })

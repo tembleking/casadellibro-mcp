@@ -62,10 +62,12 @@ var (
 	searchOutputSchema = mustSchema(map[string]any{
 		"type": "object",
 		"properties": map[string]any{
-			"total": map[string]any{"type": "integer"},
-			"start": map[string]any{"type": "integer"},
-			"rows":  map[string]any{"type": "integer"},
-			"books": map[string]any{"type": "array", "items": itemSchema(bookFieldTypes)},
+			"total":      map[string]any{"type": "integer"},
+			"start":      map[string]any{"type": "integer"},
+			"rows":       map[string]any{"type": "integer"},
+			"next_start": map[string]any{"type": "integer"},
+			"has_more":   map[string]any{"type": "boolean"},
+			"books":      map[string]any{"type": "array", "items": itemSchema(bookFieldTypes)},
 		},
 	})
 
@@ -93,11 +95,13 @@ var (
 	findInStoreOutputSchema = mustSchema(map[string]any{
 		"type": "object",
 		"properties": map[string]any{
-			"books":     map[string]any{"type": "array", "items": bookInStoreItemSchema()},
-			"found":     map[string]any{"type": "integer"},
-			"scanned":   map[string]any{"type": "integer"},
-			"total":     map[string]any{"type": "integer"},
-			"truncated": map[string]any{"type": "boolean"},
+			"books":      map[string]any{"type": "array", "items": bookInStoreItemSchema()},
+			"found":      map[string]any{"type": "integer"},
+			"start":      map[string]any{"type": "integer"},
+			"scanned":    map[string]any{"type": "integer"},
+			"next_start": map[string]any{"type": "integer"},
+			"total":      map[string]any{"type": "integer"},
+			"has_more":   map[string]any{"type": "boolean"},
 		},
 	})
 

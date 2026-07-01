@@ -35,9 +35,14 @@ To answer "is X available at store Y", resolve the store with `list_stores`
 `store_id`, or `find_books_in_store` which does the search + per-store stock join
 server-side. To browse a whole publisher/collection at a store, pass the facet value
 as the `query` (e.g. `"Unión Editorial"`) plus its filter — the catalog requires a
-non-empty query, but querying the facet's own name matches its full set. Note the
-join is O(N) stock calls, so `find_books_in_store` scans up to `max_scan` candidates
-and sets `truncated: true` if there were more.
+non-empty query, but querying the facet's own name matches its full set.
+
+Pagination: `search_books` uses `start`/`rows` and returns `next_start` + `has_more`.
+`find_books_in_store` is O(N) stock calls, so it paginates over catalog candidates —
+it scans `limit` candidates from `start` and returns `next_start` + `has_more`; loop
+by passing the previous `next_start` as `start` until `has_more` is false. It
+de-duplicates by `product_id` within a page (the empathy search occasionally repeats
+an item across page boundaries, and only exposes roughly the first ~2000 matches).
 
 `search_books` and `get_store_stock` require a `fields` array that projects the
 response down to the fields you ask for (book fields and bookstore fields

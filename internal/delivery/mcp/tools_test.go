@@ -123,7 +123,7 @@ var _ = Describe("MCP tools", func() {
 			Expect(isErr).To(BeFalse())
 
 			lines := strings.Split(text, "\n")
-			Expect(lines[0]).To(Equal("total=1758 start=0 rows=0"))
+			Expect(lines[0]).To(Equal("total=1758 start=0 rows=0 next_start=1 has_more=true"))
 			Expect(lines[1]).To(Equal("name\tproduct_id"))
 			Expect(lines[2]).To(Equal("HP\t17422393"))
 		})
