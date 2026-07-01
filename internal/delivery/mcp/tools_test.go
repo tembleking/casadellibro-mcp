@@ -2,6 +2,7 @@ package mcp_test
 
 import (
 	"context"
+	"encoding/json"
 	"strings"
 
 	. "github.com/onsi/ginkgo/v2"
@@ -26,18 +27,35 @@ var _ = Describe("MCP tools", func() {
 		ctx     context.Context
 	)
 
-	// callText invokes a tool and returns its first text-content block plus the error flag.
-	callText := func(name string, args map[string]any) (string, bool) {
+	call := func(name string, args map[string]any) *mcpproto.CallToolResult {
 		GinkgoHelper()
 		req := mcpproto.CallToolRequest{}
 		req.Params.Name = name
 		req.Params.Arguments = args
 		res, err := client.CallTool(ctx, req)
 		Expect(err).ToNot(HaveOccurred())
+		return res
+	}
+
+	// callText invokes a tool and returns its first text-content block plus the error flag.
+	callText := func(name string, args map[string]any) (string, bool) {
+		GinkgoHelper()
+		res := call(name, args)
 		Expect(res.Content).ToNot(BeEmpty())
 		txt, ok := mcpproto.AsTextContent(res.Content[0])
 		Expect(ok).To(BeTrue())
 		return txt.Text, res.IsError
+	}
+
+	// structured invokes a tool and returns its structuredContent as a generic map.
+	structured := func(name string, args map[string]any) map[string]any {
+		GinkgoHelper()
+		res := call(name, args)
+		b, err := json.Marshal(res.StructuredContent)
+		Expect(err).ToNot(HaveOccurred())
+		var m map[string]any
+		Expect(json.Unmarshal(b, &m)).To(Succeed())
+		return m
 	}
 
 	BeforeEach(func() {
@@ -117,6 +135,26 @@ var _ = Describe("MCP tools", func() {
 				"fields":  []any{"name"},
 			})
 			Expect(isErr).To(BeFalse())
+		})
+
+		It("also returns structuredContent projected to the requested fields", func() {
+			catalog.EXPECT().
+				Search(gomock.Any(), gomock.Any()).
+				Return(domain.SearchResult{
+					Total: 42,
+					Books: []domain.Book{{Name: "HP", ProductID: "123", ISBN: "978"}},
+				}, nil)
+
+			sc := structured("search_books", map[string]any{
+				"query":  "Harry Potter",
+				"fields": []any{"name", "product_id"},
+			})
+			Expect(sc["total"]).To(BeNumerically("==", 42))
+			books := sc["books"].([]any)
+			Expect(books).To(HaveLen(1))
+			book := books[0].(map[string]any)
+			Expect(book).To(HaveKeyWithValue("product_id", "123"))
+			Expect(book).ToNot(HaveKey("isbn"))
 		})
 
 		It("renders scalar cells (price, joined authors) as plain text, never JSON", func() {
@@ -204,6 +242,19 @@ var _ = Describe("MCP tools", func() {
 			Expect(lines[1]).To(Equal("facetLang:Castellano\t(738)"))
 		})
 
+		It("wraps the facets under a facets key in structuredContent", func() {
+			catalog.EXPECT().
+				Facets(gomock.Any(), gomock.Any()).
+				Return([]domain.Facet{{Label: "Idioma", Type: "value", Values: []domain.FacetValue{
+					{Value: "Castellano", Count: 738, Filter: "facetLang:Castellano"},
+				}}}, nil)
+
+			sc := structured("search_books_available_filters", map[string]any{"query": "Harry Potter"})
+			facets := sc["facets"].([]any)
+			Expect(facets).To(HaveLen(1))
+			Expect(facets[0].(map[string]any)).To(HaveKeyWithValue("label", "Idioma"))
+		})
+
 		It("returns a tool error when query is missing", func() {
 			_, isErr := callText("search_books_available_filters", map[string]any{})
 			Expect(isErr).To(BeTrue())
@@ -255,6 +306,27 @@ var _ = Describe("MCP tools", func() {
 			// unrequested fields (phone, email) are absent.
 			Expect(text).ToNot(ContainSubstring("900"))
 			Expect(text).ToNot(ContainSubstring("x@y"))
+		})
+
+		It("wraps provinces under a provinces key in structuredContent", func() {
+			stock.EXPECT().
+				StockByStore(gomock.Any(), "16801604", 63).
+				Return([]domain.Province{{
+					Name:       "Alicante",
+					Bookstores: []domain.Bookstore{{City: "Elche", Stock: 2, Phone: "900"}},
+				}}, nil)
+
+			sc := structured("get_store_stock", map[string]any{
+				"product_id": "16801604",
+				"fields":     []any{"city", "stock"},
+			})
+			provinces := sc["provinces"].([]any)
+			Expect(provinces).To(HaveLen(1))
+			p := provinces[0].(map[string]any)
+			Expect(p).To(HaveKeyWithValue("name", "Alicante"))
+			store := p["bookstores"].([]any)[0].(map[string]any)
+			Expect(store).To(HaveKeyWithValue("city", "Elche"))
+			Expect(store).ToNot(HaveKey("phone"))
 		})
 
 		It("returns a tool error for an unknown field", func() {

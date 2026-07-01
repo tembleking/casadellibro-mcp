@@ -24,6 +24,7 @@ func registerFiltersTool(s *server.MCPServer, uc *usecase.ListSearchFilters) {
 		mcp.WithString("store", mcp.Description("Store/market code. Default ES.")),
 		mcp.WithString("lang", mcp.Description("Language code. Default es.")),
 		mcp.WithString("currency", mcp.Description("Currency code. Default EUR.")),
+		mcp.WithRawOutputSchema(facetsOutputSchema),
 	)
 
 	s.AddTool(tool, func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -40,7 +41,7 @@ func registerFiltersTool(s *server.MCPServer, uc *usecase.ListSearchFilters) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return mcp.NewToolResultText(renderFacets(facets)), nil
+		return mcp.NewToolResultStructured(map[string]any{"facets": facets}, renderFacets(facets)), nil
 	})
 }
 
@@ -62,6 +63,7 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 		mcp.WithString("store", mcp.Description("Store/market code. Default ES.")),
 		mcp.WithString("lang", mcp.Description("Language code. Default es.")),
 		mcp.WithString("currency", mcp.Description("Currency code. Default EUR.")),
+		mcp.WithRawOutputSchema(searchOutputSchema),
 	)
 
 	s.AddTool(tool, func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -86,11 +88,21 @@ func registerSearchTool(s *server.MCPServer, uc *usecase.SearchBooks) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
+		books, err := projectItems(result.Books, fields)
+		if err != nil {
+			return mcp.NewToolResultError(err.Error()), nil
+		}
+		structured := map[string]any{
+			"total": result.Total,
+			"start": result.Start,
+			"rows":  result.Rows,
+			"books": books,
+		}
 		text, err := renderSearch(result, fields)
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return mcp.NewToolResultText(text), nil
+		return mcp.NewToolResultStructured(structured, text), nil
 	})
 }
 
@@ -104,6 +116,7 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 			mcp.Description(fieldsDescription("bookstore", bookstoreFields)),
 			mcp.WithStringItems(),
 		),
+		mcp.WithRawOutputSchema(stockOutputSchema),
 	)
 
 	s.AddTool(tool, func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -119,10 +132,18 @@ func registerStockTool(s *server.MCPServer, uc *usecase.GetStoreStock) {
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
+		out := make([]map[string]any, 0, len(provinces))
+		for _, p := range provinces {
+			stores, err := projectItems(p.Bookstores, fields)
+			if err != nil {
+				return mcp.NewToolResultError(err.Error()), nil
+			}
+			out = append(out, map[string]any{"name": p.Name, "bookstores": stores})
+		}
 		text, err := renderStock(provinces, fields)
 		if err != nil {
 			return mcp.NewToolResultError(err.Error()), nil
 		}
-		return mcp.NewToolResultText(text), nil
+		return mcp.NewToolResultStructured(map[string]any{"provinces": out}, text), nil
 	})
 }
