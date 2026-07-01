@@ -19,3 +19,6 @@ result
 
 # macOS
 .DS_Store
+
+# local MCP client config
+.mcp.json
