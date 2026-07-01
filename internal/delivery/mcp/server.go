@@ -10,9 +10,11 @@ import (
 
 // Handlers groups the use cases the MCP server exposes.
 type Handlers struct {
-	Search  *usecase.SearchBooks
-	Filters *usecase.ListSearchFilters
-	Stock   *usecase.GetStoreStock
+	Search      *usecase.SearchBooks
+	Filters     *usecase.ListSearchFilters
+	Stock       *usecase.GetStoreStock
+	Stores      *usecase.ListStores
+	FindInStore *usecase.FindBooksInStore
 }
 
 // NewServer builds an MCP server with the casadellibro tools registered.
@@ -25,6 +27,8 @@ func NewServer(name, version string, h Handlers) *server.MCPServer {
 	registerFiltersTool(s, h.Filters)
 	registerSearchTool(s, h.Search)
 	registerStockTool(s, h.Stock)
+	registerStoresTool(s, h.Stores)
+	registerFindInStoreTool(s, h.FindInStore)
 	return s
 }
 

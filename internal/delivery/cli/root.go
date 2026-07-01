@@ -49,10 +49,15 @@ func newServeCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			client := casadellibro.NewClient()
 			catalog := casadellibro.NewCatalogAdapter(client)
+			stockRepo := casadellibro.NewStockAdapter(client)
+			search := usecase.NewSearchBooks(catalog)
+			stock := usecase.NewGetStoreStock(stockRepo)
 			handlers := mcp.Handlers{
-				Search:  usecase.NewSearchBooks(catalog),
-				Filters: usecase.NewListSearchFilters(catalog),
-				Stock:   usecase.NewGetStoreStock(casadellibro.NewStockAdapter(client)),
+				Search:      search,
+				Filters:     usecase.NewListSearchFilters(catalog),
+				Stock:       stock,
+				Stores:      usecase.NewListStores(stockRepo),
+				FindInStore: usecase.NewFindBooksInStore(search, stock),
 			}
 			srv := mcp.NewServer(appName, version, handlers)
 

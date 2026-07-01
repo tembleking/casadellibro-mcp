@@ -14,7 +14,9 @@ per-store stock as Model Context Protocol tools.
 |------|-------------|------------------|
 | `search_books_available_filters` | Discover the filters available for a query (language, binding, availability, price ranges, publisher…), each value with a ready-to-use filter string. | `api.empathy.co/search/v1/query/cdl/facets` |
 | `search_books` | Free-text catalog search (price, availability, ISBN, `product_id`), narrowable with the filter strings above. | `api.empathy.co/search/v1/query/cdl/search` |
-| `get_store_stock` | Per-bookstore stock + pickup availability grouped by province. | `casadellibro.com/cdlweb/api/libreria/stockTiendas` |
+| `list_stores` | Physical store directory; `query` resolves a name/location (e.g. `grancasa`) to a `store_id`. | `casadellibro.com/cdlweb/api/libreria/todasTiendas` |
+| `get_store_stock` | Per-bookstore stock + pickup availability grouped by province; optional `store_id` / `in_stock_only`. | `casadellibro.com/cdlweb/api/libreria/stockTiendas` |
+| `find_books_in_store` | Search + per-store stock join: books matching a query/filters that are actually in stock at one `store_id`. | both search + stockTiendas |
 
 Typical flow: call `search_books_available_filters` to see what filters apply to a
 query, then pass the exact `filter` strings it returns (e.g. `availability:Con stock`,
@@ -27,6 +29,15 @@ store. In particular `availability` is catalog-wide ("Con stock" means at least 
 store/warehouse has it, **not** that any particular store does) and `price` is the
 online price (a physical store may not match it). Use `get_store_stock` for per-store
 stock and pickup.
+
+To answer "is X available at store Y", resolve the store with `list_stores`
+(e.g. `query: "grancasa"` → `store_id: 38`), then either `get_store_stock` with that
+`store_id`, or `find_books_in_store` which does the search + per-store stock join
+server-side. To browse a whole publisher/collection at a store, pass the facet value
+as the `query` (e.g. `"Unión Editorial"`) plus its filter — the catalog requires a
+non-empty query, but querying the facet's own name matches its full set. Note the
+join is O(N) stock calls, so `find_books_in_store` scans up to `max_scan` candidates
+and sets `truncated: true` if there were more.
 
 `search_books` and `get_store_stock` require a `fields` array that projects the
 response down to the fields you ask for (book fields and bookstore fields

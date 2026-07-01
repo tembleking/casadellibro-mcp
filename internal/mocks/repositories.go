@@ -109,3 +109,18 @@ func (mr *MockStockRepositoryMockRecorder) StockByStore(ctx, productID, countryC
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StockByStore", reflect.TypeOf((*MockStockRepository)(nil).StockByStore), ctx, productID, countryCache)
 }
+
+// Stores mocks base method.
+func (m *MockStockRepository) Stores(ctx context.Context, countryCache int) ([]domain.Store, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Stores", ctx, countryCache)
+	ret0, _ := ret[0].([]domain.Store)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Stores indicates an expected call of Stores.
+func (mr *MockStockRepositoryMockRecorder) Stores(ctx, countryCache any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stores", reflect.TypeOf((*MockStockRepository)(nil).Stores), ctx, countryCache)
+}

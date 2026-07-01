@@ -63,10 +63,14 @@ var _ = Describe("MCP tools", func() {
 		catalog = mocks.NewMockCatalogRepository(ctrl)
 		stock = mocks.NewMockStockRepository(ctrl)
 
+		search := usecase.NewSearchBooks(catalog)
+		stockUC := usecase.NewGetStoreStock(stock)
 		srv := deliverymcp.NewServer("test", "0.0.0", deliverymcp.Handlers{
-			Search:  usecase.NewSearchBooks(catalog),
-			Filters: usecase.NewListSearchFilters(catalog),
-			Stock:   usecase.NewGetStoreStock(stock),
+			Search:      search,
+			Filters:     usecase.NewListSearchFilters(catalog),
+			Stock:       stockUC,
+			Stores:      usecase.NewListStores(stock),
+			FindInStore: usecase.NewFindBooksInStore(search, stockUC),
 		})
 
 		var err error
@@ -95,7 +99,10 @@ var _ = Describe("MCP tools", func() {
 		for _, t := range res.Tools {
 			names = append(names, t.Name)
 		}
-		Expect(names).To(ConsistOf("search_books", "search_books_available_filters", "get_store_stock"))
+		Expect(names).To(ConsistOf(
+			"search_books", "search_books_available_filters", "get_store_stock",
+			"list_stores", "find_books_in_store",
+		))
 	})
 
 	Context("search_books", func() {
@@ -337,8 +344,98 @@ var _ = Describe("MCP tools", func() {
 			Expect(isErr).To(BeTrue())
 		})
 
+		It("scopes to a single store when store_id is given", func() {
+			stock.EXPECT().
+				StockByStore(gomock.Any(), "16801604", 63).
+				Return([]domain.Province{{
+					Name: "Zaragoza",
+					Bookstores: []domain.Bookstore{
+						{StoreID: 20, City: "Zaragoza", Stock: 0},
+						{StoreID: 38, City: "Zaragoza", Stock: 2},
+					},
+				}}, nil)
+
+			text, isErr := callText("get_store_stock", map[string]any{
+				"product_id": "16801604",
+				"store_id":   38,
+				"fields":     []any{"store_id", "stock"},
+			})
+			Expect(isErr).To(BeFalse())
+			lines := strings.Split(text, "\n")
+			Expect(lines).To(HaveLen(2)) // header + single store row
+			Expect(lines[1]).To(Equal("Zaragoza\t38\t2"))
+		})
+
 		It("returns a tool error when product_id is missing", func() {
 			_, isErr := callText("get_store_stock", map[string]any{})
+			Expect(isErr).To(BeTrue())
+		})
+	})
+
+	Context("list_stores", func() {
+		It("resolves a space-insensitive query to the matching store", func() {
+			stock.EXPECT().
+				Stores(gomock.Any(), 63).
+				Return([]domain.Store{
+					{StoreID: 20, Province: "Zaragoza", City: "Zaragoza", Address: "San Miguel, 4"},
+					{StoreID: 38, Province: "Zaragoza", City: "Zaragoza", Address: "C. C. Gran Casa, av. María Zambrano, 35"},
+				}, nil)
+
+			sc := structured("list_stores", map[string]any{
+				"query":  "grancasa",
+				"fields": []any{"store_id", "address"},
+			})
+			stores := sc["stores"].([]any)
+			Expect(stores).To(HaveLen(1))
+			Expect(stores[0].(map[string]any)).To(HaveKeyWithValue("store_id", BeNumerically("==", 38)))
+		})
+
+		It("returns a tool error when fields is missing", func() {
+			_, isErr := callText("list_stores", map[string]any{"query": "madrid"})
+			Expect(isErr).To(BeTrue())
+		})
+	})
+
+	Context("find_books_in_store", func() {
+		It("returns only books in stock at the store, with the store annotations", func() {
+			catalog.EXPECT().
+				Search(gomock.Any(), gomock.Any()).
+				Return(domain.SearchResult{
+					Total: 2,
+					Books: []domain.Book{
+						{ProductID: "1", Name: "In stock here"},
+						{ProductID: "2", Name: "Not here"},
+					},
+				}, nil)
+			// product 1 has stock at store 38, product 2 does not.
+			stock.EXPECT().StockByStore(gomock.Any(), "1", 63).
+				Return([]domain.Province{{Name: "Zaragoza", Bookstores: []domain.Bookstore{
+					{StoreID: 38, Stock: 2, Availability: "recógelo hoy"},
+				}}}, nil)
+			stock.EXPECT().StockByStore(gomock.Any(), "2", 63).
+				Return([]domain.Province{{Name: "Zaragoza", Bookstores: []domain.Bookstore{
+					{StoreID: 38, Stock: 0},
+				}}}, nil)
+
+			sc := structured("find_books_in_store", map[string]any{
+				"query":    "algo",
+				"store_id": 38,
+				"fields":   []any{"product_id", "name"},
+			})
+			Expect(sc["found"]).To(BeNumerically("==", 1))
+			books := sc["books"].([]any)
+			Expect(books).To(HaveLen(1))
+			b := books[0].(map[string]any)
+			Expect(b).To(HaveKeyWithValue("product_id", "1"))
+			Expect(b).To(HaveKeyWithValue("store_stock", BeNumerically("==", 2)))
+			Expect(b).To(HaveKeyWithValue("store_availability", "recógelo hoy"))
+		})
+
+		It("returns a tool error when store_id is missing", func() {
+			_, isErr := callText("find_books_in_store", map[string]any{
+				"query":  "algo",
+				"fields": []any{"name"},
+			})
 			Expect(isErr).To(BeTrue())
 		})
 	})

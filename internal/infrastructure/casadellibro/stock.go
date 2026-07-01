@@ -80,3 +80,42 @@ func (a *StockAdapter) StockByStore(ctx context.Context, productID string, count
 
 	return provinces, nil
 }
+
+// Stores lists the full casadellibro store directory (no product context), via
+// the todasTiendas endpoint. The response is grouped by province just like
+// stockTiendas, so it reuses the same DTOs and is flattened into []domain.Store.
+func (a *StockAdapter) Stores(ctx context.Context, countryCache int) ([]domain.Store, error) {
+	params := url.Values{}
+	params.Set("paiscache", strconv.Itoa(countryCache))
+
+	body, err := a.client.getJSON(ctx, a.client.storesBaseURL, params)
+	if err != nil {
+		return nil, err
+	}
+
+	var dtos []provinceDTO
+	if err := json.Unmarshal(body, &dtos); err != nil {
+		return nil, fmt.Errorf("decode stores response: %w", err)
+	}
+
+	var stores []domain.Store
+	for _, p := range dtos {
+		for _, b := range p.Bookstores {
+			stores = append(stores, domain.Store{
+				StoreID:    b.StoreID,
+				Province:   p.Name,
+				City:       b.City,
+				Address:    b.Address,
+				PostalCode: b.PostalCode,
+				Phone:      b.Phone,
+				Email:      b.Email,
+				Schedule:   b.Schedule,
+				Latitude:   b.Latitude,
+				Longitude:  b.Longitude,
+				MapURL:     b.MapURL,
+			})
+		}
+	}
+
+	return stores, nil
+}

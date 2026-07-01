@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"app/internal/domain"
+	"app/internal/usecase"
 )
 
 // The tool results are rendered as tab-separated tables instead of JSON: the
@@ -49,6 +50,60 @@ func renderStock(provinces []domain.Province, fields []string) (string, error) {
 		}
 	}
 	return b.String(), nil
+}
+
+// renderStores renders the store directory as a TSV table, one row per store.
+func renderStores(stores []domain.Store, fields []string) (string, error) {
+	var b strings.Builder
+	b.WriteString(strings.Join(fields, "\t"))
+	for i := range stores {
+		m, err := projectItem(stores[i], fields)
+		if err != nil {
+			return "", err
+		}
+		b.WriteByte('\n')
+		b.WriteString(rowString(m, fields))
+	}
+	return b.String(), nil
+}
+
+// renderFindInStore renders a store-scoped search: a summary line, then a TSV
+// table of the requested book fields plus store_stock and store_availability.
+func renderFindInStore(res usecase.FindInStoreResult, fields []string) (string, error) {
+	var b strings.Builder
+	fmt.Fprintf(&b, "found=%d scanned=%d total=%d truncated=%t\n", len(res.Books), res.Scanned, res.Total, res.Truncated)
+	b.WriteString(strings.Join(fields, "\t"))
+	b.WriteString("\tstore_stock\tstore_availability")
+	for i := range res.Books {
+		m, err := projectItem(res.Books[i].Book, fields)
+		if err != nil {
+			return "", err
+		}
+		b.WriteByte('\n')
+		b.WriteString(rowString(m, fields))
+		fmt.Fprintf(&b, "\t%d\t%s", res.Books[i].StoreStock, sanitize(res.Books[i].StoreAvailability))
+	}
+	return b.String(), nil
+}
+
+// projectBooksInStore projects each book to the requested fields and always
+// appends the store_stock and store_availability annotations.
+func projectBooksInStore(items []usecase.BookInStore, fields []string) ([]map[string]any, error) {
+	out := make([]map[string]any, 0, len(items))
+	for i := range items {
+		m, err := projectItem(items[i].Book, fields)
+		if err != nil {
+			return nil, err
+		}
+		row := make(map[string]any, len(m)+2)
+		for k, v := range m {
+			row[k] = v
+		}
+		row["store_stock"] = items[i].StoreStock
+		row["store_availability"] = items[i].StoreAvailability
+		out = append(out, row)
+	}
+	return out, nil
 }
 
 // renderFacets renders the available filters grouped by facet, each value as

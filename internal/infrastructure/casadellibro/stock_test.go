@@ -85,4 +85,24 @@ var _ = Describe("StockAdapter", func() {
 		_, err := adapter.StockByStore(context.Background(), "1", 63)
 		Expect(err).To(MatchError(ContainSubstring("decode stock response")))
 	})
+
+	It("lists the store directory flattening provinces into stores", func() {
+		var gotQuery string
+		srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			gotQuery = r.URL.RawQuery
+			_, _ = w.Write([]byte(stockBody)) // todasTiendas has the same shape
+		}))
+		defer srv.Close()
+
+		adapter := casadellibro.NewStockAdapter(casadellibro.NewClient(casadellibro.WithStoresBaseURL(srv.URL)))
+		stores, err := adapter.Stores(context.Background(), 63)
+		Expect(err).ToNot(HaveOccurred())
+		Expect(gotQuery).To(ContainSubstring("paiscache=63"))
+
+		Expect(stores).To(HaveLen(1))
+		Expect(stores[0].StoreID).To(Equal(90))
+		Expect(stores[0].Province).To(Equal("Alicante"))
+		Expect(stores[0].City).To(Equal("Elche"))
+		Expect(stores[0].PostalCode).To(Equal("03205"))
+	})
 })

@@ -24,15 +24,55 @@ func NewGetStoreStock(repo domain.StockRepository) *GetStoreStock {
 	return &GetStoreStock{repo: repo}
 }
 
-// Execute validates the product id, applies defaults and delegates to the repository.
-func (uc *GetStoreStock) Execute(ctx context.Context, productID string, countryCache int) ([]domain.Province, error) {
-	productID = strings.TrimSpace(productID)
-	if productID == "" {
+// StockQuery are the parameters of a per-store stock lookup.
+type StockQuery struct {
+	ProductID    string
+	CountryCache int
+	// StoreID, when > 0, restricts the result to that single store.
+	StoreID int
+	// InStockOnly drops bookstores with zero stock.
+	InStockOnly bool
+}
+
+// Execute validates the product id, applies defaults, fetches the stock and
+// applies the optional store/in-stock filters.
+func (uc *GetStoreStock) Execute(ctx context.Context, q StockQuery) ([]domain.Province, error) {
+	q.ProductID = strings.TrimSpace(q.ProductID)
+	if q.ProductID == "" {
 		return nil, ErrEmptyProductID
 	}
-	if countryCache <= 0 {
-		countryCache = defaultCountryCache
+	if q.CountryCache <= 0 {
+		q.CountryCache = defaultCountryCache
 	}
 
-	return uc.repo.StockByStore(ctx, productID, countryCache)
+	provinces, err := uc.repo.StockByStore(ctx, q.ProductID, q.CountryCache)
+	if err != nil {
+		return nil, err
+	}
+	return filterProvinces(provinces, q.StoreID, q.InStockOnly), nil
+}
+
+// filterProvinces keeps only the bookstores matching the store/in-stock filters,
+// dropping provinces left with no bookstores. Zero-value filters are no-ops.
+func filterProvinces(provinces []domain.Province, storeID int, inStockOnly bool) []domain.Province {
+	if storeID <= 0 && !inStockOnly {
+		return provinces
+	}
+	out := make([]domain.Province, 0, len(provinces))
+	for _, p := range provinces {
+		kept := make([]domain.Bookstore, 0, len(p.Bookstores))
+		for _, b := range p.Bookstores {
+			if storeID > 0 && b.StoreID != storeID {
+				continue
+			}
+			if inStockOnly && b.Stock <= 0 {
+				continue
+			}
+			kept = append(kept, b)
+		}
+		if len(kept) > 0 {
+			out = append(out, domain.Province{Name: p.Name, Bookstores: kept})
+		}
+	}
+	return out
 }

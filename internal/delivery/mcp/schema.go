@@ -21,6 +21,11 @@ var (
 		"email": "string", "schedule": "string", "stock": "integer", "availability": "string",
 		"postal_code": "string", "latitude": "number", "longitude": "number", "map_url": "string",
 	}
+	storeFieldTypes = map[string]string{
+		"store_id": "integer", "province": "string", "city": "string", "address": "string",
+		"postal_code": "string", "phone": "string", "email": "string", "schedule": "string",
+		"latitude": "number", "longitude": "number", "map_url": "string",
+	}
 )
 
 // itemSchema builds an object schema whose properties are the given fields.
@@ -34,6 +39,15 @@ func itemSchema(types map[string]string) map[string]any {
 		props[name] = map[string]any{"type": t}
 	}
 	return map[string]any{"type": "object", "properties": props}
+}
+
+// bookInStoreItemSchema is the book item schema plus the store annotations.
+func bookInStoreItemSchema() map[string]any {
+	s := itemSchema(bookFieldTypes)
+	props := s["properties"].(map[string]any)
+	props["store_stock"] = map[string]any{"type": "integer"}
+	props["store_availability"] = map[string]any{"type": "string"}
+	return s
 }
 
 func mustSchema(v any) json.RawMessage {
@@ -66,6 +80,24 @@ var (
 					"bookstores": map[string]any{"type": "array", "items": itemSchema(bookstoreFieldTypes)},
 				},
 			}},
+		},
+	})
+
+	storesOutputSchema = mustSchema(map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"stores": map[string]any{"type": "array", "items": itemSchema(storeFieldTypes)},
+		},
+	})
+
+	findInStoreOutputSchema = mustSchema(map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"books":     map[string]any{"type": "array", "items": bookInStoreItemSchema()},
+			"found":     map[string]any{"type": "integer"},
+			"scanned":   map[string]any{"type": "integer"},
+			"total":     map[string]any{"type": "integer"},
+			"truncated": map[string]any{"type": "boolean"},
 		},
 	})
 

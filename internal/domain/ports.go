@@ -22,9 +22,10 @@ type CatalogRepository interface {
 	Facets(ctx context.Context, q FacetQuery) ([]Facet, error)
 }
 
-// StockRepository reports per-store stock for a product.
+// StockRepository reports per-store stock for a product and lists the store directory.
 type StockRepository interface {
 	StockByStore(ctx context.Context, productID string, countryCache int) ([]Province, error)
+	Stores(ctx context.Context, countryCache int) ([]Store, error)
 }
 
 //go:generate go run go.uber.org/mock/mockgen -destination=../mocks/repositories.go -package=mocks app/internal/domain CatalogRepository,StockRepository
